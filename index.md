@@ -9,11 +9,9 @@ September 19, 2016
 
 <div class="container">
    <div class="left-half">
-Want to go from a brain image:
 <img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="Brain Image">
    </div>
    <div class="right-half">
-To a binary hemorrhage mask:
 <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="Hemorrhage img">
 </div>
 </div>
@@ -22,6 +20,8 @@ To a binary hemorrhage mask:
 
 
 ## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:35%; display: block; margin: auto;" alt="flow">
+
+## <img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:50%; display: block; margin: auto;" alt="flow">
 
 
 ## (A Lot of) Software Choices for fMRI Analysis 
@@ -45,8 +45,14 @@ From the `cranlogs` R package:
 <!--html_preserve--><div id="htmlwidget-4532e58b925a788facf3" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4532e58b925a788facf3">{"x":{"filter":"none","data":[["fslr","brainR","freesurfer","matlabr","papayar","WhiteStripe","spm12r","oasis"],[8549,8638,49,2970,517,4755,1641,1307],[121,38,36,33,33,19,18,15]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
+## What is Implemented in R?
+
+<img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
+
 
 # <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI
+
+## <img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:45%; display: block; margin: auto;" alt="flow">
 
 ## Neuroconductor Goals (Similar to BioC)
 
@@ -62,9 +68,23 @@ From the `cranlogs` R package:
 
 </div>
 
-## What is Implemented in R?
 
-<img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
+## Under Development R Packages
+
+1.  nitrc - download data from the **NITRC repository**
+2.  MNITemplate$^*$ - data of a population-level "template" image
+3.  EveTemplate$^*$ - data of a different template image
+4.  kirby21 - data package with 2 subjects, 2 visits with multimodal imaging
+5.  rcamino - interface to analyze DTI data
+6.  msseg - MS lesion segmentation 
+7.  extrantsr - pipelines for structural imaging analysis
+
+Not started yet
+
+8.  hcp - interface with Human Connectome Project
+9.  afnir - R port of AFNI software (No. 2 on the chart)
+
+$^*$ - working with Jean-Philippe Fortin on these
 
 
 ## Neuroconductor <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow">
@@ -81,25 +101,6 @@ Problems
 2.  Users need external software (versions/installation)
 3.  No control over external software
 4.  Need the content (buy-in from the community)
-
-## Under Development R Packages
-
-
-
-1.  nitrc - download data from the **NITRC repository**
-2.  MNITemplate$^*$ - data of a population-level "template" image
-3.  EveTemplate$^*$ - data of a different template image
-4.  kirby21 - data package with 2 subjects, 2 visits with multimodal imaging
-5.  rcamino - interface to analyze DTI data
-6.  msseg - MS lesion segmentation 
-7.  extrantsr - pipelines for structural imaging analysis
-
-Not started yet
-
-8.  hcp - interface with Human Connectome Project
-9.  afnir - R port of AFNI software (No. 2 on the chart)
-
-$^*$ - working with Jean-Philippe Fortin on these
 
 
 
