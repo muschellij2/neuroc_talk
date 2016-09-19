@@ -33,7 +33,7 @@ opts_chunk$set(echo = FALSE, prompt = FALSE, message = FALSE, warning = FALSE, c
 ## Shiny Application <img src="figures/Shiny_prediction.png" style="width:105%; display: block; margin: auto;" alt="shiny orig">
 
 
-## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:35%; display: block; margin: auto;" alt="flow">
+## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:50%; display: block; margin: auto;" alt="flow">
 
 ## <img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:50%; display: block; margin: auto;" alt="flow">
 

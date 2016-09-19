@@ -19,7 +19,7 @@ September 19, 2016
 ## Shiny Application <img src="figures/Shiny_prediction.png" style="width:105%; display: block; margin: auto;" alt="shiny orig">
 
 
-## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:35%; display: block; margin: auto;" alt="flow">
+## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:50%; display: block; margin: auto;" alt="flow">
 
 ## <img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:50%; display: block; margin: auto;" alt="flow">
 
@@ -52,7 +52,7 @@ From the `cranlogs` R package:
 
 # <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI
 
-## <img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:45%; display: block; margin: auto;" alt="flow">
+## <img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:50%; display: block; margin: auto;" alt="flow">
 
 ## Neuroconductor Goals (Similar to BioC)
 
