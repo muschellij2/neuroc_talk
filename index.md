@@ -49,9 +49,10 @@ From the `cranlogs` R package:
 
 <div style='font-size: 24pt;'>
 
-1.  All the things a repository has (checks/rules/**stability**)
-2.  More packages to **interface** with other programs (lower the bar to entry)
-    - checks that programs work when other software installed 
+1.  Lower the bar to entry - just have to know R
+    - more packages to **interface** with other programs 
+2.  All the things a repository has (checks/rules/**stability**)
+    - additional checks with imaging software installed (e.g. examples)
 3.  **Data** packages to test packages with real data (images can be big)
 4.  Detailed **vignettes/tutorials** on how to actually perform an analysis
 5.  Image analyses use all the "things R has to offer" (packaging system/**reproducibility**/etc.)
