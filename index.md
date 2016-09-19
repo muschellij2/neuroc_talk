@@ -1,5 +1,5 @@
 # Neuroconductor: A Neuroimaging Analysis Project in R
-John Muschelli  
+John Muschelli, <br/> http://johnmuschelli.com/neuroc_talk/  
 September 19, 2016  
 
 
@@ -7,12 +7,15 @@ September 19, 2016
 
 ## Stroke Segmentation in CT Scans
 
-<div class="columns-2">
+<div class="container">
+   <div class="left-half">
 Want to go from a brain image:
 <img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="Brain Image">
-<br/>
+   </div>
+   <div class="right-half">
 To a binary hemorrhage mask:
 <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="Hemorrhage img">
+</div>
 </div>
 
 ## Shiny Application <img src="figures/Shiny_prediction.png" style="width:105%; display: block; margin: auto;" alt="shiny orig">
