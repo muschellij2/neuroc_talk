@@ -1,6 +1,6 @@
 ---
 title: "Neuroconductor: A Neuroimaging Analysis Project in R"
-author: "John Muschelli, <br/> http://johnmuschelli.com/neuroc_talk/"
+author: "John Muschelli <br/> http://johnmuschelli.com/neuroc_talk/"
 date: "September 19, 2016"
 output:
   ioslides_presentation:
