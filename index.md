@@ -131,7 +131,6 @@ $^*$ - working with Jean-Philippe Fortin on these
 9.  Analysis of fMRI task data
 10.  Diffusion tensor models
 
-11.  
 
 
 </div>
