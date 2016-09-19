@@ -45,7 +45,7 @@ From the `cranlogs` R package:
 <!--html_preserve--><div id="htmlwidget-4532e58b925a788facf3" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4532e58b925a788facf3">{"x":{"filter":"none","data":[["fslr","brainR","freesurfer","matlabr","papayar","WhiteStripe","spm12r","oasis"],[8549,8638,49,2970,517,4755,1641,1307],[121,38,36,33,33,19,18,15]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
-## What is Implemented in R?
+## R Package Interfaces with Imaging Software
 
 <img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
 

@@ -86,7 +86,7 @@ datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 )
 ```
 
-## What is Implemented in R?
+## R Package Interfaces with Imaging Software
 
 <img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
 
