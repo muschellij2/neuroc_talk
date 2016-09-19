@@ -1,5 +1,5 @@
 # Neuroconductor: A Neuroimaging Analysis Project in R
-John Muschelli, <br/> http://johnmuschelli.com/neuroc_talk/  
+John Muschelli <br/> http://johnmuschelli.com/neuroc_talk/  
 September 19, 2016  
 
 
