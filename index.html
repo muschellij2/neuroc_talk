@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neuroconductor: A Neuroimaging Analysis Project in R</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+  <meta name="date" content="2016-09-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" media="all" href="index_files/ioslides-13.5.1/fonts/fonts.css">
+
+  <link rel="stylesheet" media="all" href="index_files/ioslides-13.5.1/theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="index_files/ioslides-13.5.1/theme/css/phone.css">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Neuroconductor: A Neuroimaging Analysis Project in R',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'John Muschelli' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="neuroconductor.css" type="text/css" />
+
+  <script src="index_files/htmlwidgets-0.7/htmlwidgets.js"></script>
+  <script src="index_files/jquery-1.12.4/jquery.min.js"></script>
+  <script src="index_files/datatables-binding-0.2/datatables.js"></script>
+  <link href="index_files/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="index_files/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+  <script src="index_files/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">September 19, 2016</p>
+          </hgroup>
+  </slide>
+
+<slide class=''><hgroup><h2>Stroke Segmentation in CT Scans</h2></hgroup><article  id="stroke-segmentation-in-ct-scans">
+
+<div class="columns-2">
+<p>Want to go from a brain image: <img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="Brain Image"> <br/> To a binary hemorrhage mask: <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="Hemorrhage img"></p></div>
+
+</article></slide><slide class=''><hgroup><h2>Shiny Application <img src="figures/Shiny_prediction.png" style="width:105%; display: block; margin: auto;" alt="shiny orig"></h2></hgroup><article  id="shiny-application">
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:35%; display: block; margin: auto;" alt="flow"></h2></hgroup><article  id="section">
+
+</article></slide><slide class=''><hgroup><h2>(A Lot of) Software Choices for fMRI Analysis</h2></hgroup><article  id="a-lot-of-software-choices-for-fmri-analysis">
+
+<p><img src="figures/carp_2012_figure_full.jpg" style="width:650px; display: block; margin: auto;" alt="flow"></p>
+
+<!-- ![](figures/carp_2012_figure_full.jpg) -->
+
+<p>From Carp, Joshua. &quot;The secret lives of experiments: methods reporting in the fMRI literature.&quot; Neuroimage 63.1 (2012): 289-300.</p>
+
+</article></slide><slide class=''><hgroup><h2>Number of Downloads (My CRAN packages)</h2></hgroup><article  id="number-of-downloads-my-cran-packages">
+
+<p>From the <code>cranlogs</code> R package:</p>
+
+<div id="htmlwidget-4532e58b925a788facf3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4532e58b925a788facf3">{"x":{"filter":"none","data":[["fslr","brainR","freesurfer","matlabr","papayar","WhiteStripe","spm12r","oasis"],[8549,8638,49,2970,517,4755,1641,1307],[121,38,36,33,33,19,18,15]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2><img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI</h2></hgroup><article  id="neuroconductor-a-neuroimaging-r-repository-hosted-on-github-and-checked-by-travis-ci">
+
+</article></slide><slide class=''><hgroup><h2>Neuroconductor Goals (Similar to BioC)</h2></hgroup><article  id="neuroconductor-goals-similar-to-bioc">
+
+<div style="font-size: 24pt;">
+<ol>
+<li>All the things a repository has (checks/rules/<strong>stability</strong>)</li>
+<li>More packages to <strong>interface</strong> with other programs (lower the bar to entry)
+
+<ul>
+<li>checks that programs work when other software installed</li>
+</ul></li>
+<li><strong>Data</strong> packages to test packages with real data (images can be big)</li>
+<li>Detailed <strong>vignettes/tutorials</strong> on how to actually perform an analysis</li>
+<li>Image analyses use all the &quot;things R has to offer&quot; (packaging system/<strong>reproducibility</strong>/etc.)</li>
+</ol></div>
+
+</article></slide><slide class=''><hgroup><h2>What is Implemented in R?</h2></hgroup><article  id="what-is-implemented-in-r">
+
+<p><img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=''><hgroup><h2>Neuroconductor <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="neuroconductor">
+
+<p>Hopeful Solutions</p>
+
+<ol>
+<li>Help improve reproducibility in imaging</li>
+<li>Standardize the syntax / R objects for imaging a bit (I&#39;m realistic)</li>
+<li>Easily-accessible content</li>
+</ol>
+
+<p>Problems</p>
+
+<ol>
+<li>More control over the workflow = more work (<strong>for us</strong>!)</li>
+<li>Users need external software (versions/installation)</li>
+<li>No control over external software</li>
+<li>Need the content (buy-in from the community)</li>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2>Under Development R Packages</h2></hgroup><article  id="under-development-r-packages">
+
+<ol>
+<li>nitrc - download data from the <strong>NITRC repository</strong></li>
+<li>MNITemplate\(^*\) - data of a population-level &quot;template&quot; image</li>
+<li>EveTemplate\(^*\) - data of a different template image</li>
+<li>kirby21 - data package with 2 subjects, 2 visits with multimodal imaging</li>
+<li>rcamino - interface to analyze DTI data</li>
+<li>msseg - MS lesion segmentation</li>
+<li>extrantsr - pipelines for structural imaging analysis</li>
+</ol>
+
+<p>Not started yet</p>
+
+<ol>
+<li>hcp - interface with Human Connectome Project</li>
+<li>afnir - R port of AFNI software (No. 2 on the chart)</li>
+</ol>
+
+<p>\(^*\) - working with Jean-Philippe Fortin on these</p>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Thanks</h2></hgroup><article  id="thanks">
+
+</article></slide><slide class=''><hgroup><h2>Current R Capabilities in Imaging</h2></hgroup><article  id="current-r-capabilities-in-imaging">
+
+<div class="columns-2">
+<ol>
+<li><strong>Image I/O</strong></li>
+<li><strong>Plotting</strong></li>
+<li>Image registration (linear/non-linear)</li>
+<li><strong>Image smoothing</strong></li>
+<li><strong>Tissue-class segmentation (white/gray/CSF)</strong></li>
+<li>Inhomogeneity correction</li>
+<li><p><strong>Intensity normalization</strong></p></li>
+<li>Temporal filtering</li>
+<li>Large linear models</li>
+<li>Analysis of fMRI task data</li>
+<li><p>Diffusion tensor models</p></li>
+<li></li>
+</ol></div>
+
+<div id="refs" class="references">
+</div></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script src="index_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+<script src="index_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+<script src="index_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+<script src="index_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+<script src="index_files/ioslides-13.5.1/js/hammer.js"></script>
+<script src="index_files/ioslides-13.5.1/js/slide-controller.js"></script>
+<script src="index_files/ioslides-13.5.1/js/slide-deck.js"></script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "index_files/mathjax-local/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
