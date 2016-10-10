@@ -519,7 +519,7 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 
 ----
 <div class="container"> 
-<div id="left_col2"> 
+<div class="left-half"> 
   <h2>Neuroconductor Goal: </h2>
   
   <p>
@@ -530,8 +530,8 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
   
   </p>
 </div>    
-  <div id="right_col2">
-<img src="figures/brains_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
+  <div class="right-half"> 
+<img src="figures/brains_meme.jpg" style="width:100%; display: block; margin: auto;" alt="flow">
   <p style='font-size: 12pt;'> From [https://memegenerator.net/Everywhere-Toy-Story](https://memegenerator.net/Everywhere-Toy-Story).
   </p>
 
@@ -542,18 +542,19 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 
 ----
 <div class="container"> 
-<div id="left_col2"> 
+<div class="left-half"> 
   <h2>Neuroconductor Goal: </h2>
   
   <p>
   Detailed **tutorials** on how to actually perform an analysis
   
   See [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)
+  
   </p>
 </div>    
-  <div id="right_col2">
-<img src="figures/brains_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
-  <p style='font-size: 12pt;'> From [http://i.imgur.com/0Y1xISa.gifv](http://i.imgur.com/0Y1xISa.gifv).
+<div class="right-half"> 
+<img src="figures/cat_analysis.gif" style="width:100%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 10pt;'> From [http://i.imgur.com/0Y1xISa.gifv](http://i.imgur.com/0Y1xISa.gifv).
   </p>
 
   </div>
