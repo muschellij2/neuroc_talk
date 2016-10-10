@@ -20,105 +20,14 @@ bibliography: Oral_Proposal.bib
 MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 </script>
 
-```{r opts, prompt=FALSE, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, comment=""}
-library(knitr)
-library(knitcitations)
-cite_options(max.names = 1)
-opts_chunk$set(echo = FALSE, prompt = FALSE, message = FALSE, warning = FALSE, comment = "", results = 'hide')
-```
 
 
-```{r setup, prompt=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
-rm.obj = ls()
-rm.obj = rm.obj[ !(rm.obj %in% c("fname", "slide"))]
-rm(list = rm.obj)
-library(ggplot2)
-library(xtable)
-library(scales)
-library(fslr)
-library(pander)
-options(stringsAsFactors = FALSE)
-# rootdir = path.expand("~/Dropbox/CTR/DHanley/MISTIE")
-# homedir = file.path(rootdir, "ICH Analysis")
-# Mdir = file.path(rootdir, "MISTIE DSMB Analysis")
-# resdir <- file.path(homedir, "results")
-# rundir <- file.path(resdir, "Manuscript")
-# progdir <- file.path(homedir, "stataprograms")
-# datadir <- file.path(Mdir, "statacalc")
-# load(file=file.path(rundir, "Randomized_Patients.Rda"))
-load(file = "All_IncludingICES_Patients.Rda")
-load(file = "111_Filenames.Rda")
-pt.ids = c(100318L, 100362L, 100365L, 101306L, 101307L, 101308L, 102317L, 
-102322L, 102324L, 102331L, 102360L, 102367L, 102374L, 102391L, 
-102393L, 102403L, 102406L, 120376L, 131310L, 131316L, 131334L, 
-131354L, 133409L, 133417L, 134304L, 134305L, 134320L, 134327L, 
-134345L, 134380L, 134381L, 134382L, 134392L, 134408L, 134412L, 
-134416L, 152302L, 152303L, 152353L, 157328L, 157329L, 157332L, 
-157335L, 157336L, 157370L, 157372L, 157399L, 157410L, 161413L, 
-173312L, 173313L, 173325L, 173341L, 173361L, 173364L, 173368L, 
-173384L, 173396L, 173404L, 175387L, 175397L, 175405L, 179373L, 
-179383L, 179386L, 179394L, 179395L, 179402L, 184388L, 191301L, 
-191311L, 191314L, 191315L, 191319L, 191321L, 191333L, 191375L, 
-191400L, 205509L, 205517L, 205519L, 216390L, 219350L, 222337L, 
-222357L, 222358L, 223355L, 223369L, 223407L, 225502L, 225503L, 
-225504L, 225505L, 225506L, 225507L, 225510L, 225511L, 225515L, 
-225524L, 230356L, 230363L, 230366L, 230371L, 230377L, 232514L, 
-232516L, 234385L, 265389L, 265398L, 289518L, 289525L)
-fdf$id = as.numeric(gsub("-", "", fdf$id))
-fdf = fdf[ fdf$id %in% pt.ids, ]
-```
 
-```{r demog}
-library(tableone)
-library(stargazer)
-library(pander)
-library(plyr)
-alldemog = read.csv("All_180_FollowUp_wDemographics.csv", as.is = TRUE)
-alldemog = alldemog[, c("patientName", "Clot_Location_RC")]
-alldemog$Clot_Location_RC = plyr::revalue(
-  alldemog$Clot_Location_RC,
-  c("Globus Palidus" = "Globus Pallidus"))
-n.ids = length(unique(fdf$id))
-demog = fdf$id 
 
-demog = all.alldat[ all.alldat$patientName %in% demog, ]
-demog$Clot_Location_RC = NULL
-demog = merge(demog, alldemog, all.x = TRUE )
-stopifnot(nrow(demog) == n.ids)
-demog$Diagnostic_ICH_Volume =demog$ICH_Dx_10 * 10 
-demog$Diagnostic_IVH_Volume =demog$IVH_Dx_10 * 10 
-tt = sort(table(demog$Clot_Location_RC), decreasing = TRUE)
-nclot = names(tt)[tt > 0]
-demog$Clot_Location_RC = factor(demog$Clot_Location_RC, levels = nclot)
 
-vars = c("Age", "Gender", "Clot_Location_RC",
-         "Diagnostic_ICH_Volume")
-catvars = c("Gender", "Clot_Location_RC")
-tb1 = CreateTableOne(vars = vars, factorVars = catvars, 
-                     data = demog)
-tb1 = print(tb1, contDigits = 1)
-gen = grepl("Gender", rownames(tb1))
-rownames(tb1)[ gen ] = "Male: N (%)"
-tb1[gen,1] = gsub("\\((.*)\\)", "(\\1%)", tb1[gen,1,drop=FALSE])
 
-rownames(tb1) = gsub("_", " ", rownames(tb1))
-rownames(tb1) = gsub(" \\(mean", ": Mean", rownames(tb1))
-rownames(tb1) = gsub("(sd))", "(SD)", rownames(tb1), fixed=TRUE)
-rownames(tb1) = gsub("Volume", "Volume in mL", rownames(tb1), fixed=TRUE)
-rownames(tb1) = gsub("Diagnostic", "", rownames(tb1), fixed=TRUE)
-rownames(tb1) = gsub("Age", "Age in Years", rownames(tb1), fixed=TRUE)
-rownames(tb1) = gsub("Clot_Location_RC", "ICH Location", rownames(tb1), fixed=TRUE)
-tb1 = tb1[rownames(tb1) != "n", , drop=FALSE]
-# tb1 = pander.return(tb1)
-# tb1 = tb1[ tb1 != ""]
-```
 
-```{r}
-library(RefManageR)
-library(knitcitations)
-bib <- ReadBib('Oral_Proposal.bib')
-x = sapply(bib, citep)
-```
+
 
 
 ## Overview of Work/Research
@@ -300,9 +209,7 @@ To a brain-extracted image:
 
 # Larger ICH Volume ⇒ Worse Outcome
 
-```{r biblio, results='hide'}
-bibliography() 
-```
+
 
 
 ## ICH Segmentation, Volume/Location Estimation 
@@ -320,15 +227,27 @@ To a binary hemorrhage mask:
 <div id="wrap">
 <div id="left_col">
 
-```{r demog_table, results='asis', cache=FALSE}
-tb1 = cbind(rownames(tb1), tb1)
-rownames(tb1) = NULL
-tb1[,1] = gsub("   ", "&nbsp;&nbsp;&nbsp;", tb1[,1])
-ind = grepl("Clot Location", tb1[,1])
-tb1[ind,1] = gsub("RC", "", tb1[ind,1])
-tb1[ind,1] = gsub("^Clot", "Reader-Based Clot", tb1[ind,1])
-pander(tb1, justify = c("lr"))
-```
+
+----------------------------------------------
+&nbsp;                                 Overall
+-------------------------------- -------------
+Age in Years: Mean (SD)            60.8 (11.2)
+
+Male: N (%)                         76 (68.5%)
+
+Reader-Based Clot Location (%)                
+
+&nbsp;&nbsp;&nbsp;Putamen            68 (61.3)
+
+&nbsp;&nbsp;&nbsp;Lobar              33 (29.7)
+
+&nbsp;&nbsp;&nbsp;Globus              6 ( 5.4)
+Pallidus                                      
+
+&nbsp;&nbsp;&nbsp;Thalamus            4 ( 3.6)
+
+ICH Volume in mL: Mean (SD)        37.4 (20.1)
+----------------------------------------------
 
 </div>
 <div id="right_col"  style='font-size: 24pt;'>
@@ -377,12 +296,12 @@ $$
 ## Models Fit on the Training Data
 
 - Logistic Regression: \(f(X_{i}(v)) = \text{expit} \left\{ \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v)\beta_{k}\right\}  \)
-- Generalized Additive Model `r citep("hastie_generalized_1990")` 
+- Generalized Additive Model (Hastie, et al., 1990) 
     - fit using thin plate splines
-- LASSO `r citep(c("tibshirani_regression_1996", "friedman_regularization_2010"))`: 
+- LASSO (Tibshirani, 1996; Friedman, et al., 2010): 
 $$ \mathcal{L}\left(\left.Y_{i}(v) \right|\, f(X_i(v))\right) \propto \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v) \beta_{k} + \lambda \sum_{k= 1}^{p} \left|\beta_{k}\right|
 $$
-- Random Forests `r citep(c("randomForest", "breiman2001random"))`
+- Random Forests (Liaw, et al., 2002; Breiman, 2001)
 <div class="centerer">
 \(f(X_{i}(v)) \propto\) <img src="figures/Random_Forest.png" style="width:40%;inline;" alt="random forest">
 </div>
@@ -450,47 +369,17 @@ From Carp, Joshua. "The secret lives of experiments: methods reporting in the fM
 
 
 
-```{r, cache = TRUE}
-if (!require(cranlogs)) {
-  library(devtools)
-  install_github("metacran/cranlogs")
-}
-first_date = "2014-01-10"
-today = Sys.Date()
-long_today = format(Sys.time(), "%B %d, %Y")
-packs = c("fslr", "brainR", "matlabr", "spm12r", "WhiteStripe", "oasis", "freesurfer", "papayar")
-last_week = cran_downloads( when = "last-week",
-                            packages = packs)
-last_week = plyr::ddply(last_week, .(package), summarise, 
-                  Last_Week = sum(count))
-dl = cran_downloads( from = first_date, to = today,
-                     packages = packs)
-dl = ddply(dl, .(package), summarise, All_Time = sum(count))
-dl = merge(dl, last_week)
-dl = plyr::arrange(dl, desc(Last_Week))
-colnames(dl) = c("Package", "All Time", "Last Week")
-made_packs = c("fslr", "spm12r", "freesurfer")
-made_packs = dl$Package[ dl$Package %in% made_packs] 
-dl$Package[ dl$Package %in% made_packs] = paste0("<strong>", made_packs, "</strong>")
-```
+
 
 
 ## Number of Downloads (My CRAN packages)
 
-From the `cranlogs` R package (as of `r format(today, format="%B %d, %Y")`):
+From the `cranlogs` R package (as of October 10, 2016):
 
 <div class="container"> 
    <div class="left-half">
 
-```{r, results = "asis", eval = TRUE}
-DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
-          options = list(dom = 't', autoWidth = TRUE,
-                         columnDefs = list(list(
-                           className = 'dt-center',
-                           targets = 0))),
-          escape = FALSE
-)
-```
+preserve2a7d8ced1bcc8278
 </div>
    <div class="right-half">
   <img src="figures/carp_2012_figure_box_crop.jpg" style="width:80%;  display: block; margin: auto;" alt="carp_box">  
