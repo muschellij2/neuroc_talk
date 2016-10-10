@@ -1,6 +1,6 @@
 ---
 title: "Computational Methods for Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor"
-author: "John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/Rochester_2016.html"
+author: 'John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/Rochester_2016.html <br/> <a href="https://twitter.com/strictlystat?lang=en">\@StrictlyStat</a> <br/> https://github.com/muschellij2'
 date: "October 13, 2016"
 output:
   ioslides_presentation:
@@ -32,10 +32,6 @@ opts_chunk$set(echo = FALSE, prompt = FALSE, message = FALSE, warning = FALSE, c
 rm.obj = ls()
 rm.obj = rm.obj[ !(rm.obj %in% c("fname", "slide"))]
 rm(list = rm.obj)
-library(ggplot2)
-library(xtable)
-library(scales)
-library(fslr)
 library(pander)
 options(stringsAsFactors = FALSE)
 # rootdir = path.expand("~/Dropbox/CTR/DHanley/MISTIE")
@@ -70,7 +66,6 @@ fdf = fdf[ fdf$id %in% pt.ids, ]
 
 ```{r demog}
 library(tableone)
-library(stargazer)
 library(pander)
 library(plyr)
 alldemog = read.csv("All_180_FollowUp_wDemographics.csv", as.is = TRUE)
@@ -342,12 +337,50 @@ pander(tb1, justify = c("lr"))
 
 </div>
 
+---- 
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Workflow for the Analysis</h2>
+  </div>    
+  <div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_sized_box.png" style="width:75%; display: block; margin: auto;" alt="flow">
+  </div>
+</div>
 
-## Step 1: Create Predictors of ICH <img src="figures/Just_The_Covariates2.png" style="width:48%; display: block; margin: auto;" alt="Preds">  
 
-## Data Structure for One Patient <br/> <img src="figures/voxel_stacking.png" style="width:70%;  display: block; margin: auto;" alt="MISTIE LOGO">  
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Step 1: Create Predictors of ICH </h2>
+ 
+  - local moments (mean, sd, skew kurtosis)
+  - threshold
+  - smoothers
+  
+  </div>    
+  <div id="right_col2"> 
+  <img src="figures/Just_The_Covariates2.png" style="width:80%; display: block; margin: auto;" alt="Preds">  
+  </div>
+</div>
 
----
+----
+
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Data Structure for One Patient </h2> 
+  
+  - Each subject has matrix $X_{i}$
+  - V - voxels per person (really $V_i$)
+  - P - number of predictors
+  
+ </div>    
+  <div id="right_col2">   
+  <img src="figures/voxel_stacking.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">  
+  </div>
+</div>  
+  
+
+----
 
 <div class="container"> 
 <div id="left_col2"> 
@@ -371,38 +404,59 @@ Let $y_{i}(v)$ be the presence / absence of ICH for voxel $v$ from person $i$.
 
 General model form: 
 $$
- P(Y_{i}(v) = 1)  \propto f(X_{i}(v))
+ P(y_{i}(v) = 1)  \propto f(X_{i}(v))
 $$
 
 ## Models Fit on the Training Data
 
-- Logistic Regression: \(f(X_{i}(v)) = \text{expit} \left\{ \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v)\beta_{k}\right\}  \)
+- Logistic Regression: \(f(X_{i}(v)) = \text{expit} \left\{ \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v)\beta_{k}\right\}  \) (`glm` function)
 - Generalized Additive Model `r citep("hastie_generalized_1990")` 
-    - fit using thin plate splines
-- LASSO `r citep(c("tibshirani_regression_1996", "friedman_regularization_2010"))`: 
+    - fit using thin plate splines (`mgcv` package)
+- LASSO `r citep(c("tibshirani_regression_1996", "friedman_regularization_2010"))` (`glmnet` package): 
 $$ \mathcal{L}\left(\left.Y_{i}(v) \right|\, f(X_i(v))\right) \propto \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v) \beta_{k} + \lambda \sum_{k= 1}^{p} \left|\beta_{k}\right|
 $$
-- Random Forests `r citep(c("randomForest", "breiman2001random"))`
+- Random Forests `r citep(c("randomForest", "breiman2001random"))` (`randomForest` package)
 <div class="centerer">
 \(f(X_{i}(v)) \propto\) <img src="figures/Random_Forest.png" style="width:40%;inline;" alt="random forest">
 </div>
 
+## Calculating Volume
+
+- cc = cubic centimeters
+- one milliliter (mL) = 1 cc
+
+$$
+\text{Estimated Volume}_{i} = \text{cc per voxel} \times \sum_{v}^{V_i} \hat{y}_{i}(v)
+$$
+
+$$
+\text{Volume}_{i}  = \text{cc per voxel} \times \sum_{v}^{V_i} y_{i}(v)
+$$
+
+
 ## Predicted Volume Estimates True Volume <img src="figures/Reseg_Volume_Logistic.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
 
-## Predicted Volume Estimates True Volume <img src="figures/Reseg_Volume_Comparison.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
+## All models predicted volume pretty well <img src="figures/Reseg_Volume_Comparison.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
 
 ## Patient with Median Overlap in Validation Set
 
 <img src="figures/Reseg_Figure_DSI_Quantile_050_No_DSI.png" style="width:500px;  display: block; margin: auto;" alt="MISTIE LOGO"> 
 
-## Shiny Application  [http://johnmuschelli.com/ich_segment.html](http://johnmuschelli.com/ich_segment.html) <img src="figures/Shiny_prediction_crop.png" style="width:105%; display: block; margin: auto;" alt="shiny orig">
+## Shiny Application [http://johnmuschelli.com/ich_segment.html](http://johnmuschelli.com/ich_segment.html) <img src="figures/Shiny_prediction_crop.png" style="width:105%; display: block; margin: auto;" alt="shiny orig">
+
+
 
 ## Conclusions of Stroke Analyses
 
 <div style="font-size: 24pt">
 
-- We can segment ICH volume from CT scans <br><br>
+- We can segment ICH volume from CT scans 
+- The predictors seemed to be the "secret sauce"
+    - not the algorithm
+- Chose the Random Forest
+    - PItcHPERFeCT: Primary Intracranial Hemorrhage Probability Estimation using Random Forests on CT
 
+- R Package: [https://github.com/muschellij2/ichseg](https://github.com/muschellij2/ichseg)    
 </div>
 
 
@@ -452,8 +506,7 @@ From Carp, Joshua. "The secret lives of experiments: methods reporting in the fM
 
 ```{r, cache = TRUE}
 if (!require(cranlogs)) {
-  library(devtools)
-  install_github("metacran/cranlogs")
+  devtools::install_github("metacran/cranlogs")
 }
 first_date = "2014-01-10"
 today = Sys.Date()
@@ -612,14 +665,63 @@ Introduction to Neurohacking In R
 
 </div>
    <div class="right-half">
-   <img src="figures/neurohacking_logo.png" style="width:50%; display: block; margin: auto;" alt="neurohacking">
+   <img src="figures/neurohacking_logo.png" style="width:60%; display: block; margin: auto;" alt="neurohacking">
 </div>
 </div>
 
-# Thanks
+## Thanks
 
+<div class="container"> 
+   <div class="left-half" style="font-size: 28pt;">
+   Elizabeth Sweeney <img src="figures/sweeney.jpg" style="width:20%; display: block; margin: auto;" alt="neurohacking">   
 
+   Jean-Philippe Fortin <img src="figures/jp.png" style="width:20%; display: block; margin: auto;" alt="neurohacking">      
+   
+   
+   Dan Hanley 
+<img src="figures/Hanley.jpg" style="width:30%; display: block; margin: auto;" alt="Hanley">
 
+</div>
+   <div class="right-half">
+   Brian Caffo
+   <img src="figures/bcaffo.jpg" style="width:20%; display: block; margin: auto;" alt="neurohacking">
+   
+   Ciprian Crainiceanu
+   <img src="figures/Ciprian.jpg" style="width:30%; display: block; margin: auto;" alt="neurohacking">      
+   
+   Adi Gherman
+   <img src="figures/ghost.jpg" style="width:20%; display: block; margin: auto;" alt="neurohacking"> <p style = "font-size:10.5px;">From http://kingofwallpapers.com/ghost/ghost-011.jpg as no picture online can be found</p>
+</div>
+</div>
+
+# Questions / It's OK to leave
+
+---
+
+<div class="container"> 
+<div id="left_col2"> 
+
+```{r packages}
+x = readLines("Rochester.Rmd")
+x = trimws(x)
+x = grep("^library\\(", x, value = TRUE)
+libs = gsub("^library\\((.*)\\)", "\\1", x)
+libs = c("rmarkdown", "knitr", libs)
+libs = unique(libs)
+libs = sort(libs)
+last_lib = libs[length(libs)]
+libs = paste0(libs[1:(length(libs) - 1)], collapse = ", ")
+libs = paste0(libs, ", and ", last_lib)
+```
+The `r libs` packages were used to create this presentation in RStudio.
+</div>
+<div id="right_col2" style='font-size: 6pt;'> 
+
+```{r, results='markup'}
+devtools::session_info()
+```
+</div>
+</div>
 
 
 ## Under Development R Packages
