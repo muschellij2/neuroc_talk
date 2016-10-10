@@ -36,7 +36,7 @@
       // Author information
       presenters: [
             {
-        name:  'John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> <a href="http://johnmuschelli.com/neuroc_talk/Rochester.html" class="uri">http://johnmuschelli.com/neuroc_talk/Rochester.html</a>' ,
+        name:  'John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> <a href="http://johnmuschelli.com/Rochester_2016.html" class="uri">http://johnmuschelli.com/Rochester_2016.html</a>' ,
         company: '',
         gplus: '',
         twitter: '',
@@ -113,8 +113,7 @@ MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 <li>Brain segmentation</li>
 <li>Hemorrhage segmentation</li>
 </ul></li>
-<li>Quantitative hemorrhage localization</li>
-<li>Neuroimaging and R</li>
+<li>Neuroimaging and R: Neuroconductor</li>
 </ul></div>
 
 </article></slide><slide class=''><hgroup><h2>Overview of Work/Research</h2></hgroup><article  id="overview-of-workresearch-1">
@@ -127,8 +126,7 @@ MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 <li>Brain segmentation</li>
 <li>Hemorrhage segmentation</li>
 </ul></li>
-<li><strong>Quantitative hemorrhage localization</strong></li>
-<li>Neuroimaging and R</li>
+<li>Neuroimaging and R: Neuroconductor</li>
 </ul></div>
 
 </article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Neuroimaging Analysis in Stroke</h2></hgroup><article  id="neuroimaging-analysis-in-stroke">
@@ -145,13 +143,18 @@ MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 <li>Patients with intracerebral hemorrhages (≥ 20 millilters)</li>
 </ul>
 
-<p><img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO"></p>
+<div class="container">
+<div id="left_col">
+<p><img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+<div id="right_col">
+<p>PI: Dr. Dan Hanley <img src="figures/Hanley.jpg" style="width:60%; display: block; margin: auto;" alt="Hanley"></p></div></div>
 
 <ul>
 <li><a href='http://braininjuryoutcomes.com/mistie-about' title=''>http://braininjuryoutcomes.com/mistie-about</a></li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>When I stroke I don&#39;t mean ischemic</h2></hgroup><article  id="when-i-stroke-i-dont-mean-ischemic">
+</article></slide><slide class=''><hgroup><h2>When I say &quot;stroke&quot; I don&#39;t mean ischemic</h2></hgroup><article  id="when-i-say-stroke-i-dont-mean-ischemic">
 
 <div class="container">
 <div id="left_col">
@@ -161,6 +164,7 @@ MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 <ul>
 <li>Ischemic stroke - clot blocks oxygen/nutrients</li>
 <li>Tissue dies</li>
+<li>≈87% of strokes</li>
 </ul>
 
 <p style="font-size:10.5px;">
@@ -170,7 +174,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 
 </p></div></div>
 
-</article></slide><slide class=''><hgroup><h2>When I stroke I don&#39;t mean ischemic</h2></hgroup><article  id="when-i-stroke-i-dont-mean-ischemic-1">
+</article></slide><slide class=''><hgroup><h2>When I say &quot;stroke&quot; I don&#39;t mean ischemic</h2></hgroup><article  id="when-i-say-stroke-i-dont-mean-ischemic-1">
 
 <div class="container">
 <div id="left_col">
@@ -180,6 +184,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 <ul>
 <li>Ischemic stroke - clot blocks oxygen/nutrients</li>
 <li>Tissue dies</li>
+<li>≈87% of strokes</li>
 </ul>
 
 <p style="font-size:10.5px;">
@@ -189,7 +194,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 
 </p></div></div>
 
-</article></slide><slide class=''><hgroup><h2>What is Intracranial/Intracerebral hemorrhage?</h2></hgroup><article  id="what-is-intracranialintracerebral-hemorrhage">
+</article></slide><slide class=''><hgroup><h2>Intracranial/Intracerebral Hemorrhage</h2></hgroup><article  id="intracranialintracerebral-hemorrhage">
 
 <div class="columns-2" style="font-size: 28pt;">
 <ul>
@@ -219,12 +224,27 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 <div style="margin-left:48%;">
 <p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
 
+</article></slide><slide class=''><hgroup><h2>Image Representation: voxels (3D pixels)</h2></hgroup><article  id="image-representation-voxels-3d-pixels">
+
+<div class="columns-2">
+<p><img src="figures/Zoom_No_ICH.png"  style="width:100%;  display: block; margin: auto;"> <br> <img src="figures/movie_final.gif" style="width:80%;  inline; display: block; margin: auto;" loop=infinite></p>
+
+<p style="font-size: 10pt;">
+
+Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. &quot;brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data.&quot; R JOURNAL 6.1 (2014): 42-48.
+
+</p></div>
+
 </article></slide><slide class=''><hgroup><h2>Terminology: Neuroimaging to Data/Statistics</h2></hgroup><article  id="terminology-neuroimaging-to-datastatistics">
 
 <div style="font-size: 26pt">
 <ul>
 <li>Segmentation ⇔ classification</li>
-<li>Image ⇔ 3-dimensional array</li>
+<li>Image ⇔ 3-dimensional array
+
+<ul>
+<li>composed of voxels</li>
+</ul></li>
 <li>Mask/Region of Interest ⇔ binary (0/1) image</li>
 <li>Registration ⇔ Spatial Normalization/Standarization
 
@@ -249,7 +269,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 <div class="columns-2">
 <p>Want to go from an image: <img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> <br/> To a brain-extracted image: <img src="figures/SS_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
 
-</article></slide><slide class=''><hgroup><h2>Publicly Available code</h2></hgroup><article  id="publicly-available-code">
+</article></slide><slide class=''><hgroup><h2>Publicly Available Code</h2></hgroup><article  id="publicly-available-code">
 
 <ul>
 <li>Muschelli, John, et al. &quot;Validated automatic brain extraction of head CT images.&quot; NeuroImage 114 (2015): 379-385.</li>
@@ -266,7 +286,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 <div class="columns-2">
 <p>Want to go from a brain image: <img src="figures/SS_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> <br/> To a binary hemorrhage mask: <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
 
-</article></slide><slide class=''><hgroup><h2>Subject Data used: 111 scans (1 per patient)</h2></hgroup><article  id="subject-data-used-111-scans-1-per-patient">
+</article></slide><slide class=''><hgroup><h2>Subject Data used: 111 scans (1 Per Patient)</h2></hgroup><article  id="subject-data-used-111-scans-1-per-patient">
 
 <div id="wrap">
 <div id="left_col">
@@ -317,17 +337,6 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 <li>Mostly males</li>
 <li>Reader-classified Location of Hemorrhage</li>
 </ul></div></div>
-
-</article></slide><slide class=''><hgroup><h2>Image Representation: voxels (3D pixels)</h2></hgroup><article  id="image-representation-voxels-3d-pixels">
-
-<div class="columns-2">
-<p><img src="figures/Zoom_No_ICH.png"  style="width:100%;  display: block; margin: auto;"> <br> <img src="figures/movie_final.gif" style="width:80%;  inline; display: block; margin: auto;" loop=infinite></p>
-
-<p style="font-size: 10pt;">
-
-Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. &quot;brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data.&quot; R JOURNAL 6.1 (2014): 42-48.
-
-</p></div>
 
 </article></slide><slide class=''><hgroup><h2>Step 1: Create Predictors of ICH <img src="figures/Just_The_Covariates2.png" style="width:48%; display: block; margin: auto;" alt="Preds"></h2></hgroup><article  id="step-1-create-predictors-of-ich">
 
@@ -393,83 +402,56 @@ Step 2: Aggregate Data
 <div style="font-size: 24pt">
 <ul>
 <li>We can segment ICH volume from CT scans <br><br></li>
-<li>We can create population-level ICH distributions <br/><br/></li>
-<li>Voxel-wise regression can show regions associated with severity <br/><br/></li>
 </ul></div>
 
-</article></slide><slide class=''><hgroup><h2>Conclusions of Stroke Analyses</h2></hgroup><article  id="conclusions-of-stroke-analyses-1">
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 
-<div style="font-size: 24pt">
-<ul>
-<li>We can segment ICH volume from CT scans
+<div class="container">
+<div id="left_col2">
+<h2>
 
-<ul>
-<li><strong>Incorporate variability of estimated volume</strong></li>
-</ul></li>
-<li>We can create population-level ICH distributions
+Workflow for the Analysis
 
-<ul>
-<li><strong>Uncertainty measures of this</strong></li>
-</ul></li>
-<li>Voxel-wise regression can show regions associated with severity
+</h2></div>
 
-<ul>
-<li><strong>Validate these regions (MISTIE III)</strong></li>
-<li><strong>Scalar on image regression</strong></li>
-</ul></li>
-</ul></div>
+<div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_box_stat.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
 
-</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Neuroimaging and R</h2></hgroup><article  id="neuroimaging-and-r">
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 
-</article></slide><slide class=''><hgroup><h2>Authored R Packages:</h2></hgroup><article  id="authored-r-packages">
+<div class="container">
+<div id="left_col2">
+<h2>
 
-<div id="wrap">
-<div id="left_col">
-<ul>
-<li><strong>fslr</strong>
+Workflow for the Analysis
 
-<p style="font-size: 12pt;">
+</h2></div>
 
-(Muschelli, John, et al. &quot;fslr: Connecting the FSL Software with R.&quot; R JOURNAL 7.1 (2015): 163-175.)
+<div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
 
-</p></li>
-<li>brainR
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2><img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI</h2></hgroup><article  id="neuroconductor-a-neuroimaging-r-repository-hosted-on-github-and-checked-by-travis-ci">
 
-<p style="font-size: 12pt;">
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 
-(Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. &quot;brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data.&quot; R JOURNAL 6.1 (2014): 42-48.)
+<div class="container">
 
-</p></li>
-<li>extrantsr</li>
-<li>ichseg</li>
-<li>dcm2niir</li>
-<li>matlabr</li>
-<li>spm12r</li>
-</ul></div>
+<div id="left_col2">
 
-<div id="right_col">
-<ul>
-<li>drammsr</li>
-<li>itksnapr</li>
-<li>papayar</li>
-<li>WhiteStripe</li>
-<li>oasis</li>
-<li>SuBLIME</li>
-<li>googleCite</li>
-<li>diffr</li>
-<li>rscopus</li>
-</ul></div></div>
+<h2>
 
-</article></slide><slide class=''><hgroup><h2>Number of Downloads (CRAN packages)</h2></hgroup><article  id="number-of-downloads-cran-packages">
+Neuroconductor Goal:
 
-<p>From the <code>cranlogs</code> R package:</p>
+<h2>
 
-<div id="htmlwidget-8c2f958b04e54a5d8d5d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8c2f958b04e54a5d8d5d">{"x":{"filter":"none","data":[["fslr","oasis","spm12r","matlabr","brainR","diffr","WhiteStripe","rscopus"],[8930,1442,1773,3110,8764,1987,4862,1889],[139,63,52,41,37,32,31,28]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+Lower the bar to entry - just R
 
-</article></slide><slide class=''><hgroup><h2><img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:50%; display: block; margin: auto;" alt="flow"></h2></hgroup><article  id="section">
+</div>
 
-</article></slide><slide class=''><hgroup><h2><img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:50%; display: block; margin: auto;" alt="flow"></h2></hgroup><article  id="section-1">
+<div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:75%; display: block; margin: auto;" alt="flow"></div>
+
+</div>
 
 </article></slide><slide class=''><hgroup><h2>(A Lot of) Software Choices for fMRI Analysis</h2></hgroup><article  id="a-lot-of-software-choices-for-fmri-analysis">
 
@@ -481,34 +463,74 @@ Step 2: Aggregate Data
 
 </article></slide><slide class=''><hgroup><h2>Number of Downloads (My CRAN packages)</h2></hgroup><article  id="number-of-downloads-my-cran-packages">
 
-<p>From the <code>cranlogs</code> R package:</p>
+<p>From the <code>cranlogs</code> R package (as of October 10, 2016):</p>
 
-<div id="htmlwidget-e3648806b4116e48d487" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e3648806b4116e48d487">{"x":{"filter":"none","data":[["fslr","oasis","papayar","spm12r","matlabr","brainR","freesurfer","WhiteStripe"],[8930,1442,653,1773,3110,8764,161,4862],[139,63,59,52,41,37,35,31]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="container">
+<div class="left-half">
+<div id="htmlwidget-c1b67d88e686ebe73ef3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1b67d88e686ebe73ef3">{"x":{"filter":"none","data":[["<strong>fslr\u003c/strong>","oasis","papayar","<strong>spm12r\u003c/strong>","matlabr","brainR","<strong>freesurfer\u003c/strong>","WhiteStripe"],[8930,1442,653,1773,3110,8764,161,4862],[139,63,59,52,41,37,35,31]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script></div>
 
-</article></slide><slide class=''><hgroup><h2>R Package Interfaces with Imaging Software</h2></hgroup><article  id="r-package-interfaces-with-imaging-software">
+<div class="right-half">
+<img src="figures/carp_2012_figure_box_crop.jpg" style="width:80%;  display: block; margin: auto;" alt="carp_box"><br/></div></div>
 
-<p><img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow"></p>
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
 
-</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2><img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI</h2></hgroup><article  id="neuroconductor-a-neuroimaging-r-repository-hosted-on-github-and-checked-by-travis-ci">
+<div class="container">
 
-</article></slide><slide class=''><hgroup><h2><img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:50%; display: block; margin: auto;" alt="flow"></h2></hgroup><article  id="section-2">
+<div id="left_col2">
 
-</article></slide><slide class=''><hgroup><h2>Neuroconductor Goals (Similar to BioC)</h2></hgroup><article  id="neuroconductor-goals-similar-to-bioc">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<p>
+
+<p>Provide package checks/rules/<strong>stability</strong></p>
+
+<ul>
+<li>check against other imaging software (e.g. FSL)
+
+</p>
+
+</div>
+
+<div id="right_col2">
+<img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"></div>
+
+</div></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<p>
+
+<p>R <strong>Data</strong> packages for testing</p>
+
+<ul>
+<li>images can be big</li>
+<li>use package system</li>
+</ul>
+
+</p></div>
+
+<div id="right_col2">
+<img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Neuroconductor Goals</h2></hgroup><article  id="neuroconductor-goals">
 
 <div style="font-size: 24pt;">
 <ol>
-<li>Lower the bar to entry - just have to know R
-
-<ul>
-<li>more packages to <strong>interface</strong> with other programs</li>
-</ul></li>
-<li>All the things a repository has (checks/rules/<strong>stability</strong>)
-
-<ul>
-<li>additional checks with imaging software installed (e.g. examples)</li>
-</ul></li>
-<li><strong>Data</strong> packages to test packages with real data (images can be big)</li>
+<li></li>
 <li>Detailed <strong>vignettes/tutorials</strong> on how to actually perform an analysis</li>
 <li>Image analyses use all the &quot;things R has to offer&quot; (packaging system/<strong>reproducibility</strong>/etc.)</li>
 </ol></div>

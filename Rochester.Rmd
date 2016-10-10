@@ -1,6 +1,6 @@
 ---
 title: "Computational Methods for Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor"
-author: "John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/neuroc_talk/Rochester.html"
+author: "John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/Rochester_2016.html"
 date: "October 13, 2016"
 output:
   ioslides_presentation:
@@ -127,8 +127,7 @@ x = sapply(bib, citep)
 - Segmentation/Classification of Computed Tomography (CT) scans
     - Brain segmentation
     - Hemorrhage segmentation
-- Quantitative hemorrhage localization
-- Neuroimaging and R
+- Neuroimaging and R: Neuroconductor
 </div>
 
 ## Overview of Work/Research
@@ -137,8 +136,7 @@ x = sapply(bib, citep)
 - Segmentation/Classification of Computed Tomography (CT) scans
     - Brain segmentation
     - Hemorrhage segmentation
-- **Quantitative hemorrhage localization**
-- Neuroimaging and R
+- Neuroimaging and R: Neuroconductor
 </div>
 
 
@@ -151,12 +149,21 @@ x = sapply(bib, citep)
     - Alteplase (donated by Genentech)
 * Patients with intracerebral hemorrhages (≥ 20 millilters)
 
+
+<div class="container">
+<div id="left_col">
 <img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO">
+</div>
+<div id="right_col">
+PI: Dr. Dan Hanley
+<img src="figures/Hanley.jpg" style="width:60%; display: block; margin: auto;" alt="Hanley">
+</div>
+</div>
 
 * http://braininjuryoutcomes.com/mistie-about
 
 
-## When I stroke I don't mean ischemic
+## When I say "stroke" I don't mean ischemic
 
 <div class="container">
 <div id="left_col">
@@ -166,6 +173,7 @@ x = sapply(bib, citep)
 
 - Ischemic stroke - clot blocks oxygen/nutrients
 - Tissue dies
+- ≈87% of strokes
 
 <p style = "font-size:10.5px;">
 Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
@@ -176,7 +184,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 </div>
 
 
-## When I stroke I don't mean ischemic
+## When I say "stroke" I don't mean ischemic
 
 <div class="container">
 <div id="left_col">
@@ -186,6 +194,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 
 - Ischemic stroke - clot blocks oxygen/nutrients
 - Tissue dies
+- ≈87% of strokes
 
 <p style = "font-size:10.5px;">
 Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
@@ -198,7 +207,7 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 
 
 
-## What is Intracranial/Intracerebral hemorrhage?
+## Intracranial/Intracerebral Hemorrhage
 
 <div class="columns-2" style='font-size: 28pt;'>
 - When a blood vessel ruptures into:
@@ -231,11 +240,21 @@ x-ray goes around object and detector the other side of the object determines ho
 </div>
 
 
+## Image Representation: voxels (3D pixels)
+<div class="columns-2">
+<img src="figures/Zoom_No_ICH.png"  style="width:100%;  display: block; margin: auto;">
+<br>
+<img src="figures/movie_final.gif" style="width:80%;  inline; display: block; margin: auto;" loop=infinite>
+
+<p style='font-size: 10pt;'>Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. "brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data." R JOURNAL 6.1 (2014): 42-48.</p>
+</div>
+
 ## Terminology: Neuroimaging to Data/Statistics
 
 <div style="font-size: 26pt">
 * Segmentation ⇔ classification 
 * Image ⇔ 3-dimensional array
+    - composed of voxels
 * Mask/Region of Interest ⇔ binary (0/1) image 
 * Registration ⇔  Spatial Normalization/Standarization
     - "Lining up" Brains
@@ -270,7 +289,7 @@ To a brain-extracted image:
 <img src="figures/SS_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
 </div>
 
-## Publicly Available code
+## Publicly Available Code
 
 * Muschelli, John, et al. "Validated automatic brain extraction of head CT images." NeuroImage 114 (2015): 379-385. 
 * R code: http://bit.ly/CTBET_RCODE - based on **fslr** 
@@ -297,7 +316,7 @@ To a binary hemorrhage mask:
 </div>
 
 
-## Subject Data used: 111 scans (1 per patient)
+## Subject Data used: 111 scans (1 Per Patient)
 <div id="wrap">
 <div id="left_col">
 
@@ -323,14 +342,6 @@ pander(tb1, justify = c("lr"))
 
 </div>
 
-## Image Representation: voxels (3D pixels)
-<div class="columns-2">
-<img src="figures/Zoom_No_ICH.png"  style="width:100%;  display: block; margin: auto;">
-<br>
-<img src="figures/movie_final.gif" style="width:80%;  inline; display: block; margin: auto;" loop=infinite>
-
-<p style='font-size: 10pt;'>Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. "brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data." R JOURNAL 6.1 (2014): 42-48.</p>
-</div>
 
 ## Step 1: Create Predictors of ICH <img src="figures/Just_The_Covariates2.png" style="width:48%; display: block; margin: auto;" alt="Preds">  
 
@@ -391,107 +402,43 @@ $$
 <div style="font-size: 24pt">
 
 - We can segment ICH volume from CT scans <br><br>
-- We can create population-level ICH distributions <br/><br/>
-- Voxel-wise regression can show regions associated with severity <br/><br/>
 
 </div>
 
 
-## Conclusions of Stroke Analyses
-
-<div style="font-size: 24pt">
-
-- We can segment ICH volume from CT scans
-    - **Incorporate variability of estimated volume**
-- We can create population-level ICH distributions
-    - **Uncertainty measures of this**
-- Voxel-wise regression can show regions associated with severity
-    - **Validate these regions (MISTIE III)**
-    - **Scalar on image regression** 
-
+---- 
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Workflow for the Analysis</h2>
+  </div>    
+  <div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_box_stat.png" style="width:75%; display: block; margin: auto;" alt="flow">
+  </div>
 </div>
 
-# Neuroimaging and R
-
-## Authored R Packages:
-
-<div id="wrap">
-<div id="left_col">
-
-- **fslr** <p style='font-size: 12pt;'>(Muschelli, John, et al. "fslr: Connecting the FSL Software with R." R JOURNAL 7.1 (2015): 163-175.)</p>
-- brainR <p style='font-size: 12pt;'>(Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. "brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data." R JOURNAL 6.1 (2014): 42-48.)</p>
-- extrantsr
-- ichseg
-- dcm2niir
-- matlabr
-- spm12r
-
-
-</div>
-<div id="right_col">
-
-- drammsr
-- itksnapr
-- papayar
-- WhiteStripe
-- oasis
-- SuBLIME
-- googleCite
-- diffr
-- rscopus
-
-</div>
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Workflow for the Analysis</h2>
+  </div>    
+  <div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:75%; display: block; margin: auto;" alt="flow">
+  </div>
 </div>
 
+# <img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI
 
 
-
-## Number of Downloads (CRAN packages)
-
-From the `cranlogs` R package:
-
-
-```{r cranlogs, cache = TRUE, eval = TRUE}
-if (!require(cranlogs)) {
-  library(devtools)
-  install_github("metacran/cranlogs")
-}
-first_date = "2014-01-10"
-today = Sys.Date()
-long_today = format(Sys.time(), "%B %d, %Y")
-packs = c("fslr", "brainR", "matlabr", "spm12r", "WhiteStripe", "diffr", "oasis", "rscopus")
-last_week = cran_downloads( when = "last-week",
-                            packages = packs)
-last_week = ddply(last_week, .(package), summarise, 
-                  Last_Week = sum(count))
-dl = cran_downloads( from = first_date, to = today,
-                     packages = packs)
-dl = ddply(dl, .(package), summarise, All_Time = sum(count))
-dl = merge(dl, last_week)
-dl = plyr::arrange(dl, desc(Last_Week))
-colnames(dl) = c("Package", "All Time", "Last Week")
-```
-
-
-
-```{r dt_library}
-library(DT)
-```
-
-```{r dt_cranlogs, results = "asis", eval = TRUE, dependson = "cranlogs"}
-datatable(dl, filter = "none", selection = "none", rownames = FALSE,
-          options = list(dom = 't', autoWidth = TRUE,
-                         columnDefs = list(list(
-                           className = 'dt-center',
-                           targets = 0)))
-)
-```
-
-
-## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:50%; display: block; margin: auto;" alt="flow">
-
-## <img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:50%; display: block; margin: auto;" alt="flow">
-
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Neuroconductor Goal: <h2>
+  Lower the bar to entry - just R
+  </div>    
+  <div id="right_col2">
+<img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:75%; display: block; margin: auto;" alt="flow">
+  </div>
+</div>
 
 ## (A Lot of) Software Choices for fMRI Analysis 
 
@@ -501,10 +448,6 @@ datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 
 From Carp, Joshua. "The secret lives of experiments: methods reporting in the fMRI literature." Neuroimage 63.1 (2012): 289-300.
 
-
-## Number of Downloads (My CRAN packages)
-
-From the `cranlogs` R package:
 
 
 ```{r, cache = TRUE}
@@ -518,7 +461,7 @@ long_today = format(Sys.time(), "%B %d, %Y")
 packs = c("fslr", "brainR", "matlabr", "spm12r", "WhiteStripe", "oasis", "freesurfer", "papayar")
 last_week = cran_downloads( when = "last-week",
                             packages = packs)
-last_week = ddply(last_week, .(package), summarise, 
+last_week = plyr::ddply(last_week, .(package), summarise, 
                   Last_Week = sum(count))
 dl = cran_downloads( from = first_date, to = today,
                      packages = packs)
@@ -526,39 +469,102 @@ dl = ddply(dl, .(package), summarise, All_Time = sum(count))
 dl = merge(dl, last_week)
 dl = plyr::arrange(dl, desc(Last_Week))
 colnames(dl) = c("Package", "All Time", "Last Week")
+made_packs = c("fslr", "spm12r", "freesurfer")
+made_packs = dl$Package[ dl$Package %in% made_packs] 
+dl$Package[ dl$Package %in% made_packs] = paste0("<strong>", made_packs, "</strong>")
 ```
 
-```{r}
-library(DT)
-```
+
+## Number of Downloads (My CRAN packages)
+
+From the `cranlogs` R package (as of `r format(today, format="%B %d, %Y")`):
+
+<div class="container"> 
+   <div class="left-half">
 
 ```{r, results = "asis", eval = TRUE}
-datatable(dl, filter = "none", selection = "none", rownames = FALSE,
+DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
           options = list(dom = 't', autoWidth = TRUE,
                          columnDefs = list(list(
                            className = 'dt-center',
-                           targets = 0)))
+                           targets = 0))),
+          escape = FALSE
 )
 ```
+</div>
+   <div class="right-half">
+  <img src="figures/carp_2012_figure_box_crop.jpg" style="width:80%;  display: block; margin: auto;" alt="carp_box">  
+  </div> 
+</div>
 
-## R Package Interfaces with Imaging Software
-
-<img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
 
 
-# <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Neuroconductor Goal: </h2>
+  
+  <p>
+  Provide package checks/rules/**stability** 
+  
+  - check against other imaging software (e.g. FSL)
+  </p>
+</div>    
+  <div id="right_col2">
+<img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268).
+  </p>
+  </div>
+</div>
 
-## <img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:50%; display: block; margin: auto;" alt="flow">
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Neuroconductor Goal: </h2>
+  
+  <p>
+  R **Data** packages for testing
+  
+  - images can be big 
+  - use package system
+  
+  </p>
+</div>    
+  <div id="right_col2">
+<img src="figures/brains_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 12pt;'> From [https://memegenerator.net/Everywhere-Toy-Story](https://memegenerator.net/Everywhere-Toy-Story).
+  </p>
 
-## Neuroconductor Goals (Similar to BioC)
+  </div>
+</div>
+
+
+
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Neuroconductor Goal: </h2>
+  
+  <p>
+  Detailed **tutorials** on how to actually perform an analysis
+  
+  See [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)
+  </p>
+</div>    
+  <div id="right_col2">
+<img src="figures/brains_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 12pt;'> From [http://i.imgur.com/0Y1xISa.gifv](http://i.imgur.com/0Y1xISa.gifv).
+  </p>
+
+  </div>
+</div>
+
+
+## Neuroconductor Goals
+
 
 <div style='font-size: 24pt;'>
 
-1.  Lower the bar to entry - just have to know R
-    - more packages to **interface** with other programs 
-2.  All the things a repository has (checks/rules/**stability**)
-    - additional checks with imaging software installed (e.g. examples)
-3.  **Data** packages to test packages with real data (images can be big)
 4.  Detailed **vignettes/tutorials** on how to actually perform an analysis
 5.  Image analyses use all the "things R has to offer" (packaging system/**reproducibility**/etc.)
 
