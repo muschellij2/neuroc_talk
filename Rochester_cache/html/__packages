@@ -1,0 +1,16 @@
+base
+knitr
+knitcitations
+ggplot2
+xtable
+scales
+oro.nifti
+neurobase
+fslr
+pander
+tableone
+stargazer
+plyr
+RefManageR
+cranlogs
+DT

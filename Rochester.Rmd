@@ -1,0 +1,617 @@
+---
+title: "Computational Methods for Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor"
+author: "John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/neuroc_talk/Rochester.html"
+date: "October 13, 2016"
+output:
+  ioslides_presentation:
+    css: neuroconductor.css
+    self_contained: no
+    widescreen: yes
+  beamer_presentation: default
+  slidy_presentation:
+    css: neuroconductor.css
+    mathjax: local
+    widescreen: yes
+bibliography: Oral_Proposal.bib
+---
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+</script>
+
+```{r opts, prompt=FALSE, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, comment=""}
+library(knitr)
+library(knitcitations)
+cite_options(max.names = 1)
+opts_chunk$set(echo = FALSE, prompt = FALSE, message = FALSE, warning = FALSE, comment = "", results = 'hide')
+```
+
+
+```{r setup, prompt=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+rm.obj = ls()
+rm.obj = rm.obj[ !(rm.obj %in% c("fname", "slide"))]
+rm(list = rm.obj)
+library(ggplot2)
+library(xtable)
+library(scales)
+library(fslr)
+library(pander)
+options(stringsAsFactors = FALSE)
+# rootdir = path.expand("~/Dropbox/CTR/DHanley/MISTIE")
+# homedir = file.path(rootdir, "ICH Analysis")
+# Mdir = file.path(rootdir, "MISTIE DSMB Analysis")
+# resdir <- file.path(homedir, "results")
+# rundir <- file.path(resdir, "Manuscript")
+# progdir <- file.path(homedir, "stataprograms")
+# datadir <- file.path(Mdir, "statacalc")
+# load(file=file.path(rundir, "Randomized_Patients.Rda"))
+load(file = "All_IncludingICES_Patients.Rda")
+load(file = "111_Filenames.Rda")
+pt.ids = c(100318L, 100362L, 100365L, 101306L, 101307L, 101308L, 102317L, 
+102322L, 102324L, 102331L, 102360L, 102367L, 102374L, 102391L, 
+102393L, 102403L, 102406L, 120376L, 131310L, 131316L, 131334L, 
+131354L, 133409L, 133417L, 134304L, 134305L, 134320L, 134327L, 
+134345L, 134380L, 134381L, 134382L, 134392L, 134408L, 134412L, 
+134416L, 152302L, 152303L, 152353L, 157328L, 157329L, 157332L, 
+157335L, 157336L, 157370L, 157372L, 157399L, 157410L, 161413L, 
+173312L, 173313L, 173325L, 173341L, 173361L, 173364L, 173368L, 
+173384L, 173396L, 173404L, 175387L, 175397L, 175405L, 179373L, 
+179383L, 179386L, 179394L, 179395L, 179402L, 184388L, 191301L, 
+191311L, 191314L, 191315L, 191319L, 191321L, 191333L, 191375L, 
+191400L, 205509L, 205517L, 205519L, 216390L, 219350L, 222337L, 
+222357L, 222358L, 223355L, 223369L, 223407L, 225502L, 225503L, 
+225504L, 225505L, 225506L, 225507L, 225510L, 225511L, 225515L, 
+225524L, 230356L, 230363L, 230366L, 230371L, 230377L, 232514L, 
+232516L, 234385L, 265389L, 265398L, 289518L, 289525L)
+fdf$id = as.numeric(gsub("-", "", fdf$id))
+fdf = fdf[ fdf$id %in% pt.ids, ]
+```
+
+```{r demog}
+library(tableone)
+library(stargazer)
+library(pander)
+library(plyr)
+alldemog = read.csv("All_180_FollowUp_wDemographics.csv", as.is = TRUE)
+alldemog = alldemog[, c("patientName", "Clot_Location_RC")]
+alldemog$Clot_Location_RC = plyr::revalue(
+  alldemog$Clot_Location_RC,
+  c("Globus Palidus" = "Globus Pallidus"))
+n.ids = length(unique(fdf$id))
+demog = fdf$id 
+
+demog = all.alldat[ all.alldat$patientName %in% demog, ]
+demog$Clot_Location_RC = NULL
+demog = merge(demog, alldemog, all.x = TRUE )
+stopifnot(nrow(demog) == n.ids)
+demog$Diagnostic_ICH_Volume =demog$ICH_Dx_10 * 10 
+demog$Diagnostic_IVH_Volume =demog$IVH_Dx_10 * 10 
+tt = sort(table(demog$Clot_Location_RC), decreasing = TRUE)
+nclot = names(tt)[tt > 0]
+demog$Clot_Location_RC = factor(demog$Clot_Location_RC, levels = nclot)
+
+vars = c("Age", "Gender", "Clot_Location_RC",
+         "Diagnostic_ICH_Volume")
+catvars = c("Gender", "Clot_Location_RC")
+tb1 = CreateTableOne(vars = vars, factorVars = catvars, 
+                     data = demog)
+tb1 = print(tb1, contDigits = 1)
+gen = grepl("Gender", rownames(tb1))
+rownames(tb1)[ gen ] = "Male: N (%)"
+tb1[gen,1] = gsub("\\((.*)\\)", "(\\1%)", tb1[gen,1,drop=FALSE])
+
+rownames(tb1) = gsub("_", " ", rownames(tb1))
+rownames(tb1) = gsub(" \\(mean", ": Mean", rownames(tb1))
+rownames(tb1) = gsub("(sd))", "(SD)", rownames(tb1), fixed=TRUE)
+rownames(tb1) = gsub("Volume", "Volume in mL", rownames(tb1), fixed=TRUE)
+rownames(tb1) = gsub("Diagnostic", "", rownames(tb1), fixed=TRUE)
+rownames(tb1) = gsub("Age", "Age in Years", rownames(tb1), fixed=TRUE)
+rownames(tb1) = gsub("Clot_Location_RC", "ICH Location", rownames(tb1), fixed=TRUE)
+tb1 = tb1[rownames(tb1) != "n", , drop=FALSE]
+# tb1 = pander.return(tb1)
+# tb1 = tb1[ tb1 != ""]
+```
+
+```{r}
+library(RefManageR)
+library(knitcitations)
+bib <- ReadBib('Oral_Proposal.bib')
+x = sapply(bib, citep)
+```
+
+
+## Overview of Work/Research
+
+<div style='font-size: 28pt;'>
+- Segmentation/Classification of Computed Tomography (CT) scans
+    - Brain segmentation
+    - Hemorrhage segmentation
+- Quantitative hemorrhage localization
+- Neuroimaging and R
+</div>
+
+## Overview of Work/Research
+
+<div style='font-size: 28pt;'>
+- Segmentation/Classification of Computed Tomography (CT) scans
+    - Brain segmentation
+    - Hemorrhage segmentation
+- **Quantitative hemorrhage localization**
+- Neuroimaging and R
+</div>
+
+
+# Neuroimaging Analysis in Stroke
+
+## The MISTIE Stroke Trial 
+
+* Minimally Invasive Surgery plus r-tPA for Intracerebral Hemorrhage Evacuation (<strong>MISTIE</strong>) 
+    - Multi-center, multi-national Phase II clinical trial
+    - Alteplase (donated by Genentech)
+* Patients with intracerebral hemorrhages (≥ 20 millilters)
+
+<img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO">
+
+* http://braininjuryoutcomes.com/mistie-about
+
+
+## When I stroke I don't mean ischemic
+
+<div class="container">
+<div id="left_col">
+<img src="figures/ischemic_stroke_edema_700w.jpg" alt="Ischemic" style="display: block; margin: auto; width: 80%">
+</div>
+<div id="right_col">
+
+- Ischemic stroke - clot blocks oxygen/nutrients
+- Tissue dies
+
+<p style = "font-size:10.5px;">
+Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
+" style ="word-wrap: break-word;" >http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
+</a>
+</p>
+</div>
+</div>
+
+
+## When I stroke I don't mean ischemic
+
+<div class="container">
+<div id="left_col">
+<img src="figures/ischemic_stroke_edema_700w_not.jpg" alt="Ischemic" style="display: block; margin: auto; width: 80%">
+</div>
+<div id="right_col">
+
+- Ischemic stroke - clot blocks oxygen/nutrients
+- Tissue dies
+
+<p style = "font-size:10.5px;">
+Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
+" style ="word-wrap: break-word;" >http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
+</a>
+</p>
+</div>
+</div>
+
+
+
+
+## What is Intracranial/Intracerebral hemorrhage?
+
+<div class="columns-2" style='font-size: 28pt;'>
+- When a blood vessel ruptures into:
+    + **Tissue ⇒ intracerebral hemorrhage (ICH)**
+- ≈ 13% of strokes
+
+![](figures/stroke_hem_web.jpg)
+
+<p style = "font-size:10.5px; ">
+<a href = "http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm" style ="word-wrap: break-word;" >http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm</a>
+</p>
+
+</div>
+
+
+## X-ray Computed Tomography (CT) Scans
+<div class="notes">
+Images are acquired from an X-ray scanner.  
+x-ray goes around object and detector the other side of the object determines how many x-rays are recovered 
+- fancy transform
+- Image!
+</div>
+<div style="width:48%;float:left;">
+<sub><sup><sub><sup>Image from http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm</sup></sub></sup></sub>
+![inline fill](figures/CT_diagram2.gif)
+<br>
+</div>
+<div style="margin-left:48%;">
+<img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+</div>
+
+
+## Terminology: Neuroimaging to Data/Statistics
+
+<div style="font-size: 26pt">
+* Segmentation ⇔ classification 
+* Image ⇔ 3-dimensional array
+* Mask/Region of Interest ⇔ binary (0/1) image 
+* Registration ⇔  Spatial Normalization/Standarization
+    - "Lining up" Brains
+</div>
+
+
+# Brain Segmentation of CT Scans
+
+## Problem: CT Scans Capture **Everything**
+
+<img src="figures/the_room.png" style="width:100%; display: block; margin: auto;" alt="The room">
+
+
+## Brain Segmentation of CT Scans
+
+
+<div class="columns-2">
+Want to go from an image:
+<img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+<br/>
+<img src="figures/White_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+</div>
+
+## Brain Segmentation of CT Scans
+
+
+<div class="columns-2">
+Want to go from an image:
+<img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+<br/>
+To a brain-extracted image:
+<img src="figures/SS_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+</div>
+
+## Publicly Available code
+
+* Muschelli, John, et al. "Validated automatic brain extraction of head CT images." NeuroImage 114 (2015): 379-385. 
+* R code: http://bit.ly/CTBET_RCODE - based on **fslr** 
+* bash code: http://bit.ly/CTBET_BASH
+
+<img src="figures/Normal_SS.png" style="width:38%;  display: block; margin: auto;" alt="SS">
+
+
+# Larger ICH Volume ⇒ Worse Outcome
+
+```{r biblio, results='hide'}
+bibliography() 
+```
+
+
+## ICH Segmentation, Volume/Location Estimation 
+
+<div class="columns-2">
+Want to go from a brain image:
+<img src="figures/SS_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+<br/>
+To a binary hemorrhage mask:
+<img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+</div>
+
+
+## Subject Data used: 111 scans (1 per patient)
+<div id="wrap">
+<div id="left_col">
+
+```{r demog_table, results='asis', cache=FALSE}
+tb1 = cbind(rownames(tb1), tb1)
+rownames(tb1) = NULL
+tb1[,1] = gsub("   ", "&nbsp;&nbsp;&nbsp;", tb1[,1])
+ind = grepl("Clot Location", tb1[,1])
+tb1[ind,1] = gsub("RC", "", tb1[ind,1])
+tb1[ind,1] = gsub("^Clot", "Reader-Based Clot", tb1[ind,1])
+pander(tb1, justify = c("lr"))
+```
+
+</div>
+<div id="right_col"  style='font-size: 24pt;'>
+
+
+- Adults (inclusion criteria 18-80 years old)
+- Mostly males
+- Reader-classified Location of Hemorrhage
+
+</div>
+
+</div>
+
+## Image Representation: voxels (3D pixels)
+<div class="columns-2">
+<img src="figures/Zoom_No_ICH.png"  style="width:100%;  display: block; margin: auto;">
+<br>
+<img src="figures/movie_final.gif" style="width:80%;  inline; display: block; margin: auto;" loop=infinite>
+
+<p style='font-size: 10pt;'>Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. "brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data." R JOURNAL 6.1 (2014): 42-48.</p>
+</div>
+
+## Step 1: Create Predictors of ICH <img src="figures/Just_The_Covariates2.png" style="width:48%; display: block; margin: auto;" alt="Preds">  
+
+## Data Structure for One Patient <br/> <img src="figures/voxel_stacking.png" style="width:70%;  display: block; margin: auto;" alt="MISTIE LOGO">  
+
+---
+
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Step 2: Aggregate Data</h2>
+  Training Data Structure
+  
+  * Stack together 10 randomly selected patients
+  * Train model/classifier on this design matrix
+
+  
+  </div>    
+  <div id="right_col2">
+  <img src="figures/Large_Design_Matrix_small.jpg" style="width:45%;  display: block; margin: auto;" alt="MISTIE LOGO">  
+  </div> 
+</div>
+
+
+## Step 3: Fit Models / Classifier
+
+Let $y_{i}(v)$ be the presence / absence of ICH for voxel $v$ from person $i$.  
+
+General model form: 
+$$
+ P(Y_{i}(v) = 1)  \propto f(X_{i}(v))
+$$
+
+## Models Fit on the Training Data
+
+- Logistic Regression: \(f(X_{i}(v)) = \text{expit} \left\{ \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v)\beta_{k}\right\}  \)
+- Generalized Additive Model `r citep("hastie_generalized_1990")` 
+    - fit using thin plate splines
+- LASSO `r citep(c("tibshirani_regression_1996", "friedman_regularization_2010"))`: 
+$$ \mathcal{L}\left(\left.Y_{i}(v) \right|\, f(X_i(v))\right) \propto \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v) \beta_{k} + \lambda \sum_{k= 1}^{p} \left|\beta_{k}\right|
+$$
+- Random Forests `r citep(c("randomForest", "breiman2001random"))`
+<div class="centerer">
+\(f(X_{i}(v)) \propto\) <img src="figures/Random_Forest.png" style="width:40%;inline;" alt="random forest">
+</div>
+
+## Predicted Volume Estimates True Volume <img src="figures/Reseg_Volume_Logistic.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
+
+## Predicted Volume Estimates True Volume <img src="figures/Reseg_Volume_Comparison.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
+
+## Patient with Median Overlap in Validation Set
+
+<img src="figures/Reseg_Figure_DSI_Quantile_050_No_DSI.png" style="width:500px;  display: block; margin: auto;" alt="MISTIE LOGO"> 
+
+## Shiny Application  [http://johnmuschelli.com/ich_segment.html](http://johnmuschelli.com/ich_segment.html) <img src="figures/Shiny_prediction_crop.png" style="width:105%; display: block; margin: auto;" alt="shiny orig">
+
+## Conclusions of Stroke Analyses
+
+<div style="font-size: 24pt">
+
+- We can segment ICH volume from CT scans <br><br>
+- We can create population-level ICH distributions <br/><br/>
+- Voxel-wise regression can show regions associated with severity <br/><br/>
+
+</div>
+
+
+## Conclusions of Stroke Analyses
+
+<div style="font-size: 24pt">
+
+- We can segment ICH volume from CT scans
+    - **Incorporate variability of estimated volume**
+- We can create population-level ICH distributions
+    - **Uncertainty measures of this**
+- Voxel-wise regression can show regions associated with severity
+    - **Validate these regions (MISTIE III)**
+    - **Scalar on image regression** 
+
+</div>
+
+# Neuroimaging and R
+
+## Authored R Packages:
+
+<div id="wrap">
+<div id="left_col">
+
+- **fslr** <p style='font-size: 12pt;'>(Muschelli, John, et al. "fslr: Connecting the FSL Software with R." R JOURNAL 7.1 (2015): 163-175.)</p>
+- brainR <p style='font-size: 12pt;'>(Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. "brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data." R JOURNAL 6.1 (2014): 42-48.)</p>
+- extrantsr
+- ichseg
+- dcm2niir
+- matlabr
+- spm12r
+
+
+</div>
+<div id="right_col">
+
+- drammsr
+- itksnapr
+- papayar
+- WhiteStripe
+- oasis
+- SuBLIME
+- googleCite
+- diffr
+- rscopus
+
+</div>
+</div>
+
+
+
+
+## Number of Downloads (CRAN packages)
+
+From the `cranlogs` R package:
+
+
+```{r cranlogs, cache = TRUE, eval = TRUE}
+if (!require(cranlogs)) {
+  library(devtools)
+  install_github("metacran/cranlogs")
+}
+first_date = "2014-01-10"
+today = Sys.Date()
+long_today = format(Sys.time(), "%B %d, %Y")
+packs = c("fslr", "brainR", "matlabr", "spm12r", "WhiteStripe", "diffr", "oasis", "rscopus")
+last_week = cran_downloads( when = "last-week",
+                            packages = packs)
+last_week = ddply(last_week, .(package), summarise, 
+                  Last_Week = sum(count))
+dl = cran_downloads( from = first_date, to = today,
+                     packages = packs)
+dl = ddply(dl, .(package), summarise, All_Time = sum(count))
+dl = merge(dl, last_week)
+dl = plyr::arrange(dl, desc(Last_Week))
+colnames(dl) = c("Package", "All Time", "Last Week")
+```
+
+
+
+```{r dt_library}
+library(DT)
+```
+
+```{r dt_cranlogs, results = "asis", eval = TRUE, dependson = "cranlogs"}
+datatable(dl, filter = "none", selection = "none", rownames = FALSE,
+          options = list(dom = 't', autoWidth = TRUE,
+                         columnDefs = list(list(
+                           className = 'dt-center',
+                           targets = 0)))
+)
+```
+
+
+## <img src="figures/Imaging_Pipeline_Flowchart_box.png" style="width:50%; display: block; margin: auto;" alt="flow">
+
+## <img src="figures/Imaging_Pipeline_Flowchart_matlab.png" style="width:50%; display: block; margin: auto;" alt="flow">
+
+
+## (A Lot of) Software Choices for fMRI Analysis 
+
+<img src="figures/carp_2012_figure_full.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
+
+<!-- ![](figures/carp_2012_figure_full.jpg) -->
+
+From Carp, Joshua. "The secret lives of experiments: methods reporting in the fMRI literature." Neuroimage 63.1 (2012): 289-300.
+
+
+## Number of Downloads (My CRAN packages)
+
+From the `cranlogs` R package:
+
+
+```{r, cache = TRUE}
+if (!require(cranlogs)) {
+  library(devtools)
+  install_github("metacran/cranlogs")
+}
+first_date = "2014-01-10"
+today = Sys.Date()
+long_today = format(Sys.time(), "%B %d, %Y")
+packs = c("fslr", "brainR", "matlabr", "spm12r", "WhiteStripe", "oasis", "freesurfer", "papayar")
+last_week = cran_downloads( when = "last-week",
+                            packages = packs)
+last_week = ddply(last_week, .(package), summarise, 
+                  Last_Week = sum(count))
+dl = cran_downloads( from = first_date, to = today,
+                     packages = packs)
+dl = ddply(dl, .(package), summarise, All_Time = sum(count))
+dl = merge(dl, last_week)
+dl = plyr::arrange(dl, desc(Last_Week))
+colnames(dl) = c("Package", "All Time", "Last Week")
+```
+
+```{r}
+library(DT)
+```
+
+```{r, results = "asis", eval = TRUE}
+datatable(dl, filter = "none", selection = "none", rownames = FALSE,
+          options = list(dom = 't', autoWidth = TRUE,
+                         columnDefs = list(list(
+                           className = 'dt-center',
+                           targets = 0)))
+)
+```
+
+## R Package Interfaces with Imaging Software
+
+<img src="figures/carp_2012_figure_full_box.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
+
+
+# <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Neuroimaging R Repository <br> Hosted on GitHub and <br>Checked by Travis CI
+
+## <img src="figures/Imaging_Pipeline_Flowchart_R.png" style="width:50%; display: block; margin: auto;" alt="flow">
+
+## Neuroconductor Goals (Similar to BioC)
+
+<div style='font-size: 24pt;'>
+
+1.  Lower the bar to entry - just have to know R
+    - more packages to **interface** with other programs 
+2.  All the things a repository has (checks/rules/**stability**)
+    - additional checks with imaging software installed (e.g. examples)
+3.  **Data** packages to test packages with real data (images can be big)
+4.  Detailed **vignettes/tutorials** on how to actually perform an analysis
+5.  Image analyses use all the "things R has to offer" (packaging system/**reproducibility**/etc.)
+
+</div>
+
+
+## Under Development R Packages
+
+1.  nitrc - download data from the **NITRC repository**
+2.  MNITemplate$^*$ - data of a population-level "template" image
+3.  EveTemplate$^*$ - data of a different template image
+4.  kirby21 - data package with 2 subjects, 2 visits with multimodal imaging
+5.  rcamino - interface to analyze DTI data
+6.  msseg - MS lesion segmentation 
+7.  extrantsr - pipelines for structural imaging analysis
+
+Not started yet
+
+8.  hcp - interface with Human Connectome Project
+9.  afnir - R port of AFNI software (No. 2 on the chart)
+
+$^*$ - working with Jean-Philippe Fortin on these
+
+
+## Neuroconductor <img src="figures/Better_Neuron.png" style="width:10%; display: inline; margin: auto;" alt="flow">
+
+Hopeful Solutions
+
+1.  Help improve reproducibility in imaging
+2.  Standardize the syntax / R objects for imaging a bit (I'm realistic)
+3.  Easily-accessible content
+
+Problems
+
+1.  More control over the workflow = more work (**for us**!)
+2.  Users need external software (versions/installation)
+3.  No control over external software
+4.  Need the content (buy-in from the community)
+
+
+
+
+# Thanks
+
+
+
+
+
+
+
+
+
+
+
+
+# Thank You
