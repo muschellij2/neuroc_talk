@@ -519,10 +519,12 @@ dl$Package[ dl$Package %in% made_packs] = paste0("<strong>", made_packs, "</stro
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Neuroconductor Goal: </h2>
-  Lower the bar to entry 
-    - all R code
-      - pipeline tool
-      - native R code
+Lower the bar to entry 
+
+- all R code
+    - pipeline tool
+    - native R code
+      
   </div>    
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_R.png" style="width:55%; display: block; margin: auto;" alt="flow">
@@ -576,55 +578,6 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 </div>
 
 
-
-
-----
-<div class="container"> 
-<div id="left_col2"> 
-  <h2>Neuroconductor Goal: </h2>
-  
-  <p>
-  Provide package checks/rules/**stability** 
-  
-  - check against other imaging software (e.g. FSL)
-  </p>
-</div>    
-  <div id="right_col2">
-<img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
-  <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268).
-  </p>
-  </div>
-</div>
-
-----
-<div class="container"> 
-<div class="left-half"> 
-  <h2>Neuroconductor Goal: </h2>
-  
-  <p>
-  R **Data** packages for testing
-  
-  - getting data is a common problem
-  - developers can test packages
-  - Kirby21 Data:
-    - https://github.com/muschellij2/kirby21.t1
-    - https://github.com/muschellij2/kirby21.t2
-    - https://github.com/muschellij2/kirby21.flair
-    - https://github.com/muschellij2/kirby21.fmri
-    - https://github.com/muschellij2/kirby21.dti
-  
-  </p>
-</div>    
-  <div class="right-half"> 
-<img src="figures/brains_meme.jpg" style="width:100%; display: block; margin: auto;" alt="flow">
-  <p style='font-size: 12pt;'> From [https://memegenerator.net/Everywhere-Toy-Story](https://memegenerator.net/Everywhere-Toy-Story).
-  </p>
-
-  </div>
-</div>
-
-
-
 ----
 <div class="container"> 
 <div class="left-half"> 
@@ -644,6 +597,33 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 
   </div>
 </div>
+
+
+
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Neuroconductor Goal: </h2>
+  
+  <p>
+  Provide package checks/rules/**stability** 
+  
+  - check against other imaging software (e.g. FSL)
+  </p>
+</div>    
+  <div id="right_col2">
+  
+  Docker:
+  <img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
+  
+<!-- <img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"> -->
+<!--   <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268). -->
+<!--   </p> -->
+  </div>
+</div>
+
+
+
 
 ----
 <div class="container"> 
@@ -861,6 +841,34 @@ Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic
 </p>
 </div>
 </div>
+
+----
+<div class="container"> 
+<div class="left-half"> 
+  <h2>Neuroconductor Goal: </h2>
+  
+  <p>
+  R **Data** packages for testing
+  
+  - getting data is a common problem
+  - developers can test packages
+  - Kirby21 Data:
+    - https://github.com/muschellij2/kirby21.t1
+    - https://github.com/muschellij2/kirby21.t2
+    - https://github.com/muschellij2/kirby21.flair
+    - https://github.com/muschellij2/kirby21.fmri
+    - https://github.com/muschellij2/kirby21.dti
+  
+  </p>
+</div>    
+  <div class="right-half"> 
+<img src="figures/brains_meme.jpg" style="width:100%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 12pt;'> From [https://memegenerator.net/Everywhere-Toy-Story](https://memegenerator.net/Everywhere-Toy-Story).
+  </p>
+
+  </div>
+</div>
+
 
 
 ## Not Ischemic Stroke
