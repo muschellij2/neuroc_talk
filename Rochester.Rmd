@@ -117,7 +117,7 @@ x = sapply(bib, citep)
 ```
 
 ----
-<img src="figures/My_timeline.gif" style="width:1050px; height:450px;  display: block; margin: auto;" alt="timeline">
+<img src="figures/My_timeline.gif" style="width:1050px; height:40px;  display: block; margin: auto;" alt="timeline">
 
 
 ## The MISTIE Stroke Trial 
@@ -211,6 +211,7 @@ x-ray goes around object and detector the other side of the object determines ho
 * Segmentation ⇔ classification 
 * Image ⇔ 3-dimensional array
     - composed of voxels
+    - a typical CT has $512 \times 512 \times 30 ≈ 7.8$ million voxels
 * Mask/Region of Interest ⇔ binary (0/1) image 
 </div>
 
@@ -236,6 +237,18 @@ x-ray goes around object and detector the other side of the object determines ho
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_ct.png" style="width:55%; display: block; margin: auto;" alt="flow">
   </div>
 </div>
+
+---- 
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Workflow for the Analysis</h2>
+  </div>    
+  <div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short.png" style="width:55%; display: block; margin: auto;" alt="flow">
+  </div>
+</div>
+
+
 
 ## Problem: CT Scans Capture **Everything**
 
