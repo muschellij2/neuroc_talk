@@ -461,6 +461,11 @@ $$
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Workflow for the Analysis</h2>
+  
+Statistical methods are just one part
+  
+  - Downstream from many steps 
+  
   </div>    
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_box_stat.png" style="width:55%; display: block; margin: auto;" alt="flow">
@@ -471,6 +476,11 @@ $$
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Workflow for the Analysis</h2>
+  
+Multiple pieces of software used
+
+  - all different syntax
+  
   </div>    
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_matlab.png" style="width:55%; display: block; margin: auto;" alt="flow">
@@ -524,6 +534,10 @@ Lower the bar to entry
 - all R code
     - pipeline tool
     - native R code
+
+Statisticians involved with entire pipeline
+  
+  - pipeline sensitivity analyses
       
   </div>    
   <div id="right_col2">
@@ -567,7 +581,7 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
   
   - [Medical Imaging Task View](https://cran.r-project.org/web/views/MedicalImaging.html) is good
     - no tutorials
-  - GitHub packages are all over the place 
+  - [Neuroconductor Repository](https://github.com/neuroconductor-devel/)
   </p>
 </div>    
   <div id="right_col2">
@@ -613,7 +627,7 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 </div>    
   <div id="right_col2">
   
-  Docker Image: <br> https://hub.docker.com/r/muschellij2/rneuro_base/
+  <img src="figures/github-logo.png" style="width:50%; display: block; margin: auto;" alt="flow"> 
   
   <img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
   
@@ -643,6 +657,8 @@ Allow neuroimaging to use all the things R has to offer.
 
 ## Neuroconductor <img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow">
 
+<div style='font-size: 28pt;'>
+
 Problems
 
 1.  More control over the workflow = more work (**for us statisticians**!)
@@ -651,6 +667,7 @@ Problems
     - if maintainer changes something, not much recourse
 4.  Need the content (buy-in from the community)
 
+</div>
 
 ## How do I get started?
 
