@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\begin{document}
+\pagestyle{empty}
+% Define block styles
+
+\tikzstyle{bblock} = [rectangle, draw, text width=8em, text centered, minimum height=2em, rounded corners]
+\tikzstyle{line} = [draw, text centered , -latex']
+\tikzstyle{line node} = [draw, fill=white, font=\tiny ]
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, minimum height=4em, rounded corners]    
+\tikzstyle{noblcok} = [rectangle, text width=5em, text centered, minimum height=4em, rounded corners]    
+\tikzstyle{nobblock} = [rectangle, text width=8em, text centered, minimum height=2em, rounded corners]
+
+
+\begin{tikzpicture}[node distance = 1.5cm, every node/.style={rectangle,fill=white}, scale=0.75, transform shape]
+
+% Place nodes
+
+\node [bblock] (raw) {DICOM images};
+\node [bblock, below = 2.5cm of raw] (dcmnii) {NIfTI image};
+\node [bblock, below of=dcmnii] (BET) {Brain Extraction};
+
+\node [block, below of=BET] (predictors) {ICH Predictors};
+
+
+\node [bblock, below of=predictors] (Models) {Prediction Models};
+
+\node [bblock, below of=Models] (Mask) {Binary ICH Mask};
+
+\node [nobblock, below of=Mask] (Volume) {Calculate ICH Volume};
+
+
+% Draw edges
+\path [line] (raw) -- node {conversion} (dcmnii);
+\path [line] (dcmnii) -- (BET);
+\path [line] (BET) -- (predictors);
+
+\path [line] (predictors) -- (Models);
+\path [line] (Models) -- (Mask);
+\path [line] (Mask) -- (Volume);
+\end{tikzpicture}
+
+\end{document}

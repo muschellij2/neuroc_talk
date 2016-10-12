@@ -125,3 +125,31 @@ h2 {
 div {
   color: black;
 }
+
+
+.logoslide img {
+  width: 400px;
+  height: 10px;
+}
+
+.gdbar img {
+  width: 200px !important;
+  height: 100px !important;
+}
+
+
+slides > slide:not(.nobackground):before {
+      width: 140px;
+      height: 70px;
+      
+      left: 850px;
+      bottom: 0px;
+
+      background-size: 140px 70px;
+      
+      /*
+      */
+      /*
+      background: url($logo$) ;
+      */
+    }
