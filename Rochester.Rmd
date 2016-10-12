@@ -117,7 +117,7 @@ x = sapply(bib, citep)
 ```
 
 ----
-<img src="figures/My_timeline.gif" style="width:1050px; height:40px;  display: block; margin: auto;" alt="timeline">
+<img src="figures/My_timeline.gif" style="width:1050px; height:400px; display: block; margin: auto;" alt="timeline">
 
 
 ## The MISTIE Stroke Trial 
