@@ -461,11 +461,13 @@ $$
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Workflow for the Analysis</h2>
+<div style='font-size: 32pt;'>
   
 Statistical methods are just one part
   
   - Downstream from many steps 
-  
+
+</div>  
   </div>    
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_box_stat.png" style="width:55%; display: block; margin: auto;" alt="flow">
@@ -476,11 +478,12 @@ Statistical methods are just one part
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Workflow for the Analysis</h2>
+<div style='font-size: 32pt;'>
   
 Multiple pieces of software used
 
   - all different syntax
-  
+</div>
   </div>    
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_matlab.png" style="width:55%; display: block; margin: auto;" alt="flow">
@@ -529,6 +532,8 @@ dl$Package[ dl$Package %in% made_packs] = paste0("<strong>", made_packs, "</stro
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Neuroconductor Goal: </h2>
+<div style='font-size: 24pt;'>
+  
 Lower the bar to entry 
 
 - all R code
@@ -538,7 +543,7 @@ Lower the bar to entry
 Statisticians involved with entire pipeline
   
   - pipeline sensitivity analyses
-      
+</div>
   </div>    
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_R.png" style="width:55%; display: block; margin: auto;" alt="flow">
@@ -548,7 +553,7 @@ Statisticians involved with entire pipeline
 
 
 
-## My Current Implementations
+## Current Progress (my R packages)
 
 Number of downloads as of `r format(today, format="%B %d, %Y")` (`cranlogs` package):
 
@@ -575,14 +580,15 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 <div class="container"> 
 <div id="left_col2"> 
   <h2>Neuroconductor Goal: </h2>
+<div style='font-size: 28pt;'>
   
-  <p>
-  Centralize the packages
+Centralize the packages
   
-  - [Medical Imaging Task View](https://cran.r-project.org/web/views/MedicalImaging.html) is good
+- [Medical Imaging Task View](https://cran.r-project.org/web/views/MedicalImaging.html) 
     - no tutorials
-  - [Neuroconductor Repository](https://github.com/neuroconductor-devel/)
+- [Neuroconductor Repository](https://github.com/neuroconductor-devel/)
   </p>
+</div>   
 </div>    
   <div id="right_col2">
 <img src="figures/grandma_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
@@ -619,19 +625,22 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 <div id="left_col2"> 
   <h2>Neuroconductor Goal: </h2>
   
-  <p>
-  Provide package checks/rules/**stability** 
+<div style='font-size: 28pt;'>
   
-  - check against other imaging software (e.g. FSL)
+Provide package checks / rules / **stability** 
+  
+- check against other imaging software (e.g. FSL)
+
+</div> 
   </p>
 </div>    
   <div id="right_col2">
   
   <img src="figures/github-logo.png" style="width:50%; display: block; margin: auto;" alt="flow"> 
-  
-  <img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
-  
+
   <img src="figures/travis_logo.png" style="width:75%; display: block; margin: auto;" alt="flow">   
+
+  <img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow">   
   
 <!-- <img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"> -->
 <!--   <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268). -->
@@ -655,11 +664,9 @@ Allow neuroimaging to use all the things R has to offer.
 </div>
 
 
-## Neuroconductor <img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow">
+## <img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor Downsides
 
 <div style='font-size: 28pt;'>
-
-Problems
 
 1.  More control over the workflow = more work (**for us statisticians**!)
 2.  Users need external software (versions/installation)
