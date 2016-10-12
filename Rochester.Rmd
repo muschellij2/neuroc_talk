@@ -617,6 +617,8 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
   
   <img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
   
+  <img src="figures/travis_logo.png" style="width:75%; display: block; margin: auto;" alt="flow">   
+  
 <!-- <img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"> -->
 <!--   <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268). -->
 <!--   </p> -->
@@ -625,31 +627,18 @@ DT::datatable(dl, filter = "none", selection = "none", rownames = FALSE,
 
 
 
+## Benefits of Neuroconductor: 
 
-----
-<div class="container"> 
-<div class="left-half"> 
-  <h2>Neuroconductor Goal: </h2>
+<div style='font-size: 32pt;'>
   
-  <p>
+Allow neuroimaging to use all the things R has to offer.
   
-  Allow neuroimaging to use all the things R has to offer
+- Statistics
+- Versioning and testing
+- Reproducibile reports and analyses
+- Shiny
   
-  - statistics
-  - versioning and testing
-  - markdown and reproducibility
-  - Shiny
-  
-  </p>
-</div>    
-<div class="right-half"> 
-<img src="figures/all_the_R.jpg" style="width:100%; display: block; margin: auto;" alt="flow">
-  <p style='font-size: 10pt;'> From [https://memegenerator.net/X-All-The-Things/caption](https://memegenerator.net/X-All-The-Things/caption).
-  </p>
-
-  </div>
 </div>
-
 
 
 ## Neuroconductor <img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow">
