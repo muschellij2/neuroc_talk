@@ -116,8 +116,8 @@ bib <- ReadBib('Oral_Proposal.bib')
 x = sapply(bib, citep)
 ```
 
-## My Timeline 
-<img src="figures/My_timeline.gif" style="width:105%;  display: block; margin: auto;" alt="timeline">
+----
+<img src="figures/My_timeline.gif" style="width:1050px; height:450px;  display: block; margin: auto;" alt="timeline">
 
 
 ## The MISTIE Stroke Trial 
