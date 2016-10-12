@@ -603,12 +603,13 @@ Centralize the packages
 <div class="left-half"> 
   <h2>Neuroconductor Goal: </h2>
   
-  <p>
+<div style='font-size: 28pt;'>
+
   Detailed **tutorials** on how to actually perform an analysis
   
-  See [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)
+  [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)
   
-  </p>
+</div>
 </div>    
 <div class="right-half"> 
 <img src="figures/cat_analysis.gif" style="width:100%; display: block; margin: auto;" alt="flow">
@@ -681,9 +682,6 @@ Allow neuroimaging to use all the things R has to offer.
 <div class="container"> 
    <div class="left-half" style="font-size: 28pt;">
    
-Neuroconductor Content:
-[http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)
-
 Coursera Course: 
 Introduction to Neurohacking In R
 
