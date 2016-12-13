@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                        favIcon: 'bloomberg.logo.small.horizontal.blue.png',
+              },
+
+      // Author information
+      presenters: [
+            {
+        name:  'John Muschelli, PhD' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="Dean_Talk_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="Dean_Talk_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="Dean_Talk_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="Dean_Talk_files/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(bloomberg.logo.small.horizontal.blue.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="neuroconductor.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="bloomberg.logo.small.horizontal.blue.png"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+          </hgroup>
+  </slide>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+</script>
+
+<slide class=''><hgroup><h2>The MISTIE Stroke Trial</h2></hgroup><article  id="the-mistie-stroke-trial">
+
+<ul>
+<li>Minimally Invasive Surgery plus r-tPA for Intracerebral Hemorrhage Evacuation (<strong>MISTIE</strong>)
+
+<ul>
+<li>Multi-center, multi-national Phase II clinical trial</li>
+<li>MISTIE III ongoing</li>
+</ul></li>
+</ul>
+
+<div class="container">
+<div id="left_col">
+<p><img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+<div id="right_col">
+<p>PI: Dr. Dan Hanley <img src="figures/Hanley.jpg" style="width:60%; display: block; margin: auto;" alt="Hanley"></p></div></div>
+
+<ul>
+<li><a href='http://braininjuryoutcomes.com/mistie-about' title=''>http://braininjuryoutcomes.com/mistie-about</a></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>Intracranial/Intracerebral Hemorrhage (ICH)</h2></hgroup><article  id="intracranialintracerebral-hemorrhage-ich">
+
+<div class="container" style="font-size: 28pt;">
+<div id="left_col">
+<p><img src="figures/stroke_hem_web.jpg" alt="hemorrhagic" style="display: block; margin: auto; width: 80%"></p>
+
+<p style="font-size:10.5px; ">
+
+<a href = "http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm" style ="word-wrap: break-word;" >http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm</a>
+
+</p></div>
+
+<div id="right_col">
+<ul>
+<li>When a blood vessel ruptures into tissue</li>
+<li>≈ 13% of strokes</li>
+</ul>
+
+<p><img src="figures/spinning_brain_hemorrhage.gif" style="width:105%;  display: block; margin: auto;" alt="spinning"></p></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Manual Segmentation: Tracings on CT Scans</h2></hgroup><article  id="manual-segmentation-tracings-on-ct-scans">
+
+<div class="columns-2">
+<p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> <br/> <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2>
+
+<div style="font-size: 32pt;">
+<p>Statistical methods are just one part</p>
+
+<ul>
+<li>Downstream from many steps</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_box_stat.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2><img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Framework for Reproducible Neuroimaging Analysis <br> in R</h2></hgroup><article  id="neuroconductor-a-framework-for-reproducible-neuroimaging-analysis-in-r">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Workflow for the Analysis
+
+</h2></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_R.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
