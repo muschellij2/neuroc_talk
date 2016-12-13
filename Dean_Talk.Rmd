@@ -189,14 +189,14 @@ PI: Dr. Dan Hanley
   <h2>Workflow for the Analysis</h2>
 <div style='font-size: 32pt;'>
   
-Statistical methods are just one part
-  
-  - Downstream from many steps 
+Multiple pieces of software used
+
+  - all different syntax
 
 </div>  
   </div>    
   <div id="right_col2">
-<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_box_stat.png" style="width:55%; display: block; margin: auto;" alt="flow">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_matlab.png" style="width:55%; display: block; margin: auto;" alt="flow">
   </div>
 </div>
 
