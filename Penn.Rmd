@@ -669,7 +669,7 @@ Provide package checks / rules / **stability**
 
 <div style='font-size: 32pt;'>
   
-Allow neuroimaging to use all the things R has to offer.
+Allow neuroimaging to use all R has to offer:
   
 - Statistics and Machine Learning
 - Versioning and testing
