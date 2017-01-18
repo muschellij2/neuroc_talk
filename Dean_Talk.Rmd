@@ -172,6 +172,8 @@ PI: Dr. Dan Hanley
 <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
 </div>
 
+
+
 ---- 
 <div class="container"> 
 <div id="left_col2"> 
@@ -180,6 +182,14 @@ PI: Dr. Dan Hanley
   <div id="right_col2">
 <img src="figures/PITCH_Imaging_Pipeline_Flowchart_short.png" style="width:55%; display: block; margin: auto;" alt="flow">
   </div>
+</div>
+
+## Automatic Segmentation
+
+<div class="columns-2">
+<img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
+<br/>
+<img src="figures/SS_Image_PrePredict_Auto.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
 </div>
 
 
