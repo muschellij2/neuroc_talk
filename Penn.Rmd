@@ -1,6 +1,6 @@
 ---
 title: "Computational Methods for Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor"
-author: 'John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/Rochester_2016.html <br/> <a href="https://twitter.com/strictlystat?lang=en">\@StrictlyStat</a> <br/> https://github.com/muschellij2'
+author: 'John Muschelli, PhD - Johns Hopkins Bloomberg School of Public Health<br/> http://johnmuschelli.com/Penn_2017.html <br/> <a href="https://twitter.com/strictlystat?lang=en">\@StrictlyStat</a> <br/> https://github.com/muschellij2'
 date: "January 19, 2017"
 output:
   ioslides_presentation:
@@ -437,12 +437,11 @@ $$
 <img src="figures/DSI_Box_By_Manufacturer_B.png" style="width:100%;  display: block; margin: auto;">
 </div>
 
-## Why'd that one fail? <img src="figures/DSI_Box_By_Manufacturer_B.png" style="width:100%;  display: block; margin: auto;">
-
-## Patient with Median Overlap
+## Patient with Median Overlap/Dice
 
 <img src="figures/Reseg_Figure_DSI_Quantile_050_native_no_DSI.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> 
 
+## Why'd that one fail? <img src="figures/DSI_By_Mean_HU.png" style="width:80%;  display: block; margin: auto;">
 
 
 ## Conclusions of Stroke Analyses
