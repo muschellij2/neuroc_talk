@@ -174,9 +174,6 @@ bibliography()
 
 # Goal: <br> Automatic Hemorrhage Volume Estimation 
 
-
-# How do we measure hemorrhages?
-
 ## X-ray Computed Tomography (CT) Scans
 <div class="notes">
 Images are acquired from an X-ray scanner.  
@@ -197,22 +194,17 @@ x-ray goes around object and detector the other side of the object determines ho
 
 
 ## Image Representation: voxels (3D pixels)
-<div class="columns-2">
-<img src="figures/Zoom_No_ICH.png"  style="width:100%;  display: block; margin: auto;">
-<br>
-<img src="figures/movie_final.gif" style="width:80%;  inline; display: block; margin: auto;" loop=infinite>
+Typical CT has $512 \times 512 \times 30 ≈ 7.8$ million voxels
+
+<div class="container"> 
+<div id="left_col"> 
+  <img src="figures/Zoom_No_ICH.png"  style="width:70%;  display: block; margin: auto;">
+</div>
+<div id="right_col"> 
+  <img src="figures/movie_final.gif" style="width:90%;  inline; display: block; margin: auto;" loop=infinite>
 
 <p style='font-size: 10pt;'>Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. "brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data." R JOURNAL 6.1 (2014): 42-48.</p>
 </div>
-
-## Terminology: Neuroimaging to Data/Statistics
-
-<div style="font-size: 30pt">
-* Segmentation ⇔ classification 
-* Image ⇔ 3-dimensional array
-    - composed of voxels
-    - a typical CT has $512 \times 512 \times 30 ≈ 7.8$ million voxels
-* Mask/Region of Interest ⇔ binary (0/1) image 
 </div>
 
 
@@ -250,12 +242,13 @@ x-ray goes around object and detector the other side of the object determines ho
 
 
 
-## Problem: CT Scans Capture **Everything**
+## Problem: CT Scans Capture **Everything** 
+Also has negative values
 
 <img src="figures/the_room.png" style="width:100%; display: block; margin: auto;" alt="The room">
 
 
-## Brain Segmentation of CT Scans
+## Brain Segmentation of CT Scans (uses BET)
 
 * Muschelli, John, et al. "Validated automatic brain extraction of head CT images." NeuroImage 114 (2015): 379-385. http://bit.ly/CTBET_RCODE 
 
@@ -382,6 +375,9 @@ $$
  P\{y_{i}(v) = 1\}  \propto f\{X_{i}(v)\}
 $$
 
+All models fit in R. 
+
+
 ## Models Fit on the Training Data
 
 - Logistic Regression: \(f(X_{i}(v)) = \text{expit} \left\{ \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v)\beta_{k}\right\}  \) (`glm` function)
@@ -422,18 +418,26 @@ $$
   </div>
 </div>
 
-## Predicted Volume Estimates True Volume <img src="figures/Reseg_Volume_Logistic.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
+## Predicted Volume Estimates True Volume Well <img src="figures/Reseg_Volume_Logistic.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
 
 ## All models predicted volume pretty well <img src="figures/Reseg_Volume_Comparison.png" style="width:55%;  display: block; margin: auto;" alt="Reseg">
 
 
-## Two Segmentations: Same Volume
+## Two Segmentations with the Same Volume
 <div class="columns-2">
 <img src="figures/Reseg_161-413_20110710_1619_CT_2_HEAD_Head_Prediction.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
 <br/>
 <img src="figures/Reseg_161-413_20110710_1619_CT_2_HEAD_Head_Random_Prediction.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO">
 </div>
 
+## Dice Similarity Index/Overlap by Scanner 
+<div class="columns-2">
+<img src="figures/DSI_Box_By_Manufacturer_A.png" style="width:100%;  display: block; margin: auto;">
+<br/>
+<img src="figures/DSI_Box_By_Manufacturer_B.png" style="width:100%;  display: block; margin: auto;">
+</div>
+
+## Why'd that one fail? <img src="figures/DSI_Box_By_Manufacturer_B.png" style="width:100%;  display: block; margin: auto;">
 
 ## Patient with Median Overlap
 
@@ -528,7 +532,7 @@ Complete pipeline
 
 
 
-## This isn't atypical: lots of software choices
+## It's typical to have lots of software choices
 
 <img src="figures/carp_2012_figure_full.jpg" style="width:650px; display: block; margin: auto;" alt="flow">
 
@@ -570,7 +574,7 @@ Centralize the packages
   
 - [Medical Imaging Task View](https://cran.r-project.org/web/views/MedicalImaging.html) 
     - no tutorials
-- [Neuroconductor Repository](https://github.com/neuroconductor-devel/)
+- [Neuroconductor Repository](https://github.com/neuroconductor/)
   </p>
 </div>   
 </div>    
@@ -668,10 +672,10 @@ Provide package checks / rules / **stability**
   
 Allow neuroimaging to use all the things R has to offer.
   
-- Statistics
+- Statistics and Machine Learning
 - Versioning and testing
 - Reproducibile reports and analyses
-- Shiny
+- Shiny (web applications)
   
 </div>
 
@@ -680,7 +684,7 @@ Allow neuroimaging to use all the things R has to offer.
 
 <div style='font-size: 28pt;'>
 
-1.  More control over the workflow = more work (**for us statisticians**!)
+1.  More control over the workflow = more work
 2.  Users need external software (versions/installation)
 3.  No control over external software
     - if maintainer changes something, not much recourse
@@ -688,21 +692,24 @@ Allow neuroimaging to use all the things R has to offer.
 
 </div>
 
-## How do I get started?
+## Training we are providing
 
 <div class="container"> 
    <div class="left-half" style="font-size: 28pt;">
-   
-Coursera Course: 
-Introduction to Neurohacking In R
-
+   Coursera Course: Introduction to Neurohacking In R 
+  </div>
+  <div class="right-half" style="font-size: 28pt;">
+  <img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking">
+  </div>
 [https://www.coursera.org/learn/neurohacking/](https://www.coursera.org/learn/neurohacking/)
 
+<div style="font-size: 28pt;">
+   Short Course: Neuroimaging analysis within R (ISBI, Melbourne, April 2017)
+
+   Statistics in Imaging (Pittsburgh, May 2017)
 </div>
-   <div class="right-half">
-   <img src="figures/neurohacking_logo.png" style="width:60%; display: block; margin: auto;" alt="neurohacking">
 </div>
-</div>
+
 
 ## Thanks
 
