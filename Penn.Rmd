@@ -116,8 +116,6 @@ bib <- ReadBib('Oral_Proposal.bib')
 x = sapply(bib, citep)
 ```
 
-----
-<img src="figures/My_timeline.gif" style="width:1050px; height:400px; display: block; margin: auto;" alt="timeline">
 
 
 ## The MISTIE Stroke Trial 
@@ -137,6 +135,10 @@ PI: Dr. Dan Hanley
 </div>
 
 * http://braininjuryoutcomes.com/mistie-about
+
+
+----
+<img src="figures/My_timeline.gif" style="width:1050px; height:400px; display: block; margin: auto;" alt="timeline">
 
 
 
