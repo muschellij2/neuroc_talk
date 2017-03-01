@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Computational Methods for Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Computational Methods for Neuroimaging in R, Hemorrhagic Stroke and Neuroconductor',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                        favIcon: 'bloomberg.logo.small.horizontal.blue.png',
+              },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Ciprian Crainiceanu, John Muschelli<br/> Johns Hopkins Bloomberg School of Public Health' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="Ciprian_slides_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="Ciprian_slides_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="Ciprian_slides_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="Ciprian_slides_files/ioslides-13.5.1/js/slide-deck.js"></script>
+  <script src="Ciprian_slides_files/htmlwidgets-0.8/htmlwidgets.js"></script>
+  <script src="Ciprian_slides_files/jquery-1.12.4/jquery.min.js"></script>
+  <script src="Ciprian_slides_files/datatables-binding-0.2/datatables.js"></script>
+  <link href="Ciprian_slides_files/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="Ciprian_slides_files/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+  <script src="Ciprian_slides_files/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(bloomberg.logo.small.horizontal.blue.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="neuroconductor.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="bloomberg.logo.small.horizontal.blue.png"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">March, 2, 2017</p>
+          </hgroup>
+  </slide>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+</script>
+
+<slide class=''><hgroup><h2>The MISTIE Stroke Trial</h2></hgroup><article  id="the-mistie-stroke-trial">
+
+<ul>
+<li>Minimally Invasive Surgery plus r-tPA for Intracerebral Hemorrhage Evacuation (<strong>MISTIE</strong>)
+
+<ul>
+<li>Multi-center, multi-national Phase II clinical trial</li>
+<li>Alteplase (donated by Genentech)</li>
+</ul></li>
+</ul>
+
+<div class="container">
+<div id="left_col">
+<p><img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+<div id="right_col">
+<p>PI: Dr. Dan Hanley <img src="figures/Hanley.jpg" style="width:60%; display: block; margin: auto;" alt="Hanley"></p></div></div>
+
+<ul>
+<li><a href='http://braininjuryoutcomes.com/mistie-about' title=''>http://braininjuryoutcomes.com/mistie-about</a></li>
+</ul>
+
+<!-- ---- -->
+
+<!-- <img src="figures/My_timeline.gif" style="width:1050px; height:400px; display: block; margin: auto;" alt="timeline"> -->
+
+</article></slide><slide class=''><hgroup><h2>Intracranial/Intracerebral Hemorrhage (ICH)</h2></hgroup><article  id="intracranialintracerebral-hemorrhage-ich">
+
+<div class="container" style="font-size: 28pt;">
+<div id="left_col">
+<p><img src="figures/stroke_hem_web.jpg" alt="hemorrhagic" style="display: block; margin: auto; width: 80%"></p>
+
+<p style="font-size:10.5px; ">
+
+<a href = "http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm" style ="word-wrap: break-word;" >http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm</a>
+
+</p></div>
+
+<div id="right_col">
+<ul>
+<li>When a blood vessel ruptures into tissue</li>
+<li>≈ 13% of strokes</li>
+</ul>
+
+<p><img src="figures/spinning_brain_hemorrhage.gif" style="width:105%;  display: block; margin: auto;" alt="spinning"></p></div></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Larger Hemorrhage Volume ⇒ Worse Outcome</h2></hgroup><article  id="larger-hemorrhage-volume-worse-outcome">
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Goal: <br> Automatic Hemorrhage Volume Estimation</h2></hgroup><article  id="goal-automatic-hemorrhage-volume-estimation">
+
+</article></slide><slide class=''><hgroup><h2>X-ray Computed Tomography (CT) Scans</h2></hgroup><article  id="x-ray-computed-tomography-ct-scans">
+
+<aside class='note'><section><p>Images are acquired from an X-ray scanner.<br/>x-ray goes around object and detector the other side of the object determines how many x-rays are recovered - fancy transform - Image!</p></section></aside>
+
+<div style="width:48%;float:left;">
+<p><sub><sup><sub><sup>Image from <a href='http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm' title=''>http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm</a></sup></sub></sup></sub> <img src='figures/CT_diagram2.gif' title=''/> <br></p></div>
+
+<div style="margin-left:48%;">
+<p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+</article></slide><slide class=''><hgroup><h2>Image Representation: voxels (3D pixels)</h2></hgroup><article  id="image-representation-voxels-3d-pixels">
+
+<p>Typical CT has \(512 \times 512 \times 30 ≈ 7.8\) million voxels</p>
+
+<div class="container">
+<div id="left_col">
+<p><img src="figures/Zoom_No_ICH.png"  style="width:70%;  display: block; margin: auto;"></p></div>
+
+<div id="right_col">
+<p><img src="figures/movie_final.gif" style="width:90%;  inline; display: block; margin: auto;" loop=infinite></p>
+
+<p style="font-size: 10pt;">
+
+Muschelli, John, Elizabeth Sweeney, and Ciprian Crainiceanu. &quot;brainR: Interactive 3 and 4D Images of High Resolution Neuroimage Data.&quot; R JOURNAL 6.1 (2014): 42-48.
+
+</p></div></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>How do we measure volume (currently)?</h2></hgroup><article  id="how-do-we-measure-volume-currently">
+
+</article></slide><slide class=''><hgroup><h2>Manual Segmentation</h2></hgroup><article  id="manual-segmentation">
+
+<div class="columns-2">
+<p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> <br/> <img src="figures/SS_Image_PrePredict_ROI_Mask.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_ct.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Problem: CT Scans Capture <strong>Everything</strong></h2></hgroup><article  id="problem-ct-scans-capture-everything">
+
+<p>Also has negative values</p>
+
+<p><img src="figures/the_room.png" style="width:100%; display: block; margin: auto;" alt="The room"></p>
+
+</article></slide><slide class=''><hgroup><h2>Brain Segmentation of CT Scans (uses BET)</h2></hgroup><article  id="brain-segmentation-of-ct-scans-uses-bet">
+
+<ul>
+<li>Muschelli, John, et al. &quot;Validated automatic brain extraction of head CT images.&quot; NeuroImage 114 (2015): 379-385. <a href='http://bit.ly/CTBET_RCODE' title=''>http://bit.ly/CTBET_RCODE</a></li>
+</ul>
+
+<div class="columns-2">
+<p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> <br/> <img src="figures/SS_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_bet.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Hemorrhage Segmentation</h2></hgroup><article  id="hemorrhage-segmentation">
+
+</article></slide><slide class=''><hgroup><h2>Subject Data used: 111 scans (1 Per Patient)</h2></hgroup><article  id="subject-data-used-111-scans-1-per-patient">
+
+<div id="wrap">
+<div id="left_col">
+<table class = 'rmdtable'>
+<col width="45%" />
+<col width="18%" />
+<tr class="header">
+<th align="left"> </th>
+<th align="right">Overall</th>
+</tr>
+<tr class="odd">
+<td align="left">Age in Years: Mean (SD)</td>
+<td align="right">60.8 (11.2)</td>
+</tr>
+<tr class="even">
+<td align="left">Male: N (%)</td>
+<td align="right">76 (68.5%)</td>
+</tr>
+<tr class="odd">
+<td align="left">Reader-Based Clot Location (%)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">   Putamen</td>
+<td align="right">68 (61.3)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Lobar</td>
+<td align="right">33 (29.7)</td>
+</tr>
+<tr class="even">
+<td align="left">   Globus Pallidus</td>
+<td align="right">6 ( 5.4)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Thalamus</td>
+<td align="right">4 ( 3.6)</td>
+</tr>
+<tr class="even">
+<td align="left">ICH Volume in mL: Mean (SD)</td>
+<td align="right">37.4 (20.1)</td>
+</tr>
+</table></div>
+
+<div id="right_col" style="font-size: 24pt;">
+<ul>
+<li>Adults (inclusion criteria 18-80 years old)</li>
+<li>Mostly males</li>
+<li>Different sites, scanners, and locations in the brain</li>
+</ul></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_pred.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Predictors of ICH
+
+</h2>
+
+<ul>
+<li>Local &quot;neighborhood&quot; moments (mean, sd, skew, kurtosis)</li>
+</ul>
+
+<p>Local Mean: \(\bar{x}(v) = \frac{1}{27} \sum\limits_{k}^{27} x_k(v)\) <img src="figures/voxel_figure.gif" loop=infinite style="width:45%;  display: inline; margin: auto;"></p>
+
+<ul>
+<li>Threshold intensity</li>
+<li>Gaussian Smoother (<strong>big</strong> neighborhood)</li>
+</ul></div>
+
+<div id="right_col2">
+<img src="figures/Just_The_Covariates2.png" style="width:80%; display: block; margin: auto;" alt="Preds"><br/></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Data Structure for One Patient
+
+</h2>
+
+<ul>
+<li>Each subject has matrix \(X_{i}\)</li>
+<li>\(V_{i}\) - voxels per person</li>
+<li>\(P\) - number of predictors</li>
+<li>\(y_i\) - manual segmentation</li>
+</ul></div>
+
+<div id="right_col2">
+<img src="figures/voxel_stacking_i.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"><br/></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Aggregate Data
+
+</h2>
+
+<p>Training Data Structure</p>
+
+<ul>
+<li>Stack together 10 randomly selected patients</li>
+<li>Train model/classifier on this design matrix</li>
+</ul></div>
+
+<div id="right_col2">
+<img src="figures/Large_Design_Matrix_small.jpg" style="width:45%;  display: block; margin: auto;" alt="MISTIE LOGO"><br/></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Fit Models / Classifier</h2></hgroup><article  id="fit-models-classifier">
+
+<p>Again, \(y_{i}(v)\) is the presence / absence of ICH for voxel \(v\) from person \(i\).</p>
+
+<p>General model form: \[
+ P\{y_{i}(v) = 1\}  \propto f\{X_{i}(v)\}
+\]</p>
+
+<p>All models fit in R.</p>
+
+</article></slide><slide class=''><hgroup><h2>Models Fit on the Training Data</h2></hgroup><article  id="models-fit-on-the-training-data">
+
+<ul>
+<li>Logistic Regression: \(f(X_{i}(v)) = \text{expit} \left\{ \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v)\beta_{k}\right\} \) (<code>glm</code> function)</li>
+<li>Generalized Additive Model (Hastie, et al., 1990)
+
+<ul>
+<li>fit using penalized thin plate splines (<code>mgcv</code> package)</li>
+</ul></li>
+<li>LASSO (Tibshirani, 1996; Friedman, et al., 2010) (<code>glmnet</code> package): \[ \mathcal{L}\left[\left.Y_{i}(v) \right|\, f\{X_i(v)\}\right] \propto \beta_0 + \sum_{k= 1}^{p} x_{i, k}(v) \beta_{k} + \lambda \sum_{k= 1}^{p} \left|\beta_{k}\right|
+\]</li>
+<li>Random Forests (Liaw, et al., 2002; Breiman, 2001) (<code>randomForest</code> package)
+
+<div class="centerer">
+<p>\(f(X_{i}(v)) \propto\) <img src="figures/Random_Forest.png" style="width:40%;inline;" alt="random forest"></p></div></li>
+</ul>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>All results are on the 101 scans/patients <br/> not in the training data</h2></hgroup><article  id="all-results-are-on-the-101-scanspatients-not-in-the-training-data">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col">
+<ul>
+<li>Get prediction for each voxel: \(\hat{p}_{i}(v) = \hat{P}(y_i(v) = 1)\)</li>
+<li>Threshold to get a binary value: \(\hat{y}_{i} = \hat{p}_{i}(v) &gt; 0.5\)</li>
+</ul>
+
+<p>\[
+\text{Estimated Volume}_{i} = \text{cc per voxel} \times \sum_{v}^{V_i} \hat{y}_{i}(v)
+\]</p>
+
+<p>\[
+\text{Volume}_{i}  = \text{cc per voxel} \times \sum_{v}^{V_i} y_{i}(v)
+\]</p>
+
+<ul>
+<li>cc = cubic centimeters</li>
+<li>one milliliter (mL) = 1 cc</li>
+</ul></div>
+
+<div id="right_col">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_bin_box.png" style="width:100%; display: block; margin: auto;" alt="flow"><br/></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Predicted Volume Estimates True Volume Well <img src="figures/Reseg_Volume_Logistic.png" style="width:55%;  display: block; margin: auto;" alt="Reseg"></h2></hgroup><article  id="predicted-volume-estimates-true-volume-well">
+
+</article></slide><slide class=''><hgroup><h2>All models predicted volume pretty well <img src="figures/Reseg_Volume_Comparison.png" style="width:55%;  display: block; margin: auto;" alt="Reseg"></h2></hgroup><article  id="all-models-predicted-volume-pretty-well">
+
+</article></slide><slide class=''><hgroup><h2>Two Segmentations with the Same Volume</h2></hgroup><article  id="two-segmentations-with-the-same-volume">
+
+<div class="columns-2">
+<p><img src="figures/Reseg_161-413_20110710_1619_CT_2_HEAD_Head_Prediction.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"> <br/> <img src="figures/Reseg_161-413_20110710_1619_CT_2_HEAD_Head_Random_Prediction.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+</article></slide><slide class=''><hgroup><h2>Dice Similarity Index/Overlap by Scanner</h2></hgroup><article  id="dice-similarity-indexoverlap-by-scanner">
+
+<div class="columns-2">
+<p><img src="figures/DSI_Box_By_Manufacturer_A.png" style="width:100%;  display: block; margin: auto;"> <br/> <img src="figures/DSI_Box_By_Manufacturer_B.png" style="width:100%;  display: block; margin: auto;"></p></div>
+
+</article></slide><slide class=''><hgroup><h2>Patient with Median Overlap/Dice</h2></hgroup><article  id="patient-with-median-overlapdice">
+
+<p><img src="figures/Reseg_Figure_DSI_Quantile_050_native_no_DSI.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p>
+
+</article></slide><slide class=''><hgroup><h2>Why&#39;d that one fail? <img src="figures/DSI_By_Mean_HU.png" style="width:80%;  display: block; margin: auto;"></h2></hgroup><article  id="whyd-that-one-fail">
+
+</article></slide><slide class=''><hgroup><h2>Conclusions of Stroke Analyses</h2></hgroup><article  id="conclusions-of-stroke-analyses">
+
+<div style="font-size: 24pt">
+<ul>
+<li>We can segment ICH volume from CT scans</li>
+<li>The predictors seemed to be the &quot;secret sauce&quot;
+
+<ul>
+<li>not the algorithm</li>
+</ul></li>
+<li>Chose the Random Forest
+
+<ul>
+<li>PItcHPERFeCT: Primary Intracranial Hemorrhage Probability Estimation using Random Forests on CT</li>
+</ul></li>
+<li>R Package: <a href='https://github.com/muschellij2/ichseg' title=''>https://github.com/muschellij2/ichseg</a><br/></li>
+<li>Shiny Application <a href='http://johnmuschelli.com/ich_segment.html' title=''>http://johnmuschelli.com/ich_segment.html</a></li>
+</ul></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Thank you</h2></hgroup><article  id="thank-you">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2>
+
+<div style="font-size: 32pt;">
+<p>Multiple pieces of software used</p>
+
+<ul>
+<li>all different syntax</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_matlab.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2><img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor: <br> A Framework for Reproducible Neuroimaging Analysis <br> in R</h2></hgroup><article  id="neuroconductor-a-framework-for-reproducible-neuroimaging-analysis-in-r">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<div style="font-size: 24pt;">
+<p>Lower the bar to entry</p>
+
+<ul>
+<li>all R code
+
+<ul>
+<li>pipeline tool</li>
+<li>native R code</li>
+</ul></li>
+</ul>
+
+<p>Complete pipeline</p>
+
+<ul>
+<li>pipeline sensitivity analyses</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_R.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2>It&#39;s typical to have lots of software choices</h2></hgroup><article  id="its-typical-to-have-lots-of-software-choices">
+
+<p><img src="figures/carp_2012_figure_full.jpg" style="width:650px; display: block; margin: auto;" alt="flow"></p>
+
+<!-- ![](figures/carp_2012_figure_full.jpg) -->
+
+<p>From Carp, Joshua. &quot;The secret lives of experiments: methods reporting in the fMRI literature.&quot; Neuroimage 63.1 (2012): 289-300.</p>
+
+</article></slide><slide class=''><hgroup><h2>Current Progress (my R packages)</h2></hgroup><article  id="current-progress-my-r-packages">
+
+<p>Number of downloads as of March 01, 2017 (<code>cranlogs</code> package):</p>
+
+<div class="container">
+<div class="left-half">
+<div id="htmlwidget-303a4a0035862dee7257" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-303a4a0035862dee7257">{"x":{"filter":"none","data":[["matlabr","brainR","<strong>fslr\u003c/strong>","WhiteStripe","papayar","oasis","<strong>spm12r\u003c/strong>","<strong>freesurfer\u003c/strong>"],[4398,9957,10445,5718,1410,2216,2563,899],[82,64,51,35,28,25,24,22]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package\u003c/th>\n      <th>All Time\u003c/th>\n      <th>Last Week\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script></div>
+
+<div class="right-half">
+<img src="figures/carp_2012_figure_box_crop.jpg" style="width:80%;  display: block; margin: auto;" alt="carp_box"><br/></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Centralize the packages</p>
+
+<ul>
+<li><a href='https://cran.r-project.org/web/views/MedicalImaging.html' title=''>Medical Imaging Task View</a>
+
+<ul>
+<li>no tutorials</li>
+</ul></li>
+<li><a href='https://github.com/neuroconductor/' title=''>Neuroconductor Repository</a>
+
+</p></li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/grandma_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
+
+<p style="font-size: 12pt;">
+
+From <a href='https://imgflip.com/memegenerator/Grandma-Finds-The-Internet' title=''>https://imgflip.com/memegenerator/Grandma-Finds-The-Internet</a>.
+
+</p></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Detailed <strong>tutorials</strong> on how to actually perform an analysis</p>
+
+<p></br></p>
+
+<ul>
+<li><a href='http://johnmuschelli.com/neuroc/' title=''>http://johnmuschelli.com/neuroc/</a></li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/cat_analysis.gif" style="width:80%; display: block; margin: auto;">
+
+<p style="font-size: 10pt;">
+
+From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xISa.gifv</a>.
+
+</p></div></div>
+
+<!-- ---- -->
+
+<!-- <div class="container">  -->
+
+<!--   <div class="left-half">  -->
+
+<!--     <h2>Neuroconductor Goal: </h2> -->
+
+<!--     <div style='font-size: 28pt;'> -->
+
+<!--     Detailed **tutorials** on how to actually perform an analysis -->
+
+<!--     </div> -->
+
+<!--   </div>     -->
+
+<!--   <div class="right-half">  -->
+
+<!--   <img src="figures/cat_analysis.gif" style="width:100%; display: block; margin: auto;" alt="flow"> -->
+
+<!--     <p style='font-size: 10pt;'> From [http://i.imgur.com/0Y1xISa.gifv](http://i.imgur.com/0Y1xISa.gifv). -->
+
+<!--     </p> -->
+
+<!--   </div> -->
+
+<!--   <div style='font-size: 28pt;'> -->
+
+<!--   [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)   -->
+
+<!--   </div> -->
+
+<!-- </div> -->
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Provide package checks / rules / <strong>stability</strong></p>
+
+<ul>
+<li>check against other imaging software (e.g. FSL)</li>
+</ul></div>
+
+</p></div>
+
+<div id="right_col2">
+<p><img src="figures/github-logo.png" style="width:50%; display: block; margin: auto;" alt="flow"></p>
+
+<p><img src="figures/travis_logo.png" style="width:75%; display: block; margin: auto;" alt="flow"></p>
+
+<p><img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow"></p>
+
+<!-- <img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"> -->
+
+<!--   <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268). -->
+
+<!--   </p> --></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Benefits of Neuroconductor:</h2></hgroup><article  id="benefits-of-neuroconductor">
+
+<div style="font-size: 32pt;">
+<p>Allow neuroimaging to use all R has to offer:</p>
+
+<ul>
+<li>Statistics and Machine Learning</li>
+<li>Versioning and testing</li>
+<li>Reproducibile reports and analyses</li>
+<li>Shiny (web applications)</li>
+</ul></div>
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/Better_Neuron_note.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor Downsides</h2></hgroup><article  id="neuroconductor-downsides">
+
+<div style="font-size: 28pt;">
+<ol>
+<li>More control over the workflow = more work</li>
+<li>Users need external software (versions/installation)</li>
+<li>No control over external software
+
+<ul>
+<li>if maintainer changes something, not much recourse</li>
+</ul></li>
+<li>Need the content (buy-in from the community)</li>
+</ol></div>
+
+</article></slide><slide class=''><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
+
+<div class="container">
+<div class="left-half" style="font-size: 28pt;">
+Coursera Course: Introduction to Neurohacking In R</div>
+
+<div class="right-half" style="font-size: 28pt;">
+<img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking"></div>
+
+<p><a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
+
+<div style="font-size: 28pt;">
+<p>Short Course: Neuroimaging analysis within R (ISBI, Melbourne, April 2017)</p>
+
+<p>Statistics in Imaging (Pittsburgh, May 2017)</p></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Thanks</h2></hgroup><article  id="thanks">
+
+<div class="container">
+<div class="left-half" style="font-size: 28pt;">
+<p>Dan Hanley <img src="figures/Hanley.jpg" style="width:30%; margin: auto;" alt="Hanley"></p>
+
+<p>Ciprian Crainiceanu <img src="figures/Ciprian.jpg" style="width:20%;  margin: auto;" alt="neurohacking"></p>
+
+<p>Brian Caffo <img src="figures/bcaffo.jpg" style="width:20%;  margin: auto;" alt="neurohacking"></p></div>
+
+<div class="right-half">
+<p>Jean-Philippe Fortin <img src="figures/jp.png" style="width:25%;  margin: auto;" alt="neurohacking"></p>
+
+<p>Adi Gherman <img src="figures/adi.png" style="width:20%;  margin: auto;" alt="neurohacking"></p>
+
+<p>Elizabeth Sweeney <img src="figures/sweeney.jpg" style="width:20%; margin: auto;" alt="neurohacking"></p></div></div>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Questions</h2></hgroup><article  id="questions">
+
+</article></slide><slide class=''><hgroup><h2>Assessing Performance</h2></hgroup><article  id="assessing-performance">
+
+<p>For each manual and automated segmentation, we can calculate the following 2-by-2 table, where the cells represent number of voxels and a corresponding Venn diagram:</p>
+
+<div style="width:45%;float: left;">
+<table class="rmdtable" style="font-size: 26px;">
+
+<tr class="header">
+
+<td>
+
+</td>
+
+<td>
+
+</td>
+
+<td colspan="2">
+
+Manual
+
+</td>
+
+</tr>
+
+<tr class="header">
+
+<td>
+
+</td>
+
+<td>
+
+</td>
+
+<td>
+
+0
+
+</td>
+
+<td>
+
+1
+
+</td>
+
+</tr>
+
+<tr>
+
+<td rowspan="2">
+
+PitCH
+
+</td>
+
+<td>
+
+0
+
+</td>
+
+<td style="font-size: 40px;">
+
+TN
+
+</td>
+
+<td style="color:blue">
+
+FN
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+1
+
+</td>
+
+<td style="color:red">
+
+FP
+
+</td>
+
+<td style="color:purple">
+
+TP
+
+</td>
+
+</tr>
+
+</table></div>
+
+<div style="margin-left:48%;">
+<p><img src="figures/Venn_Diagram_labeled.png" style="width:325px;height:325px;display: block; margin: auto;border:5px solid black""></p></div>
+
+</article></slide><slide class=''><hgroup><h2>Dice Similarity</h2></hgroup><article  id="dice-similarity">
+
+<div style="width:48%;float:left;">
+<p>We calculate the Dice Similarity Index (DSI): \[
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{blue}{RGB}{0,0,255}
+\definecolor{purple}{RGB}{128,0,128}
+\definecolor{blac,}{RGB}{0,0,0}
+\frac{ \color{purple} 2 \times \#  \text{TP} }{ \color{purple}  2 \times \#\text{TP} \color{black} + \color{red} \text{FN} \color{black} + \color{blue} \text{FP}} 
+\]</p>
+
+<ul>
+<li>0 indicates no overlap</li>
+<li>1 means perfect agreement<br/></li>
+</ul></div>
+
+<div style="margin-left:48%;">
+<p><img src="figures/Fraction_Figure.png" style="width:400px;height:460px;display: block; margin: auto;"></p></div>
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/Reseg_Dice_Comparison.png" style="width:600px;  display: block; margin: auto;" alt="DICE"></h2></hgroup><article  id="section">
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/Reseg_VarImpPlot.png" style="width:70%;  display: block; margin: auto;" alt="DICE"></h2></hgroup><article  id="section-1">
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/Z_template.png" style="width:70%;  display: block; margin: auto;" alt="DICE"></h2></hgroup><article  id="section-2">
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/Z_image.png" style="width:70%;  display: block; margin: auto;" alt="DICE"></h2></hgroup><article  id="section-3">
+
+</article></slide><slide class=''><hgroup><h2>Under Development R Packages</h2></hgroup><article  id="under-development-r-packages">
+
+<ol>
+<li>nitrc - download data from the <strong>NITRC repository</strong></li>
+<li>MNITemplate\(^*\) - data of a population-level &quot;template&quot; image</li>
+<li>EveTemplate\(^*\) - data of a different template image</li>
+<li>kirby21 - data package with 2 subjects, 2 visits with multimodal imaging</li>
+<li>rcamino - interface to analyze DTI data</li>
+<li>msseg - MS lesion segmentation</li>
+<li>extrantsr - pipelines for structural imaging analysis</li>
+</ol>
+
+<p>Not started yet</p>
+
+<ol>
+<li>hcp - interface with Human Connectome Project</li>
+<li>afnir - R port of AFNI software (No. 2 on the chart)</li>
+</ol>
+
+<p>\(^*\) - working with Jean-Philippe Fortin on these</p>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<p>The knitcitations, knitr, pander, plyr, RefManageR, rmarkdown, and tableone packages were used to create this presentation in RStudio.</p></div>
+
+<div id="right_col2" style="font-size: 6pt;">
+<pre > setting  value                       
+ version  R version 3.3.2 (2016-10-31)
+ system   x86_64, darwin13.4.0        
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ tz       America/New_York            
+ date     2017-03-01                  
+
+ package       * version     date      
+ backports       1.0.5       2017-01-18
+ bibtex          0.4.0       2014-12-31
+ bitops          1.0-6       2013-08-17
+ class           7.3-14      2015-08-30
+ colorout      * 1.1-0       2015-04-20
+ devtools        1.12.0.9000 2017-01-23
+ digest          0.6.12      2017-01-27
+ DT              0.2         2016-08-09
+ e1071           1.6-7       2015-08-05
+ evaluate        0.10        2016-10-11
+ htmltools       0.3.6       2016-12-08
+ htmlwidgets     0.8         2016-11-09
+ httr            1.2.1.9000  2016-11-21
+ jsonlite        1.2         2016-12-31
+ knitcitations * 1.0.7.1     2016-02-01
+ knitr         * 1.15.1      2016-11-22
+ lattice         0.20-34     2016-09-06
+ lubridate       1.6.0       2016-09-13
+ magrittr        1.5         2014-11-22
+ Matrix          1.2-7.1     2016-09-01
+ memoise         1.0.0       2016-01-29
+ pander        * 0.6.0       2016-06-17
+ pkgbuild        0.0.0.9000  2016-12-08
+ pkgload         0.0.0.9000  2016-12-08
+ plyr          * 1.8.4       2016-06-08
+ R6              2.2.0       2016-10-05
+ Rcpp            0.12.8.2    2016-12-08
+ RCurl           1.95-4.8    2016-03-01
+ RefManageR    * 0.13.1      2016-11-13
+ RJSONIO         1.3-0       2014-07-28
+ rmarkdown       1.3         2017-01-03
+ rprojroot       1.2         2017-01-16
+ stringi         1.1.2       2016-10-01
+ stringr         1.1.0       2016-08-19
+ survey          3.31-5      2016-12-01
+ survival        2.40-1      2016-10-30
+ tableone      * 0.7.3       2015-11-11
+ withr           1.0.2       2016-06-20
+ XML             3.98-1.5    2016-11-10
+ yaml            2.1.14      2016-11-12
+ zoo             1.7-14      2016-12-16
+ source                                 
+ cran (@1.0.5)                          
+ CRAN (R 3.2.0)                         
+ CRAN (R 3.2.0)                         
+ CRAN (R 3.3.2)                         
+ Github (jalvesaq/colorout@1539f1f)     
+ Github (hadley/devtools@1ce84b0)       
+ cran (@0.6.12)                         
+ CRAN (R 3.3.0)                         
+ CRAN (R 3.2.0)                         
+ CRAN (R 3.3.0)                         
+ Github (rstudio/htmltools@4fbf990)     
+ CRAN (R 3.3.2)                         
+ local                                  
+ cran (@1.2)                            
+ Github (cboettig/knitcitations@afffa3e)
+ cran (@1.15.1)                         
+ CRAN (R 3.3.2)                         
+ CRAN (R 3.3.0)                         
+ CRAN (R 3.2.0)                         
+ CRAN (R 3.3.2)                         
+ CRAN (R 3.2.3)                         
+ Github (Rapporter/pander@48fa9ed)      
+ Github (r-pkgs/pkgbuild@65eace0)       
+ Github (r-pkgs/pkgload@def2b10)        
+ CRAN (R 3.3.0)                         
+ cran (@2.2.0)                          
+ Github (RcppCore/Rcpp@8c7246e)         
+ CRAN (R 3.2.4)                         
+ CRAN (R 3.3.2)                         
+ CRAN (R 3.2.0)                         
+ Github (rstudio/rmarkdown@3276760)     
+ cran (@1.2)                            
+ CRAN (R 3.3.0)                         
+ cran (@1.1.0)                          
+ CRAN (R 3.3.2)                         
+ CRAN (R 3.3.0)                         
+ CRAN (R 3.2.2)                         
+ CRAN (R 3.3.0)                         
+ CRAN (R 3.3.2)                         
+ CRAN (R 3.3.2)                         
+ CRAN (R 3.3.2)                         </pre></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Ischemic Stroke</h2></hgroup><article  id="ischemic-stroke">
+
+<div class="container">
+<div id="left_col">
+<p><img src="figures/ischemic_stroke_edema_700w.jpg" alt="Ischemic" style="display: block; margin: auto; width: 80%"></p></div>
+
+<div id="right_col">
+<ul>
+<li>Ischemic stroke - clot blocks oxygen/nutrients</li>
+<li>Tissue dies</li>
+<li>≈87% of strokes</li>
+</ul>
+
+<p style="font-size:10.5px;">
+
+Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
+" style ="word-wrap: break-word;" >http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/ </a>
+
+</p></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div class="left-half">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<p>
+
+<p>R <strong>Data</strong> packages for testing</p>
+
+<ul>
+<li>getting data is a common problem</li>
+<li>developers can test packages</li>
+<li>Kirby21 Data:
+
+<ul>
+<li><a href='https://github.com/muschellij2/kirby21.t1' title=''>https://github.com/muschellij2/kirby21.t1</a></li>
+<li><a href='https://github.com/muschellij2/kirby21.t2' title=''>https://github.com/muschellij2/kirby21.t2</a></li>
+<li><a href='https://github.com/muschellij2/kirby21.flair' title=''>https://github.com/muschellij2/kirby21.flair</a></li>
+<li><a href='https://github.com/muschellij2/kirby21.fmri' title=''>https://github.com/muschellij2/kirby21.fmri</a></li>
+<li><a href='https://github.com/muschellij2/kirby21.dti' title=''>https://github.com/muschellij2/kirby21.dti</a></li>
+</ul></li>
+</ul>
+
+</p></div>
+
+<div class="right-half">
+<img src="figures/brains_meme.jpg" style="width:100%; display: block; margin: auto;" alt="flow">
+
+<p style="font-size: 12pt;">
+
+From <a href='https://memegenerator.net/Everywhere-Toy-Story' title=''>https://memegenerator.net/Everywhere-Toy-Story</a>.
+
+</p></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Not Ischemic Stroke</h2></hgroup><article  id="not-ischemic-stroke">
+
+<div class="container">
+<div id="left_col">
+<p><img src="figures/ischemic_stroke_edema_700w_not.jpg" alt="Ischemic" style="display: block; margin: auto; width: 80%"></p></div>
+
+<div id="right_col">
+<ul>
+<li>Ischemic stroke - clot blocks oxygen/nutrients</li>
+<li>Tissue dies</li>
+<li>≈87% of strokes</li>
+</ul>
+
+<p style="font-size:10.5px;">
+
+Image from <a href = "http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/
+" style ="word-wrap: break-word;" >http://www.strokecenter.org/patients/about-stroke/ischemic-stroke/ </a>
+
+</p></div></div></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
