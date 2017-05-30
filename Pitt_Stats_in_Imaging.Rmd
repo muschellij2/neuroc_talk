@@ -306,7 +306,10 @@ Provide package checks / rules / **stability**
 - Talk about kirby21, neurohcp, and ms.lesion packages
     - EveTemplate/MNITemplate - fully contained
 - Discuss R package development and why it is good
-- 
+- How do you get involved?
+    - what is needed?
+    - talk about fMRI analyses
+    - 
 
 
 ## Benefits of Neuroconductor: 
