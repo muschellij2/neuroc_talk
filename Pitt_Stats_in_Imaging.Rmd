@@ -101,21 +101,12 @@ library(httr)
   nr = nrow(tab)
 ```
 
-## SPM GUI + courses!<br> <img src="figures/spm.png" style="width:80%; display: inline; margin: auto;" alt="flow">
+## What did SPM have? GUI + courses!<br> <img src="figures/spm.png" style="width:80%; display: inline; margin: auto;" alt="flow">
 
-## What did R have?<br> <img src="figures/imaging_task_view.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br>Where do I start???
-
-
-## Goal: Centralize the packages (currently `r nr`)
+## What did R have?
 <div class="container"> 
   <div class="left-half"> 
-  
-
-  
-  <p style='font-size: 12pt;'>
-  [https://neuroconductor.org/list-packages/all](https://neuroconductor.org/list-packages/all)</p>
-  
-  <img src="figures/neuroc_list_packages.png" style="width:120%; display: inline; margin: auto;" alt="flow">
+  <img src="figures/imaging_task_view.png" style="width:120%; display: inline; margin: auto;" alt="flow">
   
   </div>    
   <div class="right-half">
@@ -127,35 +118,15 @@ library(httr)
 </div>
 
 
-## Why not CRAN
-
-- Data packages
+<!-- ## What did R have?<br> <img src="figures/imaging_task_view.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br>Users: where do I start??? -->
 
 
-## Why not CRAN
+## Goal: Centralize the packages (currently `r nr`)
 
-- Timings/Checks - need more lenient in some
+  <img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow">
 
-## Why not CRAN
+# Imaging and R:<br> My analysis 5 years ago
 
-- ANTsR
-
-
-----
-<div class="container"> 
-<div id="left_col2"> 
-  <h2>Workflow for an Analysis</h2>
-<div style='font-size: 32pt;'>
-  
-Multiple pieces of software used
-
-  - all different syntax
-</div>
-  </div>    
-  <div id="right_col2">
-<img src="figures/workflow_edited_nonR.png" style="width:70%; display: block; margin: auto;" alt="flow">
-  </div>
-</div>
 
 ----
 <div class="container"> 
@@ -178,6 +149,21 @@ Multiple pieces of software used
 </div>
 
 
+----
+<div class="container"> 
+<div id="left_col2"> 
+  <h2>Workflow for an Analysis</h2>
+<div style='font-size: 32pt;'>
+  
+Multiple pieces of software used
+
+  - all different syntax
+</div>
+  </div>    
+  <div id="right_col2">
+<img src="figures/workflow_edited_nonR.png" style="width:70%; display: block; margin: auto;" alt="flow">
+  </div>
+</div>
 
 
 ## It's typical to have lots of software choices
@@ -186,7 +172,7 @@ Multiple pieces of software used
 
 <!-- ![](figures/carp_2012_figure_full.jpg) -->
 
-From Carp, Joshua. "The secret lives of experiments: methods reporting in the fMRI literature." Neuroimage 63.1 (2012): 289-300.
+Carp, Joshua. "The secret lives of experiments: methods reporting in the fMRI literature." Neuroimage 63.1 (2012): 289-300.
 
 ----
 <div class="container"> 
@@ -210,6 +196,13 @@ Complete pipeline
   </div>
 </div>
 
+# fslr: Using R as a Pipeline Tool
+
+- Requires FSL to be installed and in PATH
+    - FSL only available on Unix-style systems
+
+<img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow">
+
 
 ----
 <div class="container"> 
@@ -232,9 +225,6 @@ Detailed **tutorials** on how to actually perform an analysis
 </p>
 </div>
 </div>
-
-
-
 
 
 
@@ -296,6 +286,58 @@ Provide package checks / rules / **stability**
   <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
   </div>
 </div>
+
+
+## The story of ANTsR
+
+ANTs: Advanced Normalization Tools
+
+- State-of-the-art image processing pipelines
+- Built at UPenn under Brian Avants
+    - Group has won challenges for imaging analysis
+- Still actively maintained and developed
+- Depends on the Insight ToolKit (ITK), a widely used medical image processing library to which ANTs developers contribute
+    - Fast 
+
+
+## The story of ANTsR
+
+ANTsR
+
+- Group tried to wrap C++ code with Rcpp for it to work "seamlessly" with R
+- [Had some issues with CRAN](https://github.com/stnava/ANTsR/issues/8)
+- Most developers response: "just make it work"
+- NOT like `fslr` - this built the libraries and could be called using `.Call`
+    - technical but very different 
+    - possible (not yet) to use on Windows
+
+## Why not CRAN: Dependencies
+
+- ANTsR depends on `CMake`: <img src="figures/cmake_logo.png" style="width:30%; display: inline; margin: auto;" alt="flow">
+- ANTsR also depends on ITKR - large code base
+- External dependencies are not always welcome
+- [CRAN response](https://stat.ethz.ch/pipermail/r-package-devel/2015q2/000106.html): <img src="figures/cmake.png" style="width:30%; display: inline; margin: auto;" alt="flow"> (more or less)
+
+## Why not CRAN: Checks
+
+- We would like more stringent checks than CRAN (like vignettes) like Bioconductor
+- But **also** more lenient ones 
+  - Examples may take > 5 seconds to compile
+  - Time to build package may take a while
+  - May not work on Windows if not applicable
+
+## Why not CRAN: Data
+
+Medical images are big (> 5 mb) compared to code
+
+**CRAN doesn't like this**
+
+- Example data packages are harder to get passed
+- We got `kirby21.t1` and `kirby21.fmri`, but they have an implicit downloader function in the code
+- Necessary for testing code examples in imaging
+
+# Some Current Neuroconductor Packages
+
 
 ## NEXT SLIDES
 
@@ -411,27 +453,6 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
       - wanted more command line tools
       - wanted to implement some things in R
   - AnalyzeFMRI, oro.nifti, fmri, 
-      
-- What is it (broad)
-    - matlab figure
-    - R only figure
-    
-- What is it really?
-    - a website that ties together all the relevant packages
-        - tutorials
-    - an additional set of standards (vignettes) similar to bioconductor
-    - a centralized repository of copied and maintained packages
-    - a community of users
-    - a support for developers (me + adi)
-- Why not CRAN
-    - task view not good enough
-    - data packages are not going in
-    - ANTsR
-    - 
-- Actual backend
-    - what happens when you upload a package
-    - what is Git, what is GitHub
-    - what is Travis / Appveyor
 
   
 - Why should you care
