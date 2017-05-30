@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neuroconductor: What, Why, and How</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+  <meta name="date" content="2017-04-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Neuroconductor: What, Why, and How',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                        favIcon: 'bloomberg.logo.small.horizontal.blue.png',
+              },
+
+      // Author information
+      presenters: [
+            {
+        name:  'John Muschelli' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="neuroc_what_why_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="neuroc_what_why_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="neuroc_what_why_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="neuroc_what_why_files/ioslides-13.5.1/js/slide-deck.js"></script>
+  <script src="neuroc_what_why_files/htmlwidgets-0.8/htmlwidgets.js"></script>
+  <script src="neuroc_what_why_files/jquery-1.12.4/jquery.min.js"></script>
+  <script src="neuroc_what_why_files/datatables-binding-0.2/datatables.js"></script>
+  <link href="neuroc_what_why_files/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="neuroc_what_why_files/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+  <script src="neuroc_what_why_files/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(bloomberg.logo.small.horizontal.blue.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="neuroconductor.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="bloomberg.logo.small.horizontal.blue.png"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">2017-04-10</p>
+          </hgroup>
+  </slide>
+
+<slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Neuroconductor: Why</h2></hgroup><article  id="neuroconductor-why">
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+</script>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for the Analysis
+
+</h2>
+
+<div style="font-size: 32pt;">
+<p>Multiple pieces of software used</p>
+
+<ul>
+<li>all different syntax</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_matlab.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2>It&#39;s typical to have lots of software choices</h2></hgroup><article  id="its-typical-to-have-lots-of-software-choices">
+
+<p><img src="figures/carp_2012_figure_full.jpg" style="width:650px; display: block; margin: auto;" alt="flow"></p>
+
+<!-- ![](figures/carp_2012_figure_full.jpg) -->
+
+<p>From Carp, Joshua. &quot;The secret lives of experiments: methods reporting in the fMRI literature.&quot; Neuroimage 63.1 (2012): 289-300.</p>
+
+</article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"> What: <br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="what-an-r-platform-for-medical-imaging-analysis">
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Goal:
+
+</h2>
+
+<div style="font-size: 24pt;">
+<p>Lower the bar to entry</p>
+
+<ul>
+<li>all R code
+
+<ul>
+<li>pipeline tool</li>
+<li>&quot;native&quot; R code</li>
+</ul></li>
+</ul>
+
+<p>Complete pipeline</p>
+
+<ul>
+<li>preprocessing and analysis</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/PITCH_Imaging_Pipeline_Flowchart_short_R.png" style="width:55%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=''><hgroup><h2>Current Progress (my R packages)</h2></hgroup><article  id="current-progress-my-r-packages">
+
+<p>Number of downloads as of April 10, 2017 (<code>cranlogs</code> package):</p>
+
+<div class="container">
+<div class="left-half">
+<div id="htmlwidget-d6f5136e0c467197ef84" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d6f5136e0c467197ef84">{"x":{"filter":"none","data":[["<strong>fslr<\/strong>","matlabr","brainR","WhiteStripe","<strong>freesurfer<\/strong>","oasis","papayar","<strong>spm12r<\/strong>"],[12490,4853,10362,6196,1185,2498,1698,3220],[219,189,183,157,152,148,142,133]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Package<\/th>\n      <th>All Time<\/th>\n      <th>Last Week<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","autoWidth":true,"columnDefs":[{"className":"dt-center","targets":0},{"className":"dt-right","targets":[1,2]}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script></div>
+
+<div class="right-half">
+<img src="figures/carp_2012_figure_box_crop.jpg" style="width:80%;  display: block; margin: auto;" alt="carp_box"><br/></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Goal:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Centralize the packages</p>
+
+<ul>
+<li><a href='https://cran.r-project.org/web/views/MedicalImaging.html' title=''>Medical Imaging Task View</a>
+
+<ul>
+<li>no tutorials</li>
+</ul></li>
+<li><a href='https://github.com/neuroconductor/' title=''>Neuroconductor Repository</a>
+
+</p></li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/grandma_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow">
+
+<p style="font-size: 12pt;">
+
+From <a href='https://imgflip.com/memegenerator/Grandma-Finds-The-Internet' title=''>https://imgflip.com/memegenerator/Grandma-Finds-The-Internet</a>.
+
+</p></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Detailed <strong>tutorials</strong> on how to actually perform an analysis</p>
+
+<p></br></p>
+
+<ul>
+<li><a href='http://johnmuschelli.com/neuroc/' title=''>http://johnmuschelli.com/neuroc/</a></li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/cat_analysis.gif" style="width:80%; display: block; margin: auto;">
+
+<p style="font-size: 10pt;">
+
+From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xISa.gifv</a>.
+
+</p></div></div>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+How:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Provide package checks / rules / <strong>stability</strong></p>
+
+<ul>
+<li>check against other imaging software (e.g. FSL)</li>
+</ul></div>
+
+</p></div>
+
+<div id="right_col2">
+<p><img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></p>
+
+<p><!-- <img src="figures/github-logo.png" style="width:50%; display: block; margin: auto;" alt="flow">  --></p>
+
+<p><!-- <img src="figures/travis_logo.png" style="width:75%; display: block; margin: auto;" alt="flow">    --></p>
+
+<p><!-- <img src="figures/docker.png" style="width:75%; display: block; margin: auto;" alt="flow">    --></p>
+
+<!-- <img src="figures/new_package_meme.jpg" style="width:75%; display: block; margin: auto;" alt="flow"> -->
+
+<!--   <p style='font-size: 12pt;'> From [https://memegenerator.net/instance/51553268](https://memegenerator.net/instance/51553268). -->
+
+<!--   </p> --></div></div>
+
+</article></slide><slide class=''><hgroup><h2>How: Website</h2></hgroup><article  id="how-website">
+
+<ul>
+<li>Tutorials in RMarkdown</li>
+<li>Adi Gherman made a lot of the website: <a href='https://neuroconductor.org/' title=''>https://neuroconductor.org/</a>
+
+<ul>
+<li>Also programmed most of the current backend</li>
+<li>Development version of the backend exists (all R): <a href='https://github.com/muschellij2/neuro_backend' title=''>https://github.com/muschellij2/neuro_backend</a></li>
+</ul></li>
+<li><code>git2r</code>, <code>gh</code>, <code>travisci</code>, and <code>devtools</code> packages</li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2><img src="figures/neuroconductor_iconwithtype_bbg.png" style="width:10%; display: inline; margin: auto;" alt="flow"> Neuroconductor Downsides</h2></hgroup><article  id="neuroconductor-downsides">
+
+<div style="font-size: 28pt;">
+<ol>
+<li>More control over the workflow = more work</li>
+<li>Users need external software (versions/installation)</li>
+<li>No control over external software
+
+<ul>
+<li>if maintainer changes something, not much recourse</li>
+</ul></li>
+<li>Need the content (buy-in from the community)</li>
+</ol></div>
+
+</article></slide><slide class=''><hgroup><h2>Try it out</h2></hgroup><article  id="try-it-out">
+
+<p>A short course we made with Neuroconductor packages: <a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a></p>
+
+<p>How to set up <a href='http://johnmuschelli.com/imaging_in_r/installing_everything_locally/' title=''>http://johnmuschelli.com/imaging_in_r/installing_everything_locally/</a></p></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

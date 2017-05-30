@@ -799,7 +799,7 @@ $$
 
 Not started yet
 
-8.  hcp - interface with Human Connectome Project
+8.  neurohcp - interface with Human Connectome Project
 9.  afnir - R port of AFNI software (No. 2 on the chart)
 
 $^*$ - working with Jean-Philippe Fortin on these
