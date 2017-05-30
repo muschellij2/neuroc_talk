@@ -309,7 +309,11 @@ Provide package checks / rules / **stability**
 - How do you get involved?
     - what is needed?
     - talk about fMRI analyses
-    - 
+- Additional imaging modalities
+    - PET/DTI
+    - CT
+    - Other than the brain
+    - MR Spectroscopy Analysis Tools
 
 
 ## Benefits of Neuroconductor: 
