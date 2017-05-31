@@ -542,7 +542,7 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
   - Docker image for Neuroconductor: <img src="figures/docker.png" style="width:15%; display: inline; margin: auto;" alt="flow">   
     - have all dependencies/external software in one container
 
-# Without Knowing How the Data <br>was Processed,<br> Analyses Cannot be Trusted
+# Without Knowing the Processing,<br> Analyses Cannot be Trusted
 
 # No Code = No Method
 
@@ -550,5 +550,10 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 ## Go to
 
 http://johnmuschelli.com/imaging_in_r/index.html
+
+Example MPRAGE T1 image can be found at [http://bit.ly/pittimg](http://bit.ly/pittimg)
+
+Download the `.R` file
+[http://bit.ly/pittscript](http://bit.ly/pittscript)
 
 ## References
