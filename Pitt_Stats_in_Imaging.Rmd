@@ -18,7 +18,6 @@ logo: bloomberg.logo.small.horizontal.blue.png
 article {
   font-size: 30pt;
 }
-
 </style>
 
 
@@ -73,7 +72,7 @@ library(neurobase)
 
 - Free, open-source
 - Cross-platform
-- Over 1000 packages
+- Over 10000 packages
 - Taught by stat/biostat departments
 - Packaging system is good (well-documented, tested, doable)
 - RStudio
