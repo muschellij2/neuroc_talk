@@ -1,6 +1,6 @@
 ---
 title: "Neuroconductor: Medical Image Analysis in R"
-author: 'John Muschelli<br/> Johns Hopkins Bloomberg School of Public Health'
+author: 'John Muschelli<br/>http://johnmuschelli.com/Pitt_2017.html<br/> Johns Hopkins Bloomberg School of Public Health'
 output:
   ioslides_presentation:
     css: neuroconductor.css
