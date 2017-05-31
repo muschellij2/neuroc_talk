@@ -31,7 +31,7 @@
       // Author information
       presenters: [
             {
-        name:  'John Muschelli<br/> Johns Hopkins Bloomberg School of Public Health' ,
+        name:  'John Muschelli<br/><a href="http://johnmuschelli.com/Pitt_2017.html" class="uri">http://johnmuschelli.com/Pitt_2017.html</a><br/> Johns Hopkins Bloomberg School of Public Health' ,
         company: '',
         gplus: '',
         twitter: '',
@@ -562,27 +562,14 @@ Development Pipeline:
 
 </article></slide><slide class=''><hgroup><h2>Neuroconductor installer:</h2></hgroup><article  id="neuroconductor-installer">
 
+<p>Provide an installer to download the current packages:</p>
+
 <pre class = 'prettyprint lang-r'>source(&quot;https://neuroconductor.org/neurocLite.R&quot;)
 neurocLite(&quot;kirby21.fmri&quot;)
 neurocLite(&quot;neurobase&quot;)
 neurocLite(&quot;ANTsR&quot;)</pre>
 
-</article></slide><slide class=''><hgroup><h2><code>kirby21.fmri</code>: fMRI data from Kirby21</h2></hgroup><article  id="kirby21.fmri-fmri-data-from-kirby21">
-
-<pre class = 'prettyprint lang-r'>library(kirby21.t1) # load T1 data
-library(kirby21.fmri) # load fMRI data
-library(kirby21.base) # helper package to download data
-library(neurobase) # neuroconductor base package
-fnames = get_image_filenames_list(
-  modalities = c(&quot;fMRI&quot;, &quot;T1&quot;), id = 113, visit = 1)
-t1_fname = fnames$T1 
-fmri_fname = fnames$fMRI</pre>
-
-</article></slide><slide class=''><hgroup><h2>Plot the T1</h2></hgroup><article  id="plot-the-t1">
-
-<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-5-1.png" width="720" /></p>
-
-</article></slide><slide class=''><hgroup><h2>neurohcp: Human Connectome Project Downloader</h2></hgroup><article  id="neurohcp-human-connectome-project-downloader">
+</article></slide><slide class=''><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
 
 <ul>
 <li>Allows you to download data from <a href='https://www.humanconnectome.org/' title=''>Human Connectome Project</a></li>
@@ -614,7 +601,7 @@ fmri_fname = fnames$fMRI</pre>
 
 </article></slide><slide class=''><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images-1">
 
-<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-6-1.png" width="720" /></p>
+<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-4-1.png" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>MALF: Skull Stripping Example</h2></hgroup><article  id="malf-skull-stripping-example">
 
@@ -651,6 +638,21 @@ fmri_fname = fnames$fMRI</pre>
 <li>Fits models for DTI data</li>
 <li><a href='http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html' title=''>Tutorial on running with example data</a></li>
 </ul>
+
+</article></slide><slide class=''><hgroup><h2><code>kirby21.fmri</code>: fMRI data from Kirby21</h2></hgroup><article  id="kirby21.fmri-fmri-data-from-kirby21">
+
+<pre class = 'prettyprint lang-r'>library(kirby21.t1) # load T1 data
+library(kirby21.fmri) # load fMRI data
+library(kirby21.base) # helper package to download data
+library(neurobase) # neuroconductor base package
+fnames = get_image_filenames_list(
+  modalities = c(&quot;fMRI&quot;, &quot;T1&quot;), id = 113, visit = 1)
+t1_fname = fnames$T1 
+fmri_fname = fnames$fMRI</pre>
+
+</article></slide><slide class=''><hgroup><h2>Plot the T1</h2></hgroup><article  id="plot-the-t1">
+
+<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-6-1.png" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>Benefits of Neuroconductor:</h2></hgroup><article  id="benefits-of-neuroconductor">
 
