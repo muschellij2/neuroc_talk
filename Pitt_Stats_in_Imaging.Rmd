@@ -442,7 +442,6 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 
 # No Code = No Method
 
-
 # Current Neuroconductor Packages Overviews
 
 ## dcm2niir and divest: Converting DICOM data
