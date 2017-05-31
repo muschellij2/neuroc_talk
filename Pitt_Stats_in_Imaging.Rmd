@@ -299,6 +299,7 @@ Medical images are big (> 5 mb) compared to code
 - Example data packages are harder to get passed
 - We got `kirby21.t1` and `kirby21.fmri`, but they have an implicit downloader function in the code
 - Necessary for testing code examples in imaging
+  - **STANDARDIZED** file location (`system.file`)
 
 # Solution: Build a Bioconductor-like Solution using Current Tools
 
