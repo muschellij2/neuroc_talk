@@ -31,21 +31,22 @@ library(neurobase)
 ```
 
 
-<!-- ## What language do you teach your (stats) students?  -->
+## What language do you use for analysis?
 
-<!-- - R  -->
-<!-- - Matlab -->
-<!-- - Python -->
-<!-- - SAS / Stata -->
+- R
+- SAS / Stata
+- Matlab
+- Python
 
-<!-- ## What language do you/your imaging students work in? -->
+## What language do you use for imaging analysis?
 
 
-<!-- - R  -->
-<!-- - Matlab -->
-<!-- - Python -->
+- R
+- Matlab (e.g. SPM)
+- Python
+- bash (e.g. FSL)
 
-<!-- (note SAS/Stata do not exist in this domain) -->
+(note SAS/Stata do not exist in this domain)
 
 <!-- ## Are these the same? -->
 
