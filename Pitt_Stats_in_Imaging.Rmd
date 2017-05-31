@@ -448,7 +448,7 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 
 - Allows you to download data from [Human Connectome Project](https://www.humanconnectome.org/)
 - The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants.  Standardized protocol.
-- Tutorial: https://neuroconductor.org/neuroc-help-neurohcp
+- Tutorial: http://johnmuschelli.com/neuroc/neurohcp
 
 
 ## spm12r: Wrapper Functions for SPM
@@ -458,14 +458,14 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 - `spm12_slice_timing`, `spm12_realign`
 - `spm12_coregister`, `spm12_segment`
 - `spm12_normalize`, `spm12_smooth`
-- - Tutorial: https://neuroconductor.org/neuroc-help-fmri-analysis-spm12r
+- - Tutorial: http://johnmuschelli.com/neuroc/fmri_analysis_spm12r/index.html
 
 ## rcamino: Port of Camino Software
 
 - Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
 - Takes in b-values, b-vectors, and tensors
 - Fits models for DTI data
-- Tutorial: https://neuroconductor.org/neuroc-help-dti-analysis-rcamino
+- Tutorial: http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html
 
 
 ## extrantsr: Extra functions for ANTsR
