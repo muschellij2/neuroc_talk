@@ -68,6 +68,15 @@ library(httr)
 <!--     - Batch tools are great -->
 <!--     - Checking registration can be a pain -->
 
+## Why R?
+
+- Free, open-source
+- Cross-platform
+- Over 1000 packages
+- Taught by stat/biostat departments
+- Packaging system is good (well-documented, tested, doable)
+- RStudio
+- (I know R)
 
 ## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
