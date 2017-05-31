@@ -445,6 +445,15 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 
 # Current Neuroconductor Packages Overviews
 
+## dcm2niir and divest: Converting DICOM data
+
+- `dcm2nii` by Dr. Chris Rorden
+    - jackknife for almost any DICOM type to NIfTI
+- `dcm2niir` wraps a binary executable of dcm2nii
+    - calls the command prompt (not always Windows-friendly)
+- `divest` wraps the background C++ code of dcm2nii
+    - runs in "native" R
+
 ## neurohcp: Human Connectome Project 
 
 - Allows you to download data from [Human Connectome Project](https://www.humanconnectome.org/)
