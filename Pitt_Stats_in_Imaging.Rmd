@@ -622,4 +622,10 @@ Example MPRAGE T1 image can be found at [http://bit.ly/pittimg](http://bit.ly/pi
 Download the `.R` file
 [http://bit.ly/pittscript](http://bit.ly/pittscript)
 
+fMRI in Shiny
+[http://bit.ly/shinybrain](http://bit.ly/shinybrain)
+
+Papaya Example
+[http://bit.ly/pittpapaya](http://bit.ly/pittpapaya)
+
 ## References
