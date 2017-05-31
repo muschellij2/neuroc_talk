@@ -475,7 +475,12 @@ library(kirby21.base) # helper package to download data
 library(neurobase) # neuroconductor base package
 fnames = get_image_filenames_list(
   modalities = c("fMRI", "T1"), id = 113, visit = 1)
-print(unlist(fnames))
+ss = strsplit(unlist(fnames), "/")
+ss = sapply(ss, function(x) {
+  x = x[ seq(grep("library", x), length(x))]
+  x = paste(x, collapse = "/")
+})
+print(ss)
 t1_fname = fnames$T1 
 fmri_fname = fnames$fMRI
 ```
