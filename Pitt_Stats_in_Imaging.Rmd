@@ -372,12 +372,11 @@ pander(df)
 
 # Current Neuroconductor Packages Overviews
 
-
 ## neurohcp: Human Connectome Project 
 
 - Allows you to download data from [Human Connectome Project](https://www.humanconnectome.org/)
 - The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants.  Standardized protocol.
-- Tutorial on how to download in R: https://neuroconductor.org/neuroc-help-neurohcp
+- Tutorial: https://neuroconductor.org/neuroc-help-neurohcp
 
 
 ## spm12r: Wrapper Functions for SPM
@@ -387,6 +386,22 @@ pander(df)
 - `spm12_slice_timing`, `spm12_realign`
 - `spm12_coregister`, `spm12_segment`
 - `spm12_normalize`, `spm12_smooth`
+- - Tutorial: https://neuroconductor.org/neuroc-help-fmri-analysis-spm12r
+
+## rcamino: Port of Camino Software
+
+- Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
+- Takes in b-values, b-vectors, and tensors
+- Fits models for DTI data
+- Tutorial: https://neuroconductor.org/neuroc-help-dti-analysis-rcamino
+
+
+## extrantsr: Extra functions for ANTsR
+
+- Wraps `ANTsR` functions for nifti objects (from oro.nifti)
+- `malf` function - performs a basic MALF algorithm
+- `within_visit_registration` - performs within-visit registration for structural MRI
+- `preprocess_mri_within` - pipeline to process within-visit sMRI
 
 
 ## malf.templates: Segmented T1-weighted Images 
@@ -426,20 +441,6 @@ From [@mass]:
 </div>
 </div>
 
-## extrantsr: Extra functions for ANTsR
-
-- Wraps `ANTsR` functions for nifti objects (from oro.nifti)
-- `malf` function - performs a basic MALF algorithm
-- `within_visit_registration` - performs within-visit registration for structural MRI
-- `preprocess_mri_within` - pipeline to process within-visit sMRI
-
-## rcamino: Port of Camino Software
-
-- Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
-- Takes in b-values, b-vectors, and tensors
-- Fits models for DTI data
-- [Tutorial on running with example data](http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html)
-
 
 
 ## Neuroconductor installer:
@@ -456,13 +457,25 @@ neurocLite("ANTsR")
 
 ## `kirby21.fmri`: fMRI data from Kirby21
 
-```{r, echo = TRUE}
+```{r, echo = TRUE, eval = FALSE}
 library(kirby21.t1) # load T1 data
 library(kirby21.fmri) # load fMRI data
 library(kirby21.base) # helper package to download data
 library(neurobase) # neuroconductor base package
 fnames = get_image_filenames_list(
   modalities = c("fMRI", "T1"), id = 113, visit = 1)
+print(fnames)
+t1_fname = fnames$T1 
+fmri_fname = fnames$fMRI
+```
+```{r, echo = FALSE, eval = TRUE, results='markup'}
+library(kirby21.t1) # load T1 data
+library(kirby21.fmri) # load fMRI data
+library(kirby21.base) # helper package to download data
+library(neurobase) # neuroconductor base package
+fnames = get_image_filenames_list(
+  modalities = c("fMRI", "T1"), id = 113, visit = 1)
+print(unlist(fnames))
 t1_fname = fnames$T1 
 fmri_fname = fnames$fMRI
 ```
@@ -475,47 +488,47 @@ t1 = robust_window(t1)
 ortho2(t1)
 ```
 
-## A DTI Example
+<!-- ## A DTI Example -->
 
-- Download the Diffusion data for an HCP subject
+<!-- - Download the Diffusion data for an HCP subject -->
 
-```{r eval = FALSE, echo = TRUE}
-library(neurohcp)
-result = download_hcp_dir("HCP/100307/T1w/Diffusion")
-print(basename(result$output_files))
-````
+<!-- ```{r eval = FALSE, echo = TRUE} -->
+<!-- library(neurohcp) -->
+<!-- result = download_hcp_dir("HCP/100307/T1w/Diffusion") -->
+<!-- print(basename(result$output_files)) -->
+<!-- ```` -->
 
-```{r, eval = TRUE, echo = FALSE}
-result = list(output_files = c("bvals", "bvecs", "data.nii.gz", "grad_dev.nii.gz", "nodif_brain_mask.nii.gz")
-)
-result$output_files
-```
+<!-- ```{r, eval = TRUE, echo = FALSE} -->
+<!-- result = list(output_files = c("bvals", "bvecs", "data.nii.gz", "grad_dev.nii.gz", "nodif_brain_mask.nii.gz") -->
+<!-- ) -->
+<!-- result$output_files -->
+<!-- ``` -->
 
-## Fit a DTI Model
+<!-- ## Fit a DTI Model -->
 
-```{r eval = FALSE}
-# Extract the DTI files for the subject and name them using the NIfTI format
-library(neurobase)
-library(rcamino)
-outfiles <- result$output_files
-names(outfiles) <- neurobase::nii.stub(basename(outfiles))
+<!-- ```{r eval = FALSE} -->
+<!-- # Extract the DTI files for the subject and name them using the NIfTI format -->
+<!-- library(neurobase) -->
+<!-- library(rcamino) -->
+<!-- outfiles <- result$output_files -->
+<!-- names(outfiles) <- neurobase::nii.stub(basename(outfiles)) -->
 
-# Specify the B-values and B-vectors used in the HCP database for further processing:
-camino_fsl2scheme(bvecs = outfiles[["bvecs"]], bvals = outfiles[["bvals"]],
-    outfile = "hcp.scheme")
+<!-- # Specify the B-values and B-vectors used in the HCP database for further processing: -->
+<!-- camino_fsl2scheme(bvecs = outfiles[["bvecs"]], bvals = outfiles[["bvals"]], -->
+<!--     outfile = "hcp.scheme") -->
 
-# Convert the diffusion data from NIfTI to Camino format:
-camino_image2voxel(infile = outfiles[["data"]], outfile = "dwi.Bfloat")
+<!-- # Convert the diffusion data from NIfTI to Camino format: -->
+<!-- camino_image2voxel(infile = outfiles[["data"]], outfile = "dwi.Bfloat") -->
 
-# Fit the diffusion tensor imaging model:
-camino_modelfit(infile = "dwi.Bfloat", outfile = "dt.Bdouble", 
-    scheme = "hcp.scheme", gradadj = outfiles[["grad_dev"]],
-    model = "ldt", mask = outfiles[["nodif_brain_mask"]])
+<!-- # Fit the diffusion tensor imaging model: -->
+<!-- camino_modelfit(infile = "dwi.Bfloat", outfile = "dt.Bdouble",  -->
+<!--     scheme = "hcp.scheme", gradadj = outfiles[["grad_dev"]], -->
+<!--     model = "ldt", mask = outfiles[["nodif_brain_mask"]]) -->
 
-# Produce the FA and MD maps from the fitted tensor data:
-fa <- camino_fa_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]])
-md <- camino_md_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]])
-```
+<!-- # Produce the FA and MD maps from the fitted tensor data: -->
+<!-- fa <- camino_fa_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]]) -->
+<!-- md <- camino_md_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]]) -->
+<!-- ``` -->
 
 
 ## Plot the FA values

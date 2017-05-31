@@ -560,21 +560,12 @@ Development Pipeline:
 
 </article></slide><slide class='segue dark nobackground level1'><hgroup class = 'auto-fadein'><h2>Current Neuroconductor Packages Overviews</h2></hgroup><article  id="current-neuroconductor-packages-overviews">
 
-</article></slide><slide class=''><hgroup><h2>Neuroconductor installer:</h2></hgroup><article  id="neuroconductor-installer">
-
-<p>Provide an installer to download the current packages:</p>
-
-<pre class = 'prettyprint lang-r'>source(&quot;https://neuroconductor.org/neurocLite.R&quot;)
-neurocLite(&quot;kirby21.fmri&quot;)
-neurocLite(&quot;neurobase&quot;)
-neurocLite(&quot;ANTsR&quot;)</pre>
-
 </article></slide><slide class=''><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
 
 <ul>
 <li>Allows you to download data from <a href='https://www.humanconnectome.org/' title=''>Human Connectome Project</a></li>
 <li>The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants. Standardized protocol.</li>
-<li>Tutorial on how to download in R: <a href='https://neuroconductor.org/neuroc-help-neurohcp' title=''>https://neuroconductor.org/neuroc-help-neurohcp</a></li>
+<li>Tutorial: <a href='https://neuroconductor.org/neuroc-help-neurohcp' title=''>https://neuroconductor.org/neuroc-help-neurohcp</a></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>spm12r: Wrapper Functions for SPM</h2></hgroup><article  id="spm12r-wrapper-functions-for-spm">
@@ -585,6 +576,27 @@ neurocLite(&quot;ANTsR&quot;)</pre>
 <li><code>spm12_slice_timing</code>, <code>spm12_realign</code></li>
 <li><code>spm12_coregister</code>, <code>spm12_segment</code></li>
 <li><code>spm12_normalize</code>, <code>spm12_smooth</code></li>
+<li><ul>
+<li>Tutorial: <a href='https://neuroconductor.org/neuroc-help-fmri-analysis-spm12r' title=''>https://neuroconductor.org/neuroc-help-fmri-analysis-spm12r</a></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>rcamino: Port of Camino Software</h2></hgroup><article  id="rcamino-port-of-camino-software">
+
+<ul>
+<li>Wraps <a href='http://camino.cs.ucl.ac.uk/' title=''>Camino Diffusion MRI Toolkit</a></li>
+<li>Takes in b-values, b-vectors, and tensors</li>
+<li>Fits models for DTI data</li>
+<li>Tutorial: <a href='https://neuroconductor.org/neuroc-help-dti-analysis-rcamino' title=''>https://neuroconductor.org/neuroc-help-dti-analysis-rcamino</a></li>
+</ul>
+
+</article></slide><slide class=''><hgroup><h2>extrantsr: Extra functions for ANTsR</h2></hgroup><article  id="extrantsr-extra-functions-for-antsr">
+
+<ul>
+<li>Wraps <code>ANTsR</code> functions for nifti objects (from oro.nifti)</li>
+<li><code>malf</code> function - performs a basic MALF algorithm</li>
+<li><code>within_visit_registration</code> - performs within-visit registration for structural MRI</li>
+<li><code>preprocess_mri_within</code> - pipeline to process within-visit sMRI</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images">
@@ -601,7 +613,7 @@ neurocLite(&quot;ANTsR&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images-1">
 
-<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-4-1.png" width="720" /></p>
+<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-3-1.png" width="720" /></p>
 
 </article></slide><slide class=''><hgroup><h2>MALF: Skull Stripping Example</h2></hgroup><article  id="malf-skull-stripping-example">
 
@@ -621,23 +633,14 @@ neurocLite(&quot;ANTsR&quot;)</pre>
 </ul></li>
 </ul></div></div>
 
-</article></slide><slide class=''><hgroup><h2>extrantsr: Extra functions for ANTsR</h2></hgroup><article  id="extrantsr-extra-functions-for-antsr">
+</article></slide><slide class=''><hgroup><h2>Neuroconductor installer:</h2></hgroup><article  id="neuroconductor-installer">
 
-<ul>
-<li>Wraps <code>ANTsR</code> functions for nifti objects (from oro.nifti)</li>
-<li><code>malf</code> function - performs a basic MALF algorithm</li>
-<li><code>within_visit_registration</code> - performs within-visit registration for structural MRI</li>
-<li><code>preprocess_mri_within</code> - pipeline to process within-visit sMRI</li>
-</ul>
+<p>Provide an installer to download the current packages:</p>
 
-</article></slide><slide class=''><hgroup><h2>rcamino: Port of Camino Software</h2></hgroup><article  id="rcamino-port-of-camino-software">
-
-<ul>
-<li>Wraps <a href='http://camino.cs.ucl.ac.uk/' title=''>Camino Diffusion MRI Toolkit</a></li>
-<li>Takes in b-values, b-vectors, and tensors</li>
-<li>Fits models for DTI data</li>
-<li><a href='http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html' title=''>Tutorial on running with example data</a></li>
-</ul>
+<pre class = 'prettyprint lang-r'>source(&quot;https://neuroconductor.org/neurocLite.R&quot;)
+neurocLite(&quot;kirby21.fmri&quot;)
+neurocLite(&quot;neurobase&quot;)
+neurocLite(&quot;ANTsR&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2><code>kirby21.fmri</code>: fMRI data from Kirby21</h2></hgroup><article  id="kirby21.fmri-fmri-data-from-kirby21">
 
@@ -647,12 +650,79 @@ library(kirby21.base) # helper package to download data
 library(neurobase) # neuroconductor base package
 fnames = get_image_filenames_list(
   modalities = c(&quot;fMRI&quot;, &quot;T1&quot;), id = 113, visit = 1)
+print(fnames)
 t1_fname = fnames$T1 
 fmri_fname = fnames$fMRI</pre>
 
 </article></slide><slide class=''><hgroup><h2>Plot the T1</h2></hgroup><article  id="plot-the-t1">
 
-<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-6-1.png" width="720" /></p>
+<p><img src="Pitt_Stats_in_Imaging_files/figure-html/unnamed-chunk-7-1.png" width="720" /></p>
+
+<!-- ## A DTI Example -->
+
+<!-- - Download the Diffusion data for an HCP subject -->
+
+<!-- ```{r eval = FALSE, echo = TRUE} -->
+
+<!-- library(neurohcp) -->
+
+<!-- result = download_hcp_dir("HCP/100307/T1w/Diffusion") -->
+
+<!-- print(basename(result$output_files)) -->
+
+<!-- ```` -->
+
+<!-- ```{r, eval = TRUE, echo = FALSE} -->
+
+<!-- result = list(output_files = c("bvals", "bvecs", "data.nii.gz", "grad_dev.nii.gz", "nodif_brain_mask.nii.gz") -->
+
+<!-- ) -->
+
+<!-- result$output_files -->
+
+<!-- ``` -->
+
+<!-- ## Fit a DTI Model -->
+
+<!-- ```{r eval = FALSE} -->
+
+<!-- # Extract the DTI files for the subject and name them using the NIfTI format -->
+
+<!-- library(neurobase) -->
+
+<!-- library(rcamino) -->
+
+<!-- outfiles <- result$output_files -->
+
+<!-- names(outfiles) <- neurobase::nii.stub(basename(outfiles)) -->
+
+<!-- # Specify the B-values and B-vectors used in the HCP database for further processing: -->
+
+<!-- camino_fsl2scheme(bvecs = outfiles[["bvecs"]], bvals = outfiles[["bvals"]], -->
+
+<!--     outfile = "hcp.scheme") -->
+
+<!-- # Convert the diffusion data from NIfTI to Camino format: -->
+
+<!-- camino_image2voxel(infile = outfiles[["data"]], outfile = "dwi.Bfloat") -->
+
+<!-- # Fit the diffusion tensor imaging model: -->
+
+<!-- camino_modelfit(infile = "dwi.Bfloat", outfile = "dt.Bdouble",  -->
+
+<!--     scheme = "hcp.scheme", gradadj = outfiles[["grad_dev"]], -->
+
+<!--     model = "ldt", mask = outfiles[["nodif_brain_mask"]]) -->
+
+<!-- # Produce the FA and MD maps from the fitted tensor data: -->
+
+<!-- fa <- camino_fa_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]]) -->
+
+<!-- md <- camino_md_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]]) -->
+
+<!-- ``` -->
+
+</article></slide><slide class=''><hgroup><h2>Plot the FA values</h2></hgroup><article  id="plot-the-fa-values">
 
 </article></slide><slide class=''><hgroup><h2>Benefits of Neuroconductor:</h2></hgroup><article  id="benefits-of-neuroconductor">
 
