@@ -458,14 +458,14 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 - `spm12_slice_timing`, `spm12_realign`
 - `spm12_coregister`, `spm12_segment`
 - `spm12_normalize`, `spm12_smooth`
-- - Tutorial: http://johnmuschelli.com/neuroc/fmri_analysis_spm12r/index.html
+- http://johnmuschelli.com/neuroc/fmri_analysis_spm12r/index.html
 
 ## rcamino: Port of Camino Software
 
 - Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
 - Takes in b-values, b-vectors, and tensors
 - Fits models for DTI data
-- Tutorial: http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html
+- http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html
 
 
 ## extrantsr: Extra functions for ANTsR
