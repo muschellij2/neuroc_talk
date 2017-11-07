@@ -1,19 +1,5 @@
----
-title: "Neuroconductor: Medical Image Analysis in R"
-author: 'John Muschelli<br/>http://johnmuschelli.com/Pitt_2017.html<br/> Johns Hopkins Bloomberg School of Public Health'
-output:
-  ioslides_presentation:
-    css: neuroconductor.css
-    self_contained: no
-    widescreen: yes
-  beamer_presentation: default
-  slidy_presentation:
-    css: neuroconductor.css
-    mathjax: local
-    widescreen: yes
-bibliography: Oral_Proposal.bib
-logo: bloomberg.logo.small.horizontal.blue.png
----
+# Medical Image Analysis in R
+John Muschelli<br/>http://johnmuschelli.com/Multimodal_Workshop.html<br/> Johns Hopkins Bloomberg School of Public Health  
 <style type="text/css">
 article {
   font-size: 30pt;
@@ -22,62 +8,43 @@ article {
 
 
 
-```{r setup, include=FALSE, message = FALSE}
-knitr::opts_chunk$set(echo = FALSE, prompt = FALSE, message = FALSE, warning = FALSE, comment = "", results = 'hide')
-library(pander)
-library(rvest)
-library(httr)
-library(neurobase)
-```
 
 
-## What language do you use for analysis?
+# R is a language and environment <br>for **statistical** computing <br>and graphics. <br> https://cran.r-project.org/
 
-- R
-- SAS / Stata
-- Matlab
-- Python
+## R is a base set of foundational functions {.centered}
 
-## What language do you use for imaging analysis?
+<img src="figures/r_no_packages.png" style="width:50%; margin: auto;" alt="flow"> 
 
-
-- R
-- Matlab (e.g. SPM)
-- Python
-- bash (e.g. FSL)
-
-(note SAS/Stata do not exist in this domain)
-
-<!-- ## Are these the same? -->
-
-<!-- - Yes -->
-<!-- - No -->
+## With by user-written packages of functions {.centered}
 
 
-<!-- ## <img src="figures/My_timeline.gif" style="width:1050px; height:400px; display: block; margin: auto;" alt="timeline"> -->
-<!-- <div> -->
-<!-- &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;fMRI&emsp;&emsp;&emsp;MRI/CT<br> -->
-<!-- &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;analysis&emsp;&ensp;analysis -->
-<!-- </div> -->
+<img src="figures/r_with_packages.png" style="width:50%; margin: auto;" alt="flow"> 
 
 
-<!-- ## Lessons Learned using Matlab/SPM -->
-
-<!-- - Matlab and R are very similar (sometimes annoyingly so) -->
-<!-- - R had more intuitive (to me) spreadsheet structures -->
-<!-- - SPM has great tools, but not all are intuitive -->
-<!--     - Batch tools are great -->
-<!--     - Checking registration can be a pain -->
-
-## Why R?
+## Benefits of R
 
 - Free, open-source
 - Cross-platform
-- Over 10000 packages
+- Over 11000 packages
 - Taught by stat/biostat departments
-- Packaging system is good (well-documented, tested, doable)
-- RStudio
-- (I know R)
+- Packaging system is good (well-documented, tested, relatively-understandable)
+- RStudio - company and software
+
+
+# Everything that exists is an object.<br> Everything that happens is a function call.<br> [@chambers2014object]
+
+## For example:
+
+
+
+
+
+
+## Plotting orthographic
+
+![](Multimodal_Workshop_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
 
 ## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
@@ -86,11 +53,13 @@ library(neurobase)
 - published tutorials and workflows 
 - additional requirements to CRAN (e.g. packages need vignettes)
 
+
 ## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
 - team of developers/maintainers
 - multiple grants of support 
 
+# Neuroconductor: An R Platform for Medical Imaging Analysis
 
 ## Inspiration <img src="figures/nipype.png" style="width:80%; display: inline; margin: auto;" alt="flow">
 
@@ -100,28 +69,10 @@ library(neurobase)
 - allows the user to take advantage of all of Python
     - pandas, scikit-learn, Jupyter notebooks
 
-```{r, cache = TRUE, echo = FALSE, results='hide'}
-  url = httr:::GET("https://neuroconductor.org/list-packages/all")
-  cr = content(url)
-  tab = html_table(cr)[[1]]
-  nr = nrow(tab)
-```
+
 
 ## Inspiration: SPM/MATLAB has GUI + courses!<br> <img src="figures/spm.png" style="width:80%; display: inline; margin: auto;" alt="flow">
 
-<!-- ## What did R have? -->
-<!-- <div class="container">  -->
-<!--   <div class="left-half">  -->
-<!--   <img src="figures/imaging_task_view.png" style="width:130%; display: inline; margin: auto;" alt="flow"> -->
-
-<!--   </div>     -->
-<!--   <div class="right-half"> -->
-<!--   <p style='font-size: 12pt;'> [https://imgflip.com/memegenerator/Grandma-Finds-The-Internet](https://imgflip.com/memegenerator/Grandma-Finds-The-Internet) -->
-<!--   </p>   -->
-<!-- <img src="figures/grandma_meme.jpg" style="width:55%; display: block; margin: auto;" alt="flow"> -->
-
-<!--   </div> -->
-<!-- </div> -->
 
 ## What did R have?
 <img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
@@ -147,10 +98,10 @@ library(neurobase)
 4.  A centralized repository of maintained packages
 
 
-<!-- ## What did R have?<br> <img src="figures/imaging_task_view.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br>Users: where do I start??? -->
 
 
-## Goal: Centralize the packages (currently `r nr`)
+
+## Goal: Centralize the packages (currently 56)
 
   <img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow">
 
@@ -166,7 +117,7 @@ Detailed **tutorials** on how to actually perform an analysis
 
 </br>
 
-- [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)  
+- [http://johnmuschelli.com/neuroc](http://johnmuschelli.com/neuroc/)  
 
 </div> 
 </div>    
@@ -352,24 +303,20 @@ Check the package for stability
 
 ## Neuroconductor Capabilities
 
-```{r, results='asis'}
-mat = c("DICOM Images", " oro.dicom, dcm2niir, divest, ANTsR",
-"NIfTI Images", " oro.nifti, RNifti, ANTsR",
-"Image Registration", "spm12r, fslr, ANTsR, freesurfer",
-"Inhomogeneity Correction", " spm12r, fslr, ANTsR",
-"Brain Extraction", " spm12r, fslr, ANTsR, extrantsr",
-"Structure Segmentation", " spm12r, fslr, ANTsR, extrantsr, freesurfer",
-"Intensity Normalization", " WhiteStripe, neurobase, ANTsR",
-"3D Smoothing", " ANTsR, spm12r, fslr",
-"Temporal Filtering", "spm12r, fslr, ANTsR",
-"Slice-timing correction", " spm12r, fslr",
-"DTI models", " rcamino, oro.dti, fslr")
-mat = matrix(mat, ncol = 2, byrow = TRUE)
-df = data.frame(mat, stringsAsFactors = FALSE)
-colnames(df) = c("Capabilities", "Packages")
-df$Packages = trimws(df$Packages)
-pander(df)
-```
+
+Capabilities               Packages                                   
+-------------------------  -------------------------------------------
+DICOM Images               oro.dicom, dcm2niir, divest, ANTsR         
+NIfTI Images               oro.nifti, RNifti, ANTsR                   
+Image Registration         spm12r, fslr, ANTsR, freesurfer            
+Inhomogeneity Correction   spm12r, fslr, ANTsR                        
+Brain Extraction           spm12r, fslr, ANTsR, extrantsr             
+Structure Segmentation     spm12r, fslr, ANTsR, extrantsr, freesurfer 
+Intensity Normalization    WhiteStripe, neurobase, ANTsR              
+3D Smoothing               ANTsR, spm12r, fslr                        
+Temporal Filtering         spm12r, fslr, ANTsR                        
+Slice-timing correction    spm12r, fslr                               
+DTI models                 rcamino, oro.dti, fslr                     
 
 
 
@@ -496,15 +443,7 @@ Neuromorphometrics, Inc. (http://Neuromorphometrics.com/)
 
 ## malf.templates: Segmented T1-weighted Images 
 
-```{r, echo = FALSE}
-library(malf.templates)
-L = malf_images()
-L = lapply(L, `[`, 1)
-lab = readnii(L$labels)
-img = readnii(L$images)
-nlabs = length(unique(c(lab)))
-ortho2(img, lab, col.y = rainbow(nlabs))
-```
+![](Multimodal_Workshop_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ## MALF: Skull Stripping Example
 
@@ -528,7 +467,8 @@ From [@mass]:
 
 Provide an installer to download the current packages: 
 
-```{r, eval = FALSE, echo = TRUE}
+
+```r
 source("https://neuroconductor.org/neurocLite.R")
 neurocLite("kirby21.fmri")
 neurocLite("neurobase")
@@ -538,7 +478,8 @@ neurocLite("ANTsR")
 
 ## `kirby21.fmri`: fMRI data from Kirby21
 
-```{r, echo = TRUE, eval = FALSE}
+
+```r
 library(kirby21.t1) # load T1 data
 library(kirby21.fmri) # load fMRI data
 library(kirby21.base) # helper package to download data
@@ -549,30 +490,17 @@ print(fnames)
 t1_fname = fnames$T1 
 fmri_fname = fnames$fMRI
 ```
-```{r, echo = FALSE, eval = TRUE, results='markup'}
-library(kirby21.t1) # load T1 data
-library(kirby21.fmri) # load fMRI data
-library(kirby21.base) # helper package to download data
-library(neurobase) # neuroconductor base package
-fnames = get_image_filenames_list(
-  modalities = c("fMRI", "T1"), id = 113, visit = 1)
-ss = strsplit(unlist(fnames), "/")
-ss = sapply(ss, function(x) {
-  x = x[ seq(grep("library", x), length(x))]
-  x = paste(x, collapse = "/")
-})
-print(ss)
-t1_fname = fnames$T1 
-fmri_fname = fnames$fMRI
+
+```
+                                                 fMRI 
+"library/kirby21.fmri/visit_1/113/113-01-fMRI.nii.gz" 
+                                                   T1 
+    "library/kirby21.t1/visit_1/113/113-01-T1.nii.gz" 
 ```
 
 ## Plot the T1
 
-```{r}
-t1 = readnii(t1_fname)
-t1 = robust_window(t1)
-ortho2(t1)
-```
+![](Multimodal_Workshop_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 <!-- ## A DTI Example -->
 

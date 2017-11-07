@@ -1,11 +1,12 @@
 ---
-title: "Neuroconductor: Medical Image Analysis in R"
-author: 'John Muschelli<br/>http://johnmuschelli.com/Pitt_2017.html<br/> Johns Hopkins Bloomberg School of Public Health'
+title: "Medical Image Analysis in R"
+author: 'John Muschelli<br/>http://johnmuschelli.com/Multimodal_Workshop.html<br/> Johns Hopkins Bloomberg School of Public Health'
 output:
   ioslides_presentation:
     css: neuroconductor.css
     self_contained: no
     widescreen: yes
+    keep_md: true
   beamer_presentation: default
   slidy_presentation:
     css: neuroconductor.css
@@ -30,54 +31,50 @@ library(httr)
 library(neurobase)
 ```
 
+# R is a language and environment <br>for **statistical** computing <br>and graphics. <br> https://cran.r-project.org/
 
-## What language do you use for analysis?
+## R is a base set of foundational functions {.centered}
 
-- R
-- SAS / Stata
-- Matlab
-- Python
+<img src="figures/r_no_packages.png" style="width:50%; margin: auto;" alt="flow"> 
 
-## What language do you use for imaging analysis?
+## With by user-written packages of functions {.centered}
 
 
-- R
-- Matlab (e.g. SPM)
-- Python
-- bash (e.g. FSL)
-
-(note SAS/Stata do not exist in this domain)
-
-<!-- ## Are these the same? -->
-
-<!-- - Yes -->
-<!-- - No -->
+<img src="figures/r_with_packages.png" style="width:50%; margin: auto;" alt="flow"> 
 
 
-<!-- ## <img src="figures/My_timeline.gif" style="width:1050px; height:400px; display: block; margin: auto;" alt="timeline"> -->
-<!-- <div> -->
-<!-- &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;fMRI&emsp;&emsp;&emsp;MRI/CT<br> -->
-<!-- &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;analysis&emsp;&ensp;analysis -->
-<!-- </div> -->
-
-
-<!-- ## Lessons Learned using Matlab/SPM -->
-
-<!-- - Matlab and R are very similar (sometimes annoyingly so) -->
-<!-- - R had more intuitive (to me) spreadsheet structures -->
-<!-- - SPM has great tools, but not all are intuitive -->
-<!--     - Batch tools are great -->
-<!--     - Checking registration can be a pain -->
-
-## Why R?
+## Benefits of R
 
 - Free, open-source
 - Cross-platform
-- Over 10000 packages
+- Over 11000 packages
 - Taught by stat/biostat departments
-- Packaging system is good (well-documented, tested, doable)
-- RStudio
-- (I know R)
+- Packaging system is good (well-documented, tested, relatively-understandable)
+- RStudio - company and software
+
+
+# Everything that exists is an object.<br> Everything that happens is a function call.<br> [@chambers2014object]
+
+## For example:
+
+```{r, eval = FALSE}
+library(neurobase) # similar to import lib
+img = readnii("/path/to/image.nii.gz")
+```
+
+```{r, eval = TRUE, echo = FALSE, message=FALSE}
+library(neurobase)
+library(fslr)
+img = readrpi("anat.nii.gz", verbose = FALSE)
+```
+
+
+## Plotting orthographic
+
+```{r}
+ortho2(img)
+```
+
 
 ## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
@@ -86,11 +83,13 @@ library(neurobase)
 - published tutorials and workflows 
 - additional requirements to CRAN (e.g. packages need vignettes)
 
+
 ## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
 - team of developers/maintainers
 - multiple grants of support 
 
+# Neuroconductor: An R Platform for Medical Imaging Analysis
 
 ## Inspiration <img src="figures/nipype.png" style="width:80%; display: inline; margin: auto;" alt="flow">
 
@@ -109,19 +108,6 @@ library(neurobase)
 
 ## Inspiration: SPM/MATLAB has GUI + courses!<br> <img src="figures/spm.png" style="width:80%; display: inline; margin: auto;" alt="flow">
 
-<!-- ## What did R have? -->
-<!-- <div class="container">  -->
-<!--   <div class="left-half">  -->
-<!--   <img src="figures/imaging_task_view.png" style="width:130%; display: inline; margin: auto;" alt="flow"> -->
-
-<!--   </div>     -->
-<!--   <div class="right-half"> -->
-<!--   <p style='font-size: 12pt;'> [https://imgflip.com/memegenerator/Grandma-Finds-The-Internet](https://imgflip.com/memegenerator/Grandma-Finds-The-Internet) -->
-<!--   </p>   -->
-<!-- <img src="figures/grandma_meme.jpg" style="width:55%; display: block; margin: auto;" alt="flow"> -->
-
-<!--   </div> -->
-<!-- </div> -->
 
 ## What did R have?
 <img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
@@ -147,7 +133,7 @@ library(neurobase)
 4.  A centralized repository of maintained packages
 
 
-<!-- ## What did R have?<br> <img src="figures/imaging_task_view.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br>Users: where do I start??? -->
+
 
 
 ## Goal: Centralize the packages (currently `r nr`)
@@ -166,7 +152,7 @@ Detailed **tutorials** on how to actually perform an analysis
 
 </br>
 
-- [http://johnmuschelli.com/neuroc/](http://johnmuschelli.com/neuroc/)  
+- [http://johnmuschelli.com/neuroc](http://johnmuschelli.com/neuroc/)  
 
 </div> 
 </div>    
@@ -368,7 +354,8 @@ mat = matrix(mat, ncol = 2, byrow = TRUE)
 df = data.frame(mat, stringsAsFactors = FALSE)
 colnames(df) = c("Capabilities", "Packages")
 df$Packages = trimws(df$Packages)
-pander(df)
+# pander(df)
+knitr::kable(df)
 ```
 
 
@@ -460,15 +447,6 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 - Tutorial: http://johnmuschelli.com/neuroc/neurohcp
 
 
-## spm12r: Wrapper Functions for SPM
-
-- Wraps some MATLAB code to call SPM scripts
-- Built from SPM batch commands
-- `spm12_slice_timing`, `spm12_realign`
-- `spm12_coregister`, `spm12_segment`
-- `spm12_normalize`, `spm12_smooth`
-- http://johnmuschelli.com/neuroc/fmri_analysis_spm12r/index.html
-
 ## rcamino: Port of Camino Software
 
 - Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
@@ -494,7 +472,7 @@ Neuromorphometrics, Inc. (http://Neuromorphometrics.com/)
     - Hand segmented structures - useful for multi-atlas label fusion (MALF)
 
 
-## malf.templates: Segmented T1-weighted Images 
+## malf.templates: segmented T1-weighted images 
 
 ```{r, echo = FALSE}
 library(malf.templates)
@@ -572,6 +550,104 @@ fmri_fname = fnames$fMRI
 t1 = readnii(t1_fname)
 t1 = robust_window(t1)
 ortho2(t1)
+```
+
+
+## spm12r: Wrapper Functions for SPM
+
+- Wraps some `MATLAB` code to call SPM scripts
+- Using `R` syntax (but cheating bc `MATLAB` runs the code)
+- Built from SPM batch commands
+- `spm12_slice_timing`, `spm12_realign`
+- `spm12_coregister`, `spm12_segment`
+- `spm12_normalize`, `spm12_smooth`
+
+# Worked Example<br>Disclaimer: there is no universal fMRI pipeline
+
+# `spm12r` Worked Example<br>Disclaimer: there is no universal fMRI pipeline
+
+# Overview of `spm12r` functions
+  
+Requires MATLAB (installs SPM to R library)
+  
+- `spm12_slice_timing` - slices are not taken instantaneously
+- `spm12_realign` - people move
+- `spm12_coregister` - structural imaging is higher resolution
+- `spm12_segment` - where's the gray matter?
+- `spm12_normalize` - brains look better in MNI
+- `spm12_smooth` - turn that noise down
+
+## Worked example: DICOM conversion
+
+- DICOM to NIfTI: Convert the data using `dcm2niix` (https://github.com/rordenlab/dcm2niix).
+- `dcm2niir`: https://github.com/muschellij2/dcm2niir
+- `divest`: https://github.com/jonclayden/divest
+
+```{r, eval = FALSE}
+divest_result = divest::readDicom(path = "/path/to/DICOMs")
+dcm2niir_result = dcm2niir::dcm2nii(basedir = "/path/to/DICOMs")
+```
+
+
+## Data required for analysis
+
+- One anatomical T1-weighted scan: `anat.nii.gz`
+- One 4D fMRI task-related scan: `fmri.nii.gz`.  Use `fslmerge` if 3D to 4D
+- Information on design:
+    - onsets of stimuli
+    - duration of stimuli
+- Order of slices (which was first slice) 
+    - or time slice measured (in ms).
+    
+    
+## Data required for analysis
+
+- One anatomical T1-weighted scan: `anat.nii.gz`
+- One 4D fMRI task-related scan: `fmri.nii.gz`.  Use `fslmerge` if 3D to 4D
+- Information on design:
+    - onsets of stimuli
+    - duration of stimuli
+- Order of slices (which was first slice) 
+    - or time slice measured (in ms).    
+
+## Download the data 
+
+Data location: https://figshare.com/articles/SFO-example/5442298
+
+```{r makefiles, echo = TRUE, eval = FALSE}
+library(httr)
+url = paste0("https://ndownloader.figshare.com/articles/",
+             "5442298/versions/1")
+zipfile = tempfile(fileext = ".zip")
+res = GET(url, 
+  write_disk(path = zipfile),
+  if (interactive()) progress())
+run_dir = tempfile()
+if (!dir.exists(run_dir)) {
+  dir.create(run_dir)
+}
+out_files = utils::unzip(zipfile, exdir = run_dir)
+names(out_files) = neurobase::nii.stub(out_files, bn = TRUE)
+file.remove(zipfile)
+```
+
+
+```{r makefiles, echo = FALSE, cache = TRUE}
+library(httr)
+url = paste0(
+  "https://ndownloader.figshare.com/articles/",
+  "5442298/versions/1")
+zipfile = tempfile(fileext = ".zip")
+res = GET(url, 
+  write_disk(path = zipfile),
+  if (interactive()) progress())
+run_dir = "."
+if (!dir.exists(run_dir)) {
+  dir.create(run_dir)
+}
+out_files = utils::unzip(zipfile, exdir = run_dir)
+names(out_files) = neurobase::nii.stub(out_files, bn = TRUE)
+file.remove(zipfile)
 ```
 
 <!-- ## A DTI Example -->

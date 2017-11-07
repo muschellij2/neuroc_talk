@@ -153,3 +153,8 @@ slides > slide:not(.nobackground):before {
       background: url($logo$) ;
       */
     }
+
+
+a {
+	word-wrap: break-word;
+}
