@@ -7,3 +7,9 @@ httr
 oro.nifti
 neurobase
 fslr
+malf.templates
+kirby21.t1
+kirby21.fmri
+kirby21.base
+matlabr
+spm12r

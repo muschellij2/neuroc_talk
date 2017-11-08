@@ -29,6 +29,8 @@ library(pander)
 library(rvest)
 library(httr)
 library(neurobase)
+library(matlabr)
+library(spm12r)
 ```
 
 # R is a language and environment <br>for **statistical** computing <br>and graphics. <br> https://cran.r-project.org/
@@ -38,7 +40,6 @@ library(neurobase)
 <img src="figures/r_no_packages.png" style="width:50%; margin: auto;" alt="flow"> 
 
 ## With by user-written packages of functions {.centered}
-
 
 <img src="figures/r_with_packages.png" style="width:50%; margin: auto;" alt="flow"> 
 
@@ -62,7 +63,7 @@ library(neurobase) # similar to import lib
 img = readnii("/path/to/image.nii.gz")
 ```
 
-```{r, eval = TRUE, echo = FALSE, message=FALSE}
+```{r, eval = TRUE, echo = TRUE, message=FALSE}
 library(neurobase)
 library(fslr)
 img = readrpi("anat.nii.gz", verbose = FALSE)
@@ -71,97 +72,9 @@ img = readrpi("anat.nii.gz", verbose = FALSE)
 
 ## Plotting orthographic
 
-```{r}
+```{r, echo = TRUE, fig.align='center'}
 ortho2(img)
 ```
-
-
-## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
-
-- centralized bioinformatics/genomics packages
-- large community/number of packages (> 1300)
-- published tutorials and workflows 
-- additional requirements to CRAN (e.g. packages need vignettes)
-
-
-## Inspiration<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
-
-- team of developers/maintainers
-- multiple grants of support 
-
-# Neuroconductor: An R Platform for Medical Imaging Analysis
-
-## Inspiration <img src="figures/nipype.png" style="width:80%; display: inline; margin: auto;" alt="flow">
-
-- integrates multiple neuroimaging software
-- standardizes the syntax
-- provides workflows
-- allows the user to take advantage of all of Python
-    - pandas, scikit-learn, Jupyter notebooks
-
-```{r, cache = TRUE, echo = FALSE, results='hide'}
-  url = httr:::GET("https://neuroconductor.org/list-packages/all")
-  cr = content(url)
-  tab = html_table(cr)[[1]]
-  nr = nrow(tab)
-```
-
-## Inspiration: SPM/MATLAB has GUI + courses!<br> <img src="figures/spm.png" style="width:80%; display: inline; margin: auto;" alt="flow">
-
-
-## What did R have?
-<img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
-  <p style='font-size: 12pt;'> [https://imgflip.com/memegenerator/Grandma-Finds-The-Internet](https://imgflip.com/memegenerator/Grandma-Finds-The-Internet)
-  </p>  
-
-
-## What did R have?
-
-  <img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow">
-  
-
-
-# <img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis
-
-
-## What **really** is Neuroconductor?
-
-1.  A community of developers and users of R packages for imaging
-2.  A website [https://neuroconductor.org/](https://neuroconductor.org/).
-    - with tutorials and help
-3.  A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)
-4.  A centralized repository of maintained packages
-
-
-
-
-
-## Goal: Centralize the packages (currently `r nr`)
-
-  <img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow">
-
-
-----
-<div class="container"> 
-<div id="left_col2"> 
-<h2>Neuroconductor Goal: </h2>
-
-<div style='font-size: 28pt;'>
-
-Detailed **tutorials** on how to actually perform an analysis  
-
-</br>
-
-- [http://johnmuschelli.com/neuroc](http://johnmuschelli.com/neuroc/)  
-
-</div> 
-</div>    
-<div id="right_col2">
-<img src="figures/cat_analysis.gif" style="width:80%; display: block; margin: auto;">
-<p style='font-size: 10pt;'> From [http://i.imgur.com/0Y1xISa.gifv](http://i.imgur.com/0Y1xISa.gifv).
-</p>
-</div>
-</div>
 
 
 
@@ -214,7 +127,7 @@ Carp, Joshua. "The secret lives of experiments: methods reporting in the fMRI li
 ----
 <div class="container"> 
 <div id="left_col2"> 
-  <h2>Goal: </h2>
+  <h2>My Goal: </h2>
 <div style='font-size: 24pt;'>
   
 Lower the bar to entry 
@@ -233,60 +146,90 @@ Complete pipeline
   </div>
 </div>
 
-## Using R as a Pipeline Tool: fslr
-
-- `fslr` package - call FSL from R
-
-- Requires FSL to be installed and in PATH
-    - FSL only available on Unix-style systems
-
-<img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow">
 
 
-## Why not CRAN: The story of ANTsR
-
-ANTs: Advanced Normalization Tools
-
-- State-of-the-art image processing pipelines
-- Built at UPenn under Brian Avants
-    - Group has won challenges for imaging analysis
-- Still actively maintained and developed
-- Depends on the Insight ToolKit (ITK) medical image processing library
+## What did R have?
+<img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 12pt;'> [https://imgflip.com/memegenerator/Grandma-Finds-The-Internet](https://imgflip.com/memegenerator/Grandma-Finds-The-Internet)
+  </p>  
 
 
-## The story of ANTsR: Porting ANTs to R 
+## What did R have?
 
-- Group tried to wrap C++ code with Rcpp for it to work "seamlessly" with R
-- [Had some issues with CRAN](https://github.com/stnava/ANTsR/issues/8)
-- Most developers response: "just make it work"
-- **NOT** like `fslr` - this built the libraries and could be called using `.Call`
-    - possible (not yet) to use on Windows
+  <img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow">
+  
 
-## Why not CRAN: Dependencies
+## Bioinformatics Repository: Bioconductor<br> <img src="figures/biocview.png" style="width:100%; display: inline; margin: auto;" alt="flow"> 
 
-- ANTsR depends on `CMake`: <img src="figures/cmake_logo.png" style="width:30%; display: inline; margin: auto;" alt="flow">
-- ANTsR also depends on ITKR - large code base
-- External dependencies are not always welcome
-- [CRAN response](https://stat.ethz.ch/pipermail/r-package-devel/2015q2/000106.html): <img src="figures/cmake.png" style="width:30%; display: inline; margin: auto;" alt="flow"> (more or less)
+## Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
-## Why not CRAN: Checks
+- centralized bioinformatics/genomics packages
+- large community/number of packages (> 1300)
+- published tutorials and workflows 
+- additional requirements to CRAN (e.g. packages need vignettes)
 
-- We would like more stringent checks than CRAN (like vignettes) like Bioconductor
-- But **also** more lenient ones 
-  - Examples may take > 5 seconds to compile
-  - Time to build package may take a while
-  - May not work on Windows if not applicable
 
-## Why not CRAN: Data
+## Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
-Medical images are big (> 5 mb) compared to code
+- team of developers/maintainers
+- multiple grants of support 
 
-**CRAN doesn't like this**
+## Python Framework: NiPy <img src="figures/nipype.png" style="width:80%; display: inline; margin: auto;" alt="flow">
 
-- Example data packages are harder to get passed
-- We got `kirby21.t1` and `kirby21.fmri`, but they have an implicit downloader function in the code
-- Necessary for testing code examples in imaging
-  - **STANDARDIZED** file location (`system.file`)
+- integrates multiple neuroimaging software
+- standardizes the syntax
+- provides workflows
+- allows the user to take advantage of all of Python
+    - pandas, scikit-learn, Jupyter notebooks
+
+```{r, cache = TRUE, echo = FALSE, results='hide'}
+url = httr:::GET("https://neuroconductor.org/list-packages/all")
+cr = content(url)
+tab = html_table(cr)[[1]]
+nr = nrow(tab)
+```
+
+
+# <img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis
+
+
+
+## What is Neuroconductor?
+
+1.  A community of developers and users of R packages for imaging
+2.  A website [https://neuroconductor.org/](https://neuroconductor.org/).
+    - with tutorials and help
+3.  A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)
+4.  A centralized repository of maintained packages
+
+
+## Goal: Centralize the packages (currently `r nr`)
+
+  <img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow">
+
+
+----
+<div class="container"> 
+<div id="left_col2"> 
+<h2>Neuroconductor Goal: </h2>
+
+<div style='font-size: 28pt;'>
+
+Detailed **tutorials** on how to actually perform an analysis  
+
+</br>
+
+- [http://johnmuschelli.com/neuroc](http://johnmuschelli.com/neuroc/)  
+
+</div> 
+</div>    
+<div id="right_col2">
+<img src="figures/cat_analysis.gif" style="width:80%; display: block; margin: auto;">
+<p style='font-size: 10pt;'> From [http://i.imgur.com/0Y1xISa.gifv](http://i.imgur.com/0Y1xISa.gifv).
+</p>
+</div>
+</div>
+
 
 # Solution: Build a Bioconductor-like Solution using Current Tools
 
@@ -328,13 +271,24 @@ Check the package for stability
 </div>
 
 
-
-## ANTsR Revisited: Helping Developers
+## Helping Developers
 
 - GitHub allows the Neuroconductor team to help fix issues
-- Standardized ANTsR checking for NeuroC
-- Pull Requests to Group ICA package (Brian Caffo)
+- Pull Requests to developers
+- Standardized checking of Packages (Travis configuration)
 - Remove unnecessary hurdles for developers
+
+
+## Neuroconductor installer:
+
+Provide an installer to download the current packages: 
+
+```{r, eval = FALSE, echo = TRUE}
+source("https://neuroconductor.org/neurocLite.R")
+neurocLite("kirby21.fmri")
+neurocLite("neurobase")
+neurocLite("ANTsR")
+```
 
 ## Neuroconductor Capabilities
 
@@ -427,9 +381,36 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 
 # Without Knowing the Processing,<br> Analyses Cannot be Trusted
 
-# No Code = No Method
+# Example Packages
 
-# Current Neuroconductor Packages Overviews
+## Using R as a Pipeline Tool: fslr
+
+- `fslr` package - call FSL from R
+
+- Requires FSL to be installed and in PATH
+    - FSL only available on Unix-style systems
+
+<img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow">
+
+## RNifti
+
+- provides lightweight objects as C++ pointers (fast operations)
+- Wrapped in Rcpp: Works on all platforms
+
+## RNiftyReg
+
+- Registration of Images
+- Wrapped in Rcpp: Works on all platforms
+
+## ANTsR
+
+Based on ANTs: Advanced Normalization Tools
+
+- State-of-the-art image processing pipelines
+- Built at UPenn under Brian Avants
+    - Group has won challenges for imaging analysis
+- Still actively maintained and developed
+- Depends on the Insight ToolKit (ITK) medical image processing library
 
 ## dcm2niir and divest: Converting DICOM data
 
@@ -502,16 +483,6 @@ From [@mass]:
 
 
 
-## Neuroconductor installer:
-
-Provide an installer to download the current packages: 
-
-```{r, eval = FALSE, echo = TRUE}
-source("https://neuroconductor.org/neurocLite.R")
-neurocLite("kirby21.fmri")
-neurocLite("neurobase")
-neurocLite("ANTsR")
-```
 
 
 ## `kirby21.fmri`: fMRI data from Kirby21
@@ -544,13 +515,24 @@ t1_fname = fnames$T1
 fmri_fname = fnames$fMRI
 ```
 
-## Plot the T1
 
-```{r}
-t1 = readnii(t1_fname)
-t1 = robust_window(t1)
-ortho2(t1)
-```
+
+## `spant`: MR Spectroscopy Analysis Tools
+
+- Metabolite combination analysis
+- Non-brain imaging!
+
+
+## `lungct`: tools for Lung CT analysis
+
+- Non-brain imaging!
+- Not MR!
+
+## Current limitations
+
+- R is cross platform, but some packages that depend on *nix-only software can only be run on those systems
+- Still in beta testing, but more likely to incorporate requests
+- Rcpp requires compiled code, which can be tricky (but still cross-platform!)
 
 
 ## spm12r: Wrapper Functions for SPM
@@ -558,18 +540,6 @@ ortho2(t1)
 - Wraps some `MATLAB` code to call SPM scripts
 - Using `R` syntax (but cheating bc `MATLAB` runs the code)
 - Built from SPM batch commands
-- `spm12_slice_timing`, `spm12_realign`
-- `spm12_coregister`, `spm12_segment`
-- `spm12_normalize`, `spm12_smooth`
-
-# Worked Example<br>Disclaimer: there is no universal fMRI pipeline
-
-# `spm12r` Worked Example<br>Disclaimer: there is no universal fMRI pipeline
-
-# Overview of `spm12r` functions
-  
-Requires MATLAB (installs SPM to R library)
-  
 - `spm12_slice_timing` - slices are not taken instantaneously
 - `spm12_realign` - people move
 - `spm12_coregister` - structural imaging is higher resolution
@@ -577,141 +547,17 @@ Requires MATLAB (installs SPM to R library)
 - `spm12_normalize` - brains look better in MNI
 - `spm12_smooth` - turn that noise down
 
-## Worked example: DICOM conversion
 
-- DICOM to NIfTI: Convert the data using `dcm2niix` (https://github.com/rordenlab/dcm2niix).
-- `dcm2niir`: https://github.com/muschellij2/dcm2niir
-- `divest`: https://github.com/jonclayden/divest
+## Resources
 
-```{r, eval = FALSE}
-divest_result = divest::readDicom(path = "/path/to/DICOMs")
-dcm2niir_result = dcm2niir::dcm2nii(basedir = "/path/to/DICOMs")
-```
+https://neuroconductor.org/
 
+https://neuroconductor.org/neuroc-help - tutorials
 
-## Data required for analysis
+https://neuroconductor.org/courses - courses
 
-- One anatomical T1-weighted scan: `anat.nii.gz`
-- One 4D fMRI task-related scan: `fmri.nii.gz`.  Use `fslmerge` if 3D to 4D
-- Information on design:
-    - onsets of stimuli
-    - duration of stimuli
-- Order of slices (which was first slice) 
-    - or time slice measured (in ms).
-    
-    
-## Data required for analysis
+http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf - task-fMRI specific
 
-- One anatomical T1-weighted scan: `anat.nii.gz`
-- One 4D fMRI task-related scan: `fmri.nii.gz`.  Use `fslmerge` if 3D to 4D
-- Information on design:
-    - onsets of stimuli
-    - duration of stimuli
-- Order of slices (which was first slice) 
-    - or time slice measured (in ms).    
-
-## Download the data 
-
-Data location: https://figshare.com/articles/SFO-example/5442298
-
-```{r makefiles, echo = TRUE, eval = FALSE}
-library(httr)
-url = paste0("https://ndownloader.figshare.com/articles/",
-             "5442298/versions/1")
-zipfile = tempfile(fileext = ".zip")
-res = GET(url, 
-  write_disk(path = zipfile),
-  if (interactive()) progress())
-run_dir = tempfile()
-if (!dir.exists(run_dir)) {
-  dir.create(run_dir)
-}
-out_files = utils::unzip(zipfile, exdir = run_dir)
-names(out_files) = neurobase::nii.stub(out_files, bn = TRUE)
-file.remove(zipfile)
-```
-
-
-```{r makefiles, echo = FALSE, cache = TRUE}
-library(httr)
-url = paste0(
-  "https://ndownloader.figshare.com/articles/",
-  "5442298/versions/1")
-zipfile = tempfile(fileext = ".zip")
-res = GET(url, 
-  write_disk(path = zipfile),
-  if (interactive()) progress())
-run_dir = "."
-if (!dir.exists(run_dir)) {
-  dir.create(run_dir)
-}
-out_files = utils::unzip(zipfile, exdir = run_dir)
-names(out_files) = neurobase::nii.stub(out_files, bn = TRUE)
-file.remove(zipfile)
-```
-
-<!-- ## A DTI Example -->
-
-<!-- - Download the Diffusion data for an HCP subject -->
-
-<!-- ```{r eval = FALSE, echo = TRUE} -->
-<!-- library(neurohcp) -->
-<!-- result = download_hcp_dir("HCP/100307/T1w/Diffusion", verbose = FALSE) -->
-<!-- print(basename(result$output_files)) -->
-<!-- ```` -->
-
-<!-- ```{r, eval = TRUE, echo = FALSE} -->
-<!-- result = list(output_files = c("bvals", "bvecs", "data.nii.gz", "grad_dev.nii.gz", "nodif_brain_mask.nii.gz") -->
-<!-- ) -->
-<!-- result$output_files -->
-<!-- ``` -->
-
-<!-- ## Fit a DTI Model -->
-
-<!-- ```{r eval = FALSE} -->
-<!-- # Extract the DTI files for the subject and name them using the NIfTI format -->
-<!-- library(neurobase) -->
-<!-- library(rcamino) -->
-<!-- outfiles <- result$output_files -->
-<!-- names(outfiles) <- neurobase::nii.stub(basename(outfiles)) -->
-
-<!-- # Specify the B-values and B-vectors used in the HCP database for further processing: -->
-<!-- camino_fsl2scheme(bvecs = outfiles[["bvecs"]], bvals = outfiles[["bvals"]], -->
-<!--     outfile = "hcp.scheme") -->
-
-<!-- # Convert the diffusion data from NIfTI to Camino format: -->
-<!-- camino_image2voxel(infile = outfiles[["data"]], outfile = "dwi.Bfloat") -->
-
-<!-- # Fit the diffusion tensor imaging model: -->
-<!-- camino_modelfit(infile = "dwi.Bfloat", outfile = "dt.Bdouble",  -->
-<!--     scheme = "hcp.scheme", gradadj = outfiles[["grad_dev"]], -->
-<!--     model = "ldt", mask = outfiles[["nodif_brain_mask"]]) -->
-
-<!-- # Produce the FA and MD maps from the fitted tensor data: -->
-<!-- fa <- camino_fa_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]]) -->
-<!-- md <- camino_md_img(infile = "dt.Bdouble", inputmodel = "dt", header = outfiles[["data"]]) -->
-<!-- ``` -->
-
-
-## Future work
-  - F1000 R packages channel - get publication for workflow
-  - Removing dupliate packages from CRAN - like Bioconductor
-  - Docker image for Neuroconductor: <img src="figures/docker.png" style="width:15%; display: inline; margin: auto;" alt="flow">   
-    - have all dependencies/external software in one container
-
-## Go to
-
-http://johnmuschelli.com/imaging_in_r/index.html
-
-Example MPRAGE T1 image can be found at [http://bit.ly/pittimg](http://bit.ly/pittimg)
-
-Download the `.R` file
-[http://bit.ly/pittscript](http://bit.ly/pittscript)
-
-fMRI in Shiny
-[http://bit.ly/shinybrain](http://bit.ly/shinybrain)
-
-Papaya Example
-[http://bit.ly/pittpapaya](http://bit.ly/pittpapaya)
+http://www.brainmapping.org/NITP/Summer2011.php
 
 ## References
