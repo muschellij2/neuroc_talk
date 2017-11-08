@@ -287,7 +287,7 @@ DTI models                 rcamino, oro.dti, fslr
 
 <div style='font-size: 32pt;'>
   
-Allow imaging to use all R has to offer:
+Allow imaging to use all `R` has to offer:
   
 - Statistics and Machine Learning
 - Versioning and testing
@@ -311,23 +311,6 @@ Allow imaging to use all R has to offer:
 
 </div>
 
-----
-<div class="container"> 
-<div id="left_col2"> 
-  <h2>Potential Neuroconductor Downsides: </h2>
-<div style='font-size: 24pt;'>
-
-Enabling statisticians to do preprocessing also **enables** imagers to do advanced statistics.
-
-- Why enlist us for only this part?
-
-</div>
-  </div>    
-  <div id="right_col2">
-<img src="figures/workflow_edited.png" style="width:70%; display: block; margin: auto;" alt="flow">
-  </div>
-</div>
-
 
 ## Training we are providing
 
@@ -341,14 +324,11 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 [https://www.coursera.org/learn/neurohacking/](https://www.coursera.org/learn/neurohacking/)
 
 <div style="font-size: 28pt;">
-   Neuroimaging analysis within R (ISBI, Melbourne, April 2017)
-
+  http://johnmuschelli.com/imaging_in_r/
    ENAR 2018
 </div>
 </div>
 
-
-# Without Knowing the Processing,<br> Analyses Cannot be Trusted
 
 # Example Packages
 
@@ -404,13 +384,6 @@ Based on ANTs: Advanced Normalization Tools
 - Fits models for DTI data
 - http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html
 
-
-## extrantsr: Extra functions for ANTsR
-
-- Wraps `ANTsR` functions for `nifti` objects (from oro.nifti)
-- `malf` function - performs a basic MALF algorithm
-- `within_visit_registration` - performs within-visit registration for structural MRI
-- `preprocess_mri_within` - pipeline to process within-visit sMRI
 
 
 
