@@ -122,11 +122,11 @@ article {
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
 
-</article></slide><slide class=""><hgroup><h2>R is a base set of foundational functions</h2></hgroup><article  class="centered" id="r-is-a-base-set-of-foundational-functions">
+</article></slide><slide class=""><hgroup><h2>R is a base set of foundational functions</h2></hgroup><article  id="r-is-a-base-set-of-foundational-functions" class="centered">
 
 <p><img src="figures/r_no_packages.png" style="width:50%; margin: auto;" alt="flow"></p>
 
-</article></slide><slide class=""><hgroup><h2>With by user-written packages of functions</h2></hgroup><article  class="centered" id="with-by-user-written-packages-of-functions">
+</article></slide><slide class=""><hgroup><h2>With by user-written packages of functions</h2></hgroup><article  id="with-by-user-written-packages-of-functions" class="centered">
 
 <p><img src="figures/r_with_packages.png" style="width:50%; margin: auto;" alt="flow"></p>
 
@@ -282,7 +282,7 @@ My Goal:
 </ul></li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Introducing<br><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="introducing-an-r-platform-for-medical-imaging-analysis">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="an-r-platform-for-medical-imaging-analysis">
 
 </article></slide><slide class=""><hgroup><h2>What is Neuroconductor?</h2></hgroup><article  id="what-is-neuroconductor">
 
@@ -329,85 +329,6 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 
 </p></div></div>
 
-</article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr</h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
-
-<ul>
-<li><p><code>fslr</code> package - call FSL from R</p></li>
-<li>Requires FSL to be installed and in PATH
-
-<ul>
-<li>FSL only available on Unix-style systems</li>
-</ul></li>
-</ul>
-
-<p><img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow"></p>
-
-</article></slide><slide class=""><hgroup><h2>Why not CRAN: The story of ANTsR</h2></hgroup><article  id="why-not-cran-the-story-of-antsr">
-
-<p>ANTs: Advanced Normalization Tools</p>
-
-<ul>
-<li>State-of-the-art image processing pipelines</li>
-<li>Built at UPenn under Brian Avants
-
-<ul>
-<li>Group has won challenges for imaging analysis</li>
-</ul></li>
-<li>Still actively maintained and developed</li>
-<li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>The story of ANTsR: Porting ANTs to R</h2></hgroup><article  id="the-story-of-antsr-porting-ants-to-r">
-
-<ul>
-<li>Group tried to wrap C++ code with Rcpp for it to work &ldquo;seamlessly&rdquo; with R</li>
-<li><a href='https://github.com/stnava/ANTsR/issues/8' title=''>Had some issues with CRAN</a></li>
-<li>Most developers response: &ldquo;just make it work&rdquo;</li>
-<li><strong>NOT</strong> like <code>fslr</code> - this built the libraries and could be called using <code>.Call</code>
-
-<ul>
-<li>possible (not yet) to use on Windows</li>
-</ul></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Why not CRAN: Dependencies</h2></hgroup><article  id="why-not-cran-dependencies">
-
-<ul>
-<li>ANTsR depends on <code>CMake</code>: <img src="figures/cmake_logo.png" style="width:30%; display: inline; margin: auto;" alt="flow"></li>
-<li>ANTsR also depends on ITKR - large code base</li>
-<li>External dependencies are not always welcome</li>
-<li><a href='https://stat.ethz.ch/pipermail/r-package-devel/2015q2/000106.html' title=''>CRAN response</a>: <img src="figures/cmake.png" style="width:30%; display: inline; margin: auto;" alt="flow"> (more or less)</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Why not CRAN: Checks</h2></hgroup><article  id="why-not-cran-checks">
-
-<ul>
-<li>We would like more stringent checks than CRAN (like vignettes) like Bioconductor</li>
-<li>But <strong>also</strong> more lenient ones
-
-<ul>
-<li>Examples may take &gt; 5 seconds to compile</li>
-<li>Time to build package may take a while</li>
-<li>May not work on Windows if not applicable</li>
-</ul></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Why not CRAN: Data</h2></hgroup><article  id="why-not-cran-data">
-
-<p>Medical images are big (&gt; 5 mb) compared to code</p>
-
-<p><strong>CRAN doesn’t like this</strong></p>
-
-<ul>
-<li>Example data packages are harder to get passed</li>
-<li>We got <code>kirby21.t1</code> and <code>kirby21.fmri</code>, but they have an implicit downloader function in the code</li>
-<li>Necessary for testing code examples in imaging
-
-<ul>
-<li><strong>STANDARDIZED</strong> file location (<code>system.file</code>)</li>
-</ul></li>
-</ul>
-
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Solution: Build a Bioconductor-like Solution using Current Tools</h2></hgroup><article  id="solution-build-a-bioconductor-like-solution-using-current-tools">
 
 </article></slide><slide class=""><hgroup><h2>Git and GitHub</h2></hgroup><article  id="git-and-github">
@@ -451,14 +372,23 @@ Development Pipeline:
 <div id="right_col2">
 <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
 
-</article></slide><slide class=""><hgroup><h2>ANTsR Revisited: Helping Developers</h2></hgroup><article  id="antsr-revisited-helping-developers">
+</article></slide><slide class=""><hgroup><h2>Helping Developers</h2></hgroup><article  id="helping-developers">
 
 <ul>
 <li>GitHub allows the Neuroconductor team to help fix issues</li>
-<li>Standardized ANTsR checking for NeuroC</li>
-<li>Pull Requests to Group ICA package (Brian Caffo)</li>
+<li>Pull Requests to developers</li>
+<li>Standardized checking of Packages (Travis configuration)</li>
 <li>Remove unnecessary hurdles for developers</li>
 </ul>
+
+</article></slide><slide class=""><hgroup><h2>Neuroconductor installer:</h2></hgroup><article  id="neuroconductor-installer">
+
+<p>Provide an installer to download the current packages:</p>
+
+<pre class = 'prettyprint lang-r'>source(&quot;https://neuroconductor.org/neurocLite.R&quot;)
+neurocLite(&quot;kirby21.fmri&quot;)
+neurocLite(&quot;neurobase&quot;)
+neurocLite(&quot;ANTsR&quot;)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Neuroconductor Capabilities</h2></hgroup><article  id="neuroconductor-capabilities">
 
@@ -582,9 +512,49 @@ Coursera Course: Introduction to Neurohacking In R</div>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Without Knowing the Processing,<br> Analyses Cannot be Trusted</h2></hgroup><article  id="without-knowing-the-processing-analyses-cannot-be-trusted">
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>No Code = No Method</h2></hgroup><article  id="no-code-no-method">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Example Packages</h2></hgroup><article  id="example-packages">
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Current Neuroconductor Packages Overviews</h2></hgroup><article  id="current-neuroconductor-packages-overviews">
+</article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr</h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
+
+<ul>
+<li><p><code>fslr</code> package - call FSL from R</p></li>
+<li>Requires FSL to be installed and in PATH
+
+<ul>
+<li>FSL only available on Unix-style systems</li>
+</ul></li>
+</ul>
+
+<p><img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=""><hgroup><h2>RNifti</h2></hgroup><article  id="rnifti">
+
+<ul>
+<li>provides lightweight objects as C++ pointers (fast operations)</li>
+<li>Wrapped in Rcpp: Works on all platforms</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>RNiftyReg</h2></hgroup><article  id="rniftyreg">
+
+<ul>
+<li>Registration of Images</li>
+<li>Wrapped in Rcpp: Works on all platforms</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>ANTsR</h2></hgroup><article  id="antsr">
+
+<p>Based on ANTs: Advanced Normalization Tools</p>
+
+<ul>
+<li>State-of-the-art image processing pipelines</li>
+<li>Built at UPenn under Brian Avants
+
+<ul>
+<li>Group has won challenges for imaging analysis</li>
+</ul></li>
+<li>Still actively maintained and developed</li>
+<li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>dcm2niir and divest: Converting DICOM data</h2></hgroup><article  id="dcm2niir-and-divest-converting-dicom-data">
 
@@ -626,27 +596,33 @@ Coursera Course: Introduction to Neurohacking In R</div>
 </article></slide><slide class=""><hgroup><h2>extrantsr: Extra functions for ANTsR</h2></hgroup><article  id="extrantsr-extra-functions-for-antsr">
 
 <ul>
-<li>Wraps <code>ANTsR</code> functions for nifti objects (from oro.nifti)</li>
+<li>Wraps <code>ANTsR</code> functions for <code>nifti</code> objects (from oro.nifti)</li>
 <li><code>malf</code> function - performs a basic MALF algorithm</li>
 <li><code>within_visit_registration</code> - performs within-visit registration for structural MRI</li>
 <li><code>preprocess_mri_within</code> - pipeline to process within-visit sMRI</li>
 </ul>
 
+</article></slide><slide class=""><hgroup><h2><code>kirby21.t1</code>/<code>kirby21.fmri</code>: fMRI data from Kirby21</h2></hgroup><article  id="kirby21.t1kirby21.fmri-fmri-data-from-kirby21">
+
+<ul>
+<li>data from <span class="cite">Landman et al. (2011)</span>
+
+<ul>
+<li>21 subjects scanned twice, multiple modalities</li>
+</ul></li>
+<li>provides 3 subjects for testing/examples/etc.</li>
+<li><a href='https://www.nitrc.org/projects/multimodal' title=''>https://www.nitrc.org/projects/multimodal</a>)</li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images">
 
+<div style="font-size: 20pt;">
 <ul>
 <li>Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data</li>
 <li>From OASIS project and the labeled data as provided by Neuromorphometrics, Inc. (<a href='http://Neuromorphometrics.com/' title=''>http://Neuromorphometrics.com/</a>)</li>
-<li>Have T1-weighted image, brain mask, image with mask applied, substructure segmentation
+</ul></div>
 
-<ul>
-<li>Hand segmented structures - useful for multi-atlas label fusion (MALF)</li>
-</ul></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>malf.templates: segmented T1-weighted images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images-1">
-
-<p><img src='Multimodal_Workshop_files/figure-html/unnamed-chunk-6-1.png' title=''/><!-- --></p>
+<p><img src='Multimodal_Workshop_files/figure-html/unnamed-chunk-7-1.png' title=''/><!-- --></p>
 
 </article></slide><slide class=""><hgroup><h2>MALF: Skull Stripping Example</h2></hgroup><article  id="malf-skull-stripping-example">
 
@@ -666,53 +642,39 @@ Coursera Course: Introduction to Neurohacking In R</div>
 </ul></li>
 </ul></div></div>
 
-</article></slide><slide class=""><hgroup><h2>Neuroconductor installer:</h2></hgroup><article  id="neuroconductor-installer">
+</article></slide><slide class=""><hgroup><h2><code>spant</code>: MR Spectroscopy Analysis Tools</h2></hgroup><article  id="spant-mr-spectroscopy-analysis-tools">
 
-<p>Provide an installer to download the current packages:</p>
+<ul>
+<li>Metabolite combination analysis</li>
+<li>Non-brain imaging!</li>
+</ul>
 
-<pre class = 'prettyprint lang-r'>source(&quot;https://neuroconductor.org/neurocLite.R&quot;)
-neurocLite(&quot;kirby21.fmri&quot;)
-neurocLite(&quot;neurobase&quot;)
-neurocLite(&quot;ANTsR&quot;)</pre>
+</article></slide><slide class=""><hgroup><h2><code>lungct</code>: tools for Lung CT analysis</h2></hgroup><article  id="lungct-tools-for-lung-ct-analysis">
 
-</article></slide><slide class=""><hgroup><h2><code>kirby21.fmri</code>: fMRI data from Kirby21</h2></hgroup><article  id="kirby21.fmri-fmri-data-from-kirby21">
+<ul>
+<li>Non-brain imaging!</li>
+<li>Not MR!</li>
+</ul>
 
-<pre class = 'prettyprint lang-r'>library(kirby21.t1) # load T1 data
-library(kirby21.fmri) # load fMRI data
-library(kirby21.base) # helper package to download data
-library(neurobase) # neuroconductor base package
-fnames = get_image_filenames_list(
-  modalities = c(&quot;fMRI&quot;, &quot;T1&quot;), id = 113, visit = 1)
-print(fnames)
-t1_fname = fnames$T1 
-fmri_fname = fnames$fMRI</pre>
+</article></slide><slide class=""><hgroup><h2>Current limitations</h2></hgroup><article  id="current-limitations">
 
-<pre >                                                 fMRI 
-&quot;library/kirby21.fmri/visit_1/113/113-01-fMRI.nii.gz&quot; 
-                                                   T1 
-    &quot;library/kirby21.t1/visit_1/113/113-01-T1.nii.gz&quot; </pre>
-
-</article></slide><slide class=""><hgroup><h2>Plot the T1</h2></hgroup><article  id="plot-the-t1">
-
-<p><img src='Multimodal_Workshop_files/figure-html/unnamed-chunk-10-1.png' title=''/><!-- --></p>
+<ul>
+<li>R is cross platform, but some packages that depend on *nix-only software can only be run on those systems</li>
+<li>Still in beta testing, but more likely to incorporate requests</li>
+<li>Rcpp requires compiled code, which can be tricky (but still cross-platform!)</li>
+<li>Licenses with data can be tricky</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>spm12r: Wrapper Functions for SPM</h2></hgroup><article  id="spm12r-wrapper-functions-for-spm">
 
 <ul>
 <li>Wraps some <code>MATLAB</code> code to call SPM scripts</li>
-<li>Using <code>R</code> syntax (but cheating bc <code>MATLAB</code> runs the code)</li>
+<li>Using <code>R</code> syntax (but <code>MATLAB</code> runs the code)</li>
 <li>Built from SPM batch commands</li>
-<li><code>spm12_slice_timing</code> - slices are not taken instantaneously</li>
-<li><code>spm12_realign</code> - people move</li>
-<li><code>spm12_coregister</code> - structural imaging is higher resolution</li>
-<li><code>spm12_segment</code> - where’s the gray matter?</li>
-<li><code>spm12_normalize</code> - brains look better in MNI</li>
-<li><code>spm12_smooth</code> - turn that noise down</li>
+<li>Shown in worked example: <a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Resources</h2></hgroup><article  id="resources">
-
-<p><a href='https://neuroconductor.org/' title=''>https://neuroconductor.org/</a></p>
 
 <p><a href='https://neuroconductor.org/neuroc-help' title=''>https://neuroconductor.org/neuroc-help</a> - tutorials</p>
 
@@ -720,16 +682,19 @@ fmri_fname = fnames$fMRI</pre>
 
 <p><a href='http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf' title=''>http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf</a> - task-fMRI specific</p>
 
-<p><a href='http://www.brainmapping.org/NITP/Summer2011.php' title=''>http://www.brainmapping.org/NITP/Summer2011.php</a></p>
+<p><a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></p>
 
-</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  class="unnumbered" id="references">
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references" class="unnumbered">
 
-<div class="references" id="refs">
+<div id="refs" class="references">
 <div id="ref-chambers2014object">
 <p>Chambers, John M. 2014. “Object-Oriented Programming, Functional Programming and R.” <em>Statistical Science</em> 29 (2). Institute of Mathematical Statistics: 167–80.</p></div>
 
 <div id="ref-mass">
-<p>Doshi, Jimit, Guray Erus, Yangming Ou, Bilwaj Gaonkar, and Christos Davatzikos. 2013. “Multi-Atlas Skull-Stripping.” <em>Academic Radiology</em> 20 (12). Elsevier: 1566–76.</p></div></div></article></slide>
+<p>Doshi, Jimit, Guray Erus, Yangming Ou, Bilwaj Gaonkar, and Christos Davatzikos. 2013. “Multi-Atlas Skull-Stripping.” <em>Academic Radiology</em> 20 (12). Elsevier: 1566–76.</p></div>
+
+<div id="ref-landman2011multi">
+<p>Landman, Bennett A, Alan J Huang, Aliya Gifford, Deepti S Vikram, Issel Anne L Lim, Jonathan AD Farrell, John A Bogovic, et al. 2011. “Multi-Parametric Neuroimaging Reproducibility: A 3-T Resource Study.” <em>Neuroimage</em> 54 (4). Elsevier: 2854–66.</p></div></div></article></slide>
 
 
   <slide class="backdrop"></slide>

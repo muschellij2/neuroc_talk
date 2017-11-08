@@ -438,22 +438,27 @@ Based on ANTs: Advanced Normalization Tools
 
 ## extrantsr: Extra functions for ANTsR
 
-- Wraps `ANTsR` functions for nifti objects (from oro.nifti)
+- Wraps `ANTsR` functions for `nifti` objects (from oro.nifti)
 - `malf` function - performs a basic MALF algorithm
 - `within_visit_registration` - performs within-visit registration for structural MRI
 - `preprocess_mri_within` - pipeline to process within-visit sMRI
 
 
-## malf.templates: Segmented T1-weighted Images 
 
+## `kirby21.t1`/`kirby21.fmri`: fMRI data from Kirby21
+
+- data from @landman2011multi
+    - 21 subjects scanned twice, multiple modalities
+- provides 3 subjects for testing/examples/etc.
+- https://www.nitrc.org/projects/multimodal)
+
+
+## malf.templates: Segmented T1-weighted Images 
+<div style='font-size: 20pt;'>
 - Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data
 - From OASIS project and the labeled data as provided by
 Neuromorphometrics, Inc. (http://Neuromorphometrics.com/) 
-- Have T1-weighted image, brain mask, image with mask applied, substructure segmentation
-    - Hand segmented structures - useful for multi-atlas label fusion (MALF)
-
-
-## malf.templates: segmented T1-weighted images 
+</div>
 
 ```{r, echo = FALSE}
 library(malf.templates)
@@ -482,41 +487,6 @@ From [@mass]:
 </div>
 
 
-
-
-
-## `kirby21.fmri`: fMRI data from Kirby21
-
-```{r, echo = TRUE, eval = FALSE}
-library(kirby21.t1) # load T1 data
-library(kirby21.fmri) # load fMRI data
-library(kirby21.base) # helper package to download data
-library(neurobase) # neuroconductor base package
-fnames = get_image_filenames_list(
-  modalities = c("fMRI", "T1"), id = 113, visit = 1)
-print(fnames)
-t1_fname = fnames$T1 
-fmri_fname = fnames$fMRI
-```
-```{r, echo = FALSE, eval = TRUE, results='markup'}
-library(kirby21.t1) # load T1 data
-library(kirby21.fmri) # load fMRI data
-library(kirby21.base) # helper package to download data
-library(neurobase) # neuroconductor base package
-fnames = get_image_filenames_list(
-  modalities = c("fMRI", "T1"), id = 113, visit = 1)
-ss = strsplit(unlist(fnames), "/")
-ss = sapply(ss, function(x) {
-  x = x[ seq(grep("library", x), length(x))]
-  x = paste(x, collapse = "/")
-})
-print(ss)
-t1_fname = fnames$T1 
-fmri_fname = fnames$fMRI
-```
-
-
-
 ## `spant`: MR Spectroscopy Analysis Tools
 
 - Metabolite combination analysis
@@ -533,24 +503,18 @@ fmri_fname = fnames$fMRI
 - R is cross platform, but some packages that depend on *nix-only software can only be run on those systems
 - Still in beta testing, but more likely to incorporate requests
 - Rcpp requires compiled code, which can be tricky (but still cross-platform!)
-
+- Licenses with data can be tricky
 
 ## spm12r: Wrapper Functions for SPM
 
 - Wraps some `MATLAB` code to call SPM scripts
-- Using `R` syntax (but cheating bc `MATLAB` runs the code)
+- Using `R` syntax (but `MATLAB` runs the code)
 - Built from SPM batch commands
-- `spm12_slice_timing` - slices are not taken instantaneously
-- `spm12_realign` - people move
-- `spm12_coregister` - structural imaging is higher resolution
-- `spm12_segment` - where's the gray matter?
-- `spm12_normalize` - brains look better in MNI
-- `spm12_smooth` - turn that noise down
+- Shown in worked example: 
+http://johnmuschelli.com/talks/fmri_task_processing/index.html#1
 
 
 ## Resources
-
-https://neuroconductor.org/
 
 https://neuroconductor.org/neuroc-help - tutorials
 
@@ -558,6 +522,6 @@ https://neuroconductor.org/courses - courses
 
 http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf - task-fMRI specific
 
-http://www.brainmapping.org/NITP/Summer2011.php
+http://johnmuschelli.com/talks/fmri_task_processing/index.html#1
 
 ## References

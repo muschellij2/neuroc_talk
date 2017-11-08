@@ -163,7 +163,7 @@ Complete pipeline
 
 
 
-# Introducing<br><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis
+# <img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis
 
 
 
@@ -203,62 +203,6 @@ Detailed **tutorials** on how to actually perform an analysis
 </div>
 </div>
 
-
-
-## Using R as a Pipeline Tool: fslr
-
-- `fslr` package - call FSL from R
-
-- Requires FSL to be installed and in PATH
-    - FSL only available on Unix-style systems
-
-<img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow">
-
-
-## Why not CRAN: The story of ANTsR
-
-ANTs: Advanced Normalization Tools
-
-- State-of-the-art image processing pipelines
-- Built at UPenn under Brian Avants
-    - Group has won challenges for imaging analysis
-- Still actively maintained and developed
-- Depends on the Insight ToolKit (ITK) medical image processing library
-
-
-## The story of ANTsR: Porting ANTs to R 
-
-- Group tried to wrap C++ code with Rcpp for it to work "seamlessly" with R
-- [Had some issues with CRAN](https://github.com/stnava/ANTsR/issues/8)
-- Most developers response: "just make it work"
-- **NOT** like `fslr` - this built the libraries and could be called using `.Call`
-    - possible (not yet) to use on Windows
-
-## Why not CRAN: Dependencies
-
-- ANTsR depends on `CMake`: <img src="figures/cmake_logo.png" style="width:30%; display: inline; margin: auto;" alt="flow">
-- ANTsR also depends on ITKR - large code base
-- External dependencies are not always welcome
-- [CRAN response](https://stat.ethz.ch/pipermail/r-package-devel/2015q2/000106.html): <img src="figures/cmake.png" style="width:30%; display: inline; margin: auto;" alt="flow"> (more or less)
-
-## Why not CRAN: Checks
-
-- We would like more stringent checks than CRAN (like vignettes) like Bioconductor
-- But **also** more lenient ones 
-  - Examples may take > 5 seconds to compile
-  - Time to build package may take a while
-  - May not work on Windows if not applicable
-
-## Why not CRAN: Data
-
-Medical images are big (> 5 mb) compared to code
-
-**CRAN doesn't like this**
-
-- Example data packages are harder to get passed
-- We got `kirby21.t1` and `kirby21.fmri`, but they have an implicit downloader function in the code
-- Necessary for testing code examples in imaging
-  - **STANDARDIZED** file location (`system.file`)
 
 # Solution: Build a Bioconductor-like Solution using Current Tools
 
@@ -300,13 +244,25 @@ Check the package for stability
 </div>
 
 
-
-## ANTsR Revisited: Helping Developers
+## Helping Developers
 
 - GitHub allows the Neuroconductor team to help fix issues
-- Standardized ANTsR checking for NeuroC
-- Pull Requests to Group ICA package (Brian Caffo)
+- Pull Requests to developers
+- Standardized checking of Packages (Travis configuration)
 - Remove unnecessary hurdles for developers
+
+
+## Neuroconductor installer:
+
+Provide an installer to download the current packages: 
+
+
+```r
+source("https://neuroconductor.org/neurocLite.R")
+neurocLite("kirby21.fmri")
+neurocLite("neurobase")
+neurocLite("ANTsR")
+```
 
 ## Neuroconductor Capabilities
 
@@ -394,9 +350,36 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 
 # Without Knowing the Processing,<br> Analyses Cannot be Trusted
 
-# No Code = No Method
+# Example Packages
 
-# Current Neuroconductor Packages Overviews
+## Using R as a Pipeline Tool: fslr
+
+- `fslr` package - call FSL from R
+
+- Requires FSL to be installed and in PATH
+    - FSL only available on Unix-style systems
+
+<img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow">
+
+## RNifti
+
+- provides lightweight objects as C++ pointers (fast operations)
+- Wrapped in Rcpp: Works on all platforms
+
+## RNiftyReg
+
+- Registration of Images
+- Wrapped in Rcpp: Works on all platforms
+
+## ANTsR
+
+Based on ANTs: Advanced Normalization Tools
+
+- State-of-the-art image processing pipelines
+- Built at UPenn under Brian Avants
+    - Group has won challenges for imaging analysis
+- Still actively maintained and developed
+- Depends on the Insight ToolKit (ITK) medical image processing library
 
 ## dcm2niir and divest: Converting DICOM data
 
@@ -424,24 +407,29 @@ Enabling statisticians to do preprocessing also **enables** imagers to do advanc
 
 ## extrantsr: Extra functions for ANTsR
 
-- Wraps `ANTsR` functions for nifti objects (from oro.nifti)
+- Wraps `ANTsR` functions for `nifti` objects (from oro.nifti)
 - `malf` function - performs a basic MALF algorithm
 - `within_visit_registration` - performs within-visit registration for structural MRI
 - `preprocess_mri_within` - pipeline to process within-visit sMRI
 
 
-## malf.templates: Segmented T1-weighted Images 
 
+## `kirby21.t1`/`kirby21.fmri`: fMRI data from Kirby21
+
+- data from @landman2011multi
+    - 21 subjects scanned twice, multiple modalities
+- provides 3 subjects for testing/examples/etc.
+- https://www.nitrc.org/projects/multimodal)
+
+
+## malf.templates: Segmented T1-weighted Images 
+<div style='font-size: 20pt;'>
 - Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data
 - From OASIS project and the labeled data as provided by
 Neuromorphometrics, Inc. (http://Neuromorphometrics.com/) 
-- Have T1-weighted image, brain mask, image with mask applied, substructure segmentation
-    - Hand segmented structures - useful for multi-atlas label fusion (MALF)
+</div>
 
-
-## malf.templates: segmented T1-weighted images 
-
-![](Multimodal_Workshop_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](Multimodal_Workshop_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ## MALF: Skull Stripping Example
 
@@ -460,63 +448,34 @@ From [@mass]:
 </div>
 
 
+## `spant`: MR Spectroscopy Analysis Tools
 
-## Neuroconductor installer:
-
-Provide an installer to download the current packages: 
-
-
-```r
-source("https://neuroconductor.org/neurocLite.R")
-neurocLite("kirby21.fmri")
-neurocLite("neurobase")
-neurocLite("ANTsR")
-```
+- Metabolite combination analysis
+- Non-brain imaging!
 
 
-## `kirby21.fmri`: fMRI data from Kirby21
+## `lungct`: tools for Lung CT analysis
 
+- Non-brain imaging!
+- Not MR!
 
-```r
-library(kirby21.t1) # load T1 data
-library(kirby21.fmri) # load fMRI data
-library(kirby21.base) # helper package to download data
-library(neurobase) # neuroconductor base package
-fnames = get_image_filenames_list(
-  modalities = c("fMRI", "T1"), id = 113, visit = 1)
-print(fnames)
-t1_fname = fnames$T1 
-fmri_fname = fnames$fMRI
-```
+## Current limitations
 
-```
-                                                 fMRI 
-"library/kirby21.fmri/visit_1/113/113-01-fMRI.nii.gz" 
-                                                   T1 
-    "library/kirby21.t1/visit_1/113/113-01-T1.nii.gz" 
-```
-
-## Plot the T1
-
-![](Multimodal_Workshop_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
-
+- R is cross platform, but some packages that depend on *nix-only software can only be run on those systems
+- Still in beta testing, but more likely to incorporate requests
+- Rcpp requires compiled code, which can be tricky (but still cross-platform!)
+- Licenses with data can be tricky
 
 ## spm12r: Wrapper Functions for SPM
 
 - Wraps some `MATLAB` code to call SPM scripts
-- Using `R` syntax (but cheating bc `MATLAB` runs the code)
+- Using `R` syntax (but `MATLAB` runs the code)
 - Built from SPM batch commands
-- `spm12_slice_timing` - slices are not taken instantaneously
-- `spm12_realign` - people move
-- `spm12_coregister` - structural imaging is higher resolution
-- `spm12_segment` - where's the gray matter?
-- `spm12_normalize` - brains look better in MNI
-- `spm12_smooth` - turn that noise down
+- Shown in worked example: 
+http://johnmuschelli.com/talks/fmri_task_processing/index.html#1
 
 
 ## Resources
-
-https://neuroconductor.org/
 
 https://neuroconductor.org/neuroc-help - tutorials
 
@@ -524,6 +483,6 @@ https://neuroconductor.org/courses - courses
 
 http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf - task-fMRI specific
 
-http://www.brainmapping.org/NITP/Summer2011.php
+http://johnmuschelli.com/talks/fmri_task_processing/index.html#1
 
 ## References
