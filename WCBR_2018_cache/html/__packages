@@ -1,0 +1,17 @@
+base
+methods
+colorout
+datasets
+utils
+grDevices
+graphics
+stats
+pander
+xml2
+rvest
+httr
+oro.nifti
+neurobase
+matlabr
+spm12r
+fslr
