@@ -264,7 +264,7 @@ Allow imaging to use all `R` has to offer:
   
 - Statistics and Machine Learning
 - Versioning and testing
-- Reproducibile reports and analyses
+- Reproducible reports and analyses
 - Shiny (web applications)
 - Genomics/Imaging analysis in one platform
     - Bioconductor
@@ -369,4 +369,4 @@ Image from: https://imgflip.com/i/22gplr
 </div>
 </div>
 
-# Thanks
+# Questions?
