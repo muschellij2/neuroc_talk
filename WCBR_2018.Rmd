@@ -235,10 +235,24 @@ Check the package for stability
 
 ## Helping Developers
 
+<div id="left_col" style="font-size: 28pt;">
 - GitHub allows the Neuroconductor team to help fix issues
 - Pull Requests to developers
 - Standardized checking of Packages (Travis configuration)
 - Remove unnecessary hurdles for developers
+</div>
+  <div id="right_col">
+  
+  <img src="figures/help_me_help_you.gif" style="width:110%; margin: auto;" alt="flow"> 
+  <br>
+  <br>
+  <br>
+  <div style="font-size: 10pt;">
+Image from: https://giphy.com/gifs/medblr-medschool-dr-dres-anatomy-uRb2p09vY8lEs
+</div>
+
+  </div>
+</div>
 
 
 
@@ -287,10 +301,9 @@ Based on ANTs: Advanced Normalization Tools
 
 - `fslr` package - call FSL from R
 
-- Requires FSL to be installed
-    - FSL only available on Unix-style systems
+- Requires FSL to be installed (only *nix systems)
 
-<img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow">
+<img src="figures/fslr_r_figure.png" style="width:45%; display: block; margin: auto;" alt="flow">
 
 ## spm12r: Wrapper Functions for SPM
 
