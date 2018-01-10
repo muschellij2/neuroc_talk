@@ -122,38 +122,13 @@ article {
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
 
-</article></slide><slide class=""><hgroup><h2>R is a base set of foundational functions</h2></hgroup><article  id="r-is-a-base-set-of-foundational-functions" class="centered">
+</article></slide><slide class=""><hgroup><h2>R is a base set of foundational functions</h2></hgroup><article  class="centered" id="r-is-a-base-set-of-foundational-functions">
 
 <p><img src="figures/r_no_packages.png" style="width:50%; margin: auto;" alt="flow"></p>
 
-</article></slide><slide class=""><hgroup><h2>With by user-written packages of functions</h2></hgroup><article  id="with-by-user-written-packages-of-functions" class="centered">
+</article></slide><slide class=""><hgroup><h2>With by user-written packages of functions</h2></hgroup><article  class="centered" id="with-by-user-written-packages-of-functions">
 
 <p><img src="figures/r_with_packages.png" style="width:50%; margin: auto;" alt="flow"></p>
-
-</article></slide><slide class=""><hgroup><h2>Benefits of R</h2></hgroup><article  id="benefits-of-r">
-
-<ul>
-<li>Free, open-source</li>
-<li>Cross-platform</li>
-<li>Over 11000 packages</li>
-<li>Taught by stat/biostat departments</li>
-<li>Packaging system is good (well-documented, tested, relatively-understandable)</li>
-<li>RStudio - company and software</li>
-</ul>
-
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Everything that exists is an object.<br> Everything that happens is a function call.<br> <span class="cite">(Chambers 2014)</span></h2></hgroup><article  id="everything-that-exists-is-an-object.-everything-that-happens-is-a-function-call.-chambers2014object">
-
-</article></slide><slide class=""><hgroup><h2>For example:</h2></hgroup><article  id="for-example">
-
-<pre class = 'prettyprint lang-r'>library(neurobase)
-library(fslr)
-img = readrpi(&quot;anat.nii.gz&quot;, verbose = FALSE)</pre>
-
-</article></slide><slide class=""><hgroup><h2>Plotting orthographic</h2></hgroup><article  id="plotting-orthographic">
-
-<pre class = 'prettyprint lang-r'>ortho2(img)</pre>
-
-<p><img src="WCBR_2018_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -212,7 +187,7 @@ Workflow for an Analysis
 <div id="left_col2">
 <h2>
 
-My Goal:
+Our Goal:
 
 </h2>
 
@@ -251,9 +226,7 @@ My Goal:
 
 <p><img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
 
-</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/biocview.png" style="width:100%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor">
-
-</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor-1">
+</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor">
 
 <ul>
 <li>centralized bioinformatics/genomics packages</li>
@@ -262,7 +235,7 @@ My Goal:
 <li>additional requirements to CRAN (e.g. packages need vignettes)</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor-2">
+</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor-1">
 
 <ul>
 <li>team of developers/maintainers</li>
@@ -297,7 +270,7 @@ My Goal:
 <li>A centralized repository of maintained packages</li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>Goal: Centralize the packages (currently 61)</h2></hgroup><article  id="goal-centralize-the-packages-currently-61">
+</article></slide><slide class=""><hgroup><h2>Goal: Centralize the packages (currently 62)</h2></hgroup><article  id="goal-centralize-the-packages-currently-62">
 
 <p><img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
 
@@ -381,68 +354,6 @@ Development Pipeline:
 <li>Remove unnecessary hurdles for developers</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Neuroconductor installer:</h2></hgroup><article  id="neuroconductor-installer">
-
-<p>Provide an installer to download the current packages:</p>
-
-<pre class = 'prettyprint lang-r'>source(&quot;https://neuroconductor.org/neurocLite.R&quot;)
-neurocLite(&quot;kirby21.fmri&quot;)
-neurocLite(&quot;neurobase&quot;)
-neurocLite(&quot;ANTsR&quot;)</pre>
-
-</article></slide><slide class=""><hgroup><h2>Neuroconductor Capabilities</h2></hgroup><article  id="neuroconductor-capabilities">
-
-<table class = 'rmdtable'>
-<tr class="header">
-<th align="left">Capabilities</th>
-<th align="left">Packages</th>
-</tr>
-<tr class="odd">
-<td align="left">DICOM Images</td>
-<td align="left">oro.dicom, dcm2niir, divest, ANTsR</td>
-</tr>
-<tr class="even">
-<td align="left">NIfTI Images</td>
-<td align="left">oro.nifti, RNifti, ANTsR</td>
-</tr>
-<tr class="odd">
-<td align="left">Image Registration</td>
-<td align="left">spm12r, fslr, ANTsR, freesurfer</td>
-</tr>
-<tr class="even">
-<td align="left">Inhomogeneity Correction</td>
-<td align="left">spm12r, fslr, ANTsR</td>
-</tr>
-<tr class="odd">
-<td align="left">Brain Extraction</td>
-<td align="left">spm12r, fslr, ANTsR, extrantsr</td>
-</tr>
-<tr class="even">
-<td align="left">Structure Segmentation</td>
-<td align="left">spm12r, fslr, ANTsR, extrantsr, freesurfer</td>
-</tr>
-<tr class="odd">
-<td align="left">Intensity Normalization</td>
-<td align="left">WhiteStripe, neurobase, ANTsR</td>
-</tr>
-<tr class="even">
-<td align="left">3D Smoothing</td>
-<td align="left">ANTsR, spm12r, fslr</td>
-</tr>
-<tr class="odd">
-<td align="left">Temporal Filtering</td>
-<td align="left">spm12r, fslr, ANTsR</td>
-</tr>
-<tr class="even">
-<td align="left">Slice-timing correction</td>
-<td align="left">spm12r, fslr</td>
-</tr>
-<tr class="odd">
-<td align="left">DTI models</td>
-<td align="left">rcamino, oro.dti, fslr</td>
-</tr>
-</table>
-
 </article></slide><slide class=""><hgroup><h2>Benefits of Neuroconductor:</h2></hgroup><article  id="benefits-of-neuroconductor">
 
 <div style="font-size: 32pt;">
@@ -474,20 +385,6 @@ neurocLite(&quot;ANTsR&quot;)</pre>
 <li>Need the content (buy-in from the community)</li>
 </ol></div>
 
-</article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
-
-<div class="container">
-<div style="font-size: 28pt;" class="left-half">
-Coursera Course: Introduction to Neurohacking In R</div>
-
-<div style="font-size: 28pt;" class="right-half">
-<img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking"></div>
-
-<p><a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
-
-<div style="font-size: 28pt;">
-<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a> ENAR 2018</p></div></div>
-
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Example Packages</h2></hgroup><article  id="example-packages">
 
 </article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr</h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
@@ -503,16 +400,19 @@ Coursera Course: Introduction to Neurohacking In R</div>
 
 <p><img src="figures/fslr.png" style="width:70%; display: block; margin: auto;" alt="flow"></p>
 
-</article></slide><slide class=""><hgroup><h2>RNifti</h2></hgroup><article  id="rnifti">
+</article></slide><slide class=""><hgroup><h2>spm12r: Wrapper Functions for SPM</h2></hgroup><article  id="spm12r-wrapper-functions-for-spm">
+
+<ul>
+<li>Wraps some <code>MATLAB</code> code to call SPM scripts</li>
+<li>Using <code>R</code> syntax (but <code>MATLAB</code> runs the code)</li>
+<li>Built from SPM batch commands</li>
+<li>Shown in worked example: <a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>RNifti and R RNiftyReg</h2></hgroup><article  id="rnifti-and-r-rniftyreg">
 
 <ul>
 <li>provides lightweight objects as C++ pointers (fast operations)</li>
-<li>Wrapped in Rcpp: Works on all platforms</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>RNiftyReg</h2></hgroup><article  id="rniftyreg">
-
-<ul>
 <li>Registration of Images</li>
 <li>Wrapped in Rcpp: Works on all platforms</li>
 </ul>
@@ -523,33 +423,9 @@ Coursera Course: Introduction to Neurohacking In R</div>
 
 <ul>
 <li>State-of-the-art image processing pipelines</li>
-<li>Built at UPenn under Brian Avants
-
-<ul>
 <li>Group has won challenges for imaging analysis</li>
-</ul></li>
 <li>Still actively maintained and developed</li>
 <li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>dcm2niir and divest: Converting DICOM data</h2></hgroup><article  id="dcm2niir-and-divest-converting-dicom-data">
-
-<ul>
-<li><code>dcm2nii</code> by Dr. Chris Rorden
-
-<ul>
-<li>jackknife for almost any DICOM type to NIfTI</li>
-</ul></li>
-<li><code>dcm2niir</code> wraps a binary executable of dcm2nii
-
-<ul>
-<li>calls the command prompt (not always Windows-friendly)</li>
-</ul></li>
-<li><code>divest</code> wraps the background C++ code of dcm2nii
-
-<ul>
-<li>runs in &ldquo;native&rdquo; R</li>
-</ul></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
@@ -589,25 +465,7 @@ Coursera Course: Introduction to Neurohacking In R</div>
 <li>From OASIS project and the labeled data as provided by Neuromorphometrics, Inc. (<a href='http://Neuromorphometrics.com/' title=''>http://Neuromorphometrics.com/</a>)</li>
 </ul></div>
 
-<p><img src='WCBR_2018_files/figure-html/unnamed-chunk-7-1.png' title=''/><!-- --></p>
-
-</article></slide><slide class=""><hgroup><h2>MALF: Skull Stripping Example</h2></hgroup><article  id="malf-skull-stripping-example">
-
-<div class="container">
-<div class="left-half">
-<p>From <span class="cite">(Doshi et al. 2013)</span>:</p>
-
-<p><img src="figures/malf_figure.jpg" style="width: 75%; display: block; margin: auto;"></p></div>
-
-<div class="right-half">
-<ul>
-<li>Register templates to an subject T1</li>
-<li>Apply transformation to the label/mask, average over voxels
-
-<ul>
-<li>there are &ldquo;smarter&rdquo; (e.g. weighted) ways</li>
-</ul></li>
-</ul></div></div>
+<p><img src='WCBR_2018_files/figure-html/unnamed-chunk-2-1.png' title=''/><!-- --></p>
 
 </article></slide><slide class=""><hgroup><h2><code>spant</code>: MR Spectroscopy Analysis Tools</h2></hgroup><article  id="spant-mr-spectroscopy-analysis-tools">
 
@@ -632,34 +490,23 @@ Coursera Course: Introduction to Neurohacking In R</div>
 <li>Licenses with data can be tricky</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>spm12r: Wrapper Functions for SPM</h2></hgroup><article  id="spm12r-wrapper-functions-for-spm">
+</article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
 
-<ul>
-<li>Wraps some <code>MATLAB</code> code to call SPM scripts</li>
-<li>Using <code>R</code> syntax (but <code>MATLAB</code> runs the code)</li>
-<li>Built from SPM batch commands</li>
-<li>Shown in worked example: <a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></li>
-</ul>
+<div class="container">
+<div style="font-size: 28pt;" class="left-half">
+Coursera Course: Introduction to Neurohacking In R</div>
 
-</article></slide><slide class=""><hgroup><h2>Resources</h2></hgroup><article  id="resources">
+<div style="font-size: 28pt;" class="right-half">
+<img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking"></div>
 
-<p><a href='https://neuroconductor.org/neuroc-help' title=''>https://neuroconductor.org/neuroc-help</a> - tutorials</p>
+<p><a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
 
-<p><a href='https://neuroconductor.org/courses' title=''>https://neuroconductor.org/courses</a> - courses</p>
+<div style="font-size: 28pt;">
+<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a> ENAR 2018</p></div></div>
 
-<p><a href='http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf' title=''>http://www.brainmapping.org/NITP/images/Summer2011Slides/NITP2011_ExperimentalDesign_II_print.pdf</a> - task-fMRI specific</p>
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  class="unnumbered" id="references">
 
-<p><a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></p>
-
-</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references" class="unnumbered">
-
-<div id="refs" class="references">
-<div id="ref-chambers2014object">
-<p>Chambers, John M. 2014. “Object-Oriented Programming, Functional Programming and R.” <em>Statistical Science</em> 29 (2). Institute of Mathematical Statistics:167–80.</p></div>
-
-<div id="ref-mass">
-<p>Doshi, Jimit, Guray Erus, Yangming Ou, Bilwaj Gaonkar, and Christos Davatzikos. 2013. “Multi-Atlas Skull-Stripping.” <em>Academic Radiology</em> 20 (12). Elsevier:1566–76.</p></div>
-
+<div class="references" id="refs">
 <div id="ref-landman2011multi">
 <p>Landman, Bennett A, Alan J Huang, Aliya Gifford, Deepti S Vikram, Issel Anne L Lim, Jonathan AD Farrell, John A Bogovic, et al. 2011. “Multi-Parametric Neuroimaging Reproducibility: A 3-T Resource Study.” <em>Neuroimage</em> 54 (4). Elsevier:2854–66.</p></div></div></article></slide>
 

@@ -1,11 +1,5 @@
 base
-methods
 colorout
-datasets
-utils
-grDevices
-graphics
-stats
 pander
 xml2
 rvest
