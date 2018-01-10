@@ -122,11 +122,11 @@ article {
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
 
-</article></slide><slide class=""><hgroup><h2>R is a base set of foundational functions</h2></hgroup><article  class="centered" id="r-is-a-base-set-of-foundational-functions">
+</article></slide><slide class=""><hgroup><h2>R is a base set of foundational functions</h2></hgroup><article  id="r-is-a-base-set-of-foundational-functions" class="centered">
 
 <p><img src="figures/r_no_packages.png" style="width:50%; margin: auto;" alt="flow"></p>
 
-</article></slide><slide class=""><hgroup><h2>With by user-written packages of functions</h2></hgroup><article  class="centered" id="with-by-user-written-packages-of-functions">
+</article></slide><slide class=""><hgroup><h2>With by user-written packages of functions</h2></hgroup><article  id="with-by-user-written-packages-of-functions" class="centered">
 
 <p><img src="figures/r_with_packages.png" style="width:50%; margin: auto;" alt="flow"></p>
 
@@ -387,11 +387,22 @@ Development Pipeline:
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Example Packages</h2></hgroup><article  id="example-packages">
 
+</article></slide><slide class=""><hgroup><h2>ANTsR</h2></hgroup><article  id="antsr">
+
+<p>Based on ANTs: Advanced Normalization Tools</p>
+
+<ul>
+<li>State-of-the-art image processing pipelines</li>
+<li>Group has won challenges for imaging analysis</li>
+<li>Still actively maintained and developed</li>
+<li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr</h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
 
 <ul>
 <li><p><code>fslr</code> package - call FSL from R</p></li>
-<li>Requires FSL to be installed and in PATH
+<li>Requires FSL to be installed
 
 <ul>
 <li>FSL only available on Unix-style systems</li>
@@ -409,52 +420,12 @@ Development Pipeline:
 <li>Shown in worked example: <a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>RNifti and R RNiftyReg</h2></hgroup><article  id="rnifti-and-r-rniftyreg">
-
-<ul>
-<li>provides lightweight objects as C++ pointers (fast operations)</li>
-<li>Registration of Images</li>
-<li>Wrapped in Rcpp: Works on all platforms</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>ANTsR</h2></hgroup><article  id="antsr">
-
-<p>Based on ANTs: Advanced Normalization Tools</p>
-
-<ul>
-<li>State-of-the-art image processing pipelines</li>
-<li>Group has won challenges for imaging analysis</li>
-<li>Still actively maintained and developed</li>
-<li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
-</ul>
-
 </article></slide><slide class=""><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
 
 <ul>
 <li>Allows you to download data from <a href='https://www.humanconnectome.org/' title=''>Human Connectome Project</a></li>
 <li>The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants. Standardized protocol.</li>
 <li>Tutorial: <a href='http://johnmuschelli.com/neuroc/neurohcp' title=''>http://johnmuschelli.com/neuroc/neurohcp</a></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>rcamino: Port of Camino Software</h2></hgroup><article  id="rcamino-port-of-camino-software">
-
-<ul>
-<li>Wraps <a href='http://camino.cs.ucl.ac.uk/' title=''>Camino Diffusion MRI Toolkit</a></li>
-<li>Takes in b-values, b-vectors, and tensors</li>
-<li>Fits models for DTI data</li>
-<li><a href='http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html' title=''>http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html</a></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2><code>kirby21.t1</code>/<code>kirby21.fmri</code>: fMRI data from Kirby21</h2></hgroup><article  id="kirby21.t1kirby21.fmri-fmri-data-from-kirby21">
-
-<ul>
-<li>data from <span class="cite">Landman et al. (2011)</span>
-
-<ul>
-<li>21 subjects scanned twice, multiple modalities</li>
-</ul></li>
-<li>provides 3 subjects for testing/examples/etc.</li>
-<li><a href='https://www.nitrc.org/projects/multimodal' title=''>https://www.nitrc.org/projects/multimodal</a>)</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images">
@@ -467,28 +438,20 @@ Development Pipeline:
 
 <p><img src='WCBR_2018_files/figure-html/unnamed-chunk-2-1.png' title=''/><!-- --></p>
 
-</article></slide><slide class=""><hgroup><h2><code>spant</code>: MR Spectroscopy Analysis Tools</h2></hgroup><article  id="spant-mr-spectroscopy-analysis-tools">
-
-<ul>
-<li>Metabolite combination analysis</li>
-<li>Non-brain imaging!</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2><code>lungct</code>: tools for Lung CT analysis</h2></hgroup><article  id="lungct-tools-for-lung-ct-analysis">
-
-<ul>
-<li>Non-brain imaging!</li>
-<li>Not MR!</li>
-</ul>
-
 </article></slide><slide class=""><hgroup><h2>Current limitations</h2></hgroup><article  id="current-limitations">
 
+<div style="font-size: 28pt;" id="left_col">
 <ul>
-<li>R is cross platform, but some packages that depend on *nix-only software can only be run on those systems</li>
+<li>R is cross platform, but some packages that depend on *nix system</li>
 <li>Still in beta testing, but more likely to incorporate requests</li>
-<li>Rcpp requires compiled code, which can be tricky (but still cross-platform!)</li>
+<li>Rcpp requires compiled code, (see below)</li>
 <li>Licenses with data can be tricky</li>
-</ul>
+</ul></div>
+
+<img src="figures/install_bomb.jpg" style="width:40%;" alt="neurohacking">
+
+<div style="font-size: 10pt;">
+<p>Image from: <a href='https://imgflip.com/i/22gplr' title=''>https://imgflip.com/i/22gplr</a></p></div>
 
 </article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
 
@@ -504,11 +467,7 @@ Coursera Course: Introduction to Neurohacking In R</div>
 <div style="font-size: 28pt;">
 <p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a> ENAR 2018</p></div></div>
 
-</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  class="unnumbered" id="references">
-
-<div class="references" id="refs">
-<div id="ref-landman2011multi">
-<p>Landman, Bennett A, Alan J Huang, Aliya Gifford, Deepti S Vikram, Issel Anne L Lim, Jonathan AD Farrell, John A Bogovic, et al. 2011. “Multi-Parametric Neuroimaging Reproducibility: A 3-T Resource Study.” <em>Neuroimage</em> 54 (4). Elsevier:2854–66.</p></div></div></article></slide>
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Thanks</h2></hgroup><article  id="thanks"></article></slide>
 
 
   <slide class="backdrop"></slide>
