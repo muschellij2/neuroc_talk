@@ -223,7 +223,7 @@ Our Goal:
 <div id="right_col2">
 <img src="figures/workflow_edited_R.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
 
-</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor">
+</article></slide><slide class=""><hgroup><h2>Envy: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="envy-bioconductor">
 
 <ul>
 <li>centralized bioinformatics packages (&gt; 1300)</li>
@@ -268,10 +268,14 @@ Our Goal:
 
 <p><img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
 
+</article></slide><slide class=""><hgroup><h2>New release (December 2019)</h2></hgroup><article  id="new-release-december-2019">
+
+<p><img src="figures/dependency_graph.png" width="70%" style="display: block; margin: auto;" /></p>
+
 </article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr <img src='figures/fslr_logo.png' align="right" height="139" /></h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
 
 <ul>
-<li><code>fslr</code> package - call FSL from R (requires FSL)</li>
+<li><code>fslr</code> - call FSL from R (requires FSL)</li>
 </ul>
 
 <p><img src="figures/fslr_r_figure.png" style="width:45%; display: block; margin: auto;" alt="flow"></p>
@@ -307,10 +311,6 @@ Development Pipeline:
 
 <div id="right_col2">
 <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
-
-</article></slide><slide class=""><hgroup><h2>New release (December 2019)</h2></hgroup><article  id="new-release-december-2019">
-
-<p><img src="figures/dependency_graph.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -382,7 +382,79 @@ Coursera Course: Introduction to Neurohacking In R</div>
 <p></br></br></br></br> <a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
 
 <div style="font-size: 28pt;">
-<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a></p></div></div></article></slide>
+<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a></p></div></div>
+
+</article></slide><slide class=""><hgroup><h2>RNifti and RNiftyReg</h2></hgroup><article  id="rnifti-and-rniftyreg">
+
+<ul>
+<li>provides lightweight objects as C++ pointers (fast operations)</li>
+<li>Registration of Images</li>
+<li>Wrapped in Rcpp: Works on all platforms</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>ANTsR</h2></hgroup><article  id="antsr">
+
+<p>Based on ANTs: Advanced Normalization Tools</p>
+
+<ul>
+<li>State-of-the-art image processing pipelines</li>
+<li>Built at UPenn under Brian Avants
+
+<ul>
+<li>Group has won challenges for imaging analysis</li>
+</ul></li>
+<li>Still actively maintained and developed</li>
+<li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
+
+<ul>
+<li>Allows you to download data from <a href='https://www.humanconnectome.org/' title=''>Human Connectome Project</a></li>
+<li>The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants. Standardized protocol.</li>
+<li>Tutorial: <a href='http://johnmuschelli.com/neuroc/neurohcp' title=''>http://johnmuschelli.com/neuroc/neurohcp</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>rcamino: Port of Camino Software</h2></hgroup><article  id="rcamino-port-of-camino-software">
+
+<ul>
+<li>Wraps <a href='http://camino.cs.ucl.ac.uk/' title=''>Camino Diffusion MRI Toolkit</a></li>
+<li>Takes in b-values, b-vectors, and tensors</li>
+<li>Fits models for DTI data</li>
+<li><a href='http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html' title=''>http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images">
+
+<div style="font-size: 20pt;">
+<ul>
+<li>Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data</li>
+<li>From OASIS project and the labeled data as provided by Neuromorphometrics, Inc. (<a href='http://Neuromorphometrics.com/' title=''>http://Neuromorphometrics.com/</a>)</li>
+</ul></div>
+
+<p><img src='ICSA_2019_files/figure-html/unnamed-chunk-6-1.png' title=''/><!-- --></p>
+
+</article></slide><slide class=""><hgroup><h2>MALF: Skull Stripping Example</h2></hgroup><article  id="malf-skull-stripping-example">
+
+<div class="container">
+<div class="left-half">
+<p>From <span class="cite">(Doshi et al. 2013)</span>:</p>
+
+<p><img src="figures/malf_figure.jpg" style="width: 75%; display: block; margin: auto;"></p></div>
+
+<div class="right-half">
+<ul>
+<li>Register templates to an subject T1</li>
+<li>Apply transformation to the label/mask, average over voxels
+
+<ul>
+<li>there are &ldquo;smarter&rdquo; (e.g. weighted) ways</li>
+</ul></li>
+</ul></div></div>
+
+<div class="references" id="refs">
+<div id="ref-mass">
+<p>Doshi, Jimit, Guray Erus, Yangming Ou, Bilwaj Gaonkar, and Christos Davatzikos. 2013. “Multi-Atlas Skull-Stripping.” <em>Academic Radiology</em> 20 (12): 1566–76.</p></div></div></article></slide>
 
 
   <slide class="backdrop"></slide>

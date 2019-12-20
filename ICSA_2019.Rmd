@@ -117,7 +117,7 @@ Complete pipeline
 </div>
 
 
-## Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
+## Envy: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
 
 - centralized bioinformatics packages (> 1300)
 - large community/developer team
@@ -166,6 +166,12 @@ Allow imaging to use all `R` has to offer:
 
 <img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow">
 
+## New release (December 2019)
+
+```{r, out.width="70%", results="markup", fig.align="center"}
+knitr::include_graphics("figures/dependency_graph.png")
+```
+
 
 ## Using R as a Pipeline Tool: fslr <img src='figures/fslr_logo.png' align="right" height="139" />
 
@@ -173,7 +179,7 @@ Allow imaging to use all `R` has to offer:
 knitr::include_graphics("figures/fslr_logo.png")
 ```
 
-- `fslr` package - call FSL from R (requires FSL)
+- `fslr` - call FSL from R (requires FSL)
 
 <img src="figures/fslr_r_figure.png" style="width:45%; display: block; margin: auto;" alt="flow">
 
@@ -213,13 +219,6 @@ Check the package for stability
   <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
   </div>
 </div>
-
-
-## New release (December 2019)
-
-```{r, out.width="70%", results="markup", fig.align="center"}
-knitr::include_graphics("figures/dependency_graph.png")
-```
 
 
 ----
@@ -298,3 +297,72 @@ https://www.coursera.org/learn/neurohacking/
   http://johnmuschelli.com/imaging_in_r/
 </div>
 </div>
+
+
+
+## RNifti and RNiftyReg
+
+- provides lightweight objects as C++ pointers (fast operations)
+- Registration of Images
+- Wrapped in Rcpp: Works on all platforms
+
+## ANTsR
+
+Based on ANTs: Advanced Normalization Tools
+
+- State-of-the-art image processing pipelines
+- Built at UPenn under Brian Avants
+    - Group has won challenges for imaging analysis
+- Still actively maintained and developed
+- Depends on the Insight ToolKit (ITK) medical image processing library
+
+## neurohcp: Human Connectome Project 
+
+- Allows you to download data from [Human Connectome Project](https://www.humanconnectome.org/)
+- The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants.  Standardized protocol.
+- Tutorial: http://johnmuschelli.com/neuroc/neurohcp
+
+
+## rcamino: Port of Camino Software
+
+- Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
+- Takes in b-values, b-vectors, and tensors
+- Fits models for DTI data
+- http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html
+
+
+## malf.templates: Segmented T1-weighted Images 
+<div style='font-size: 20pt;'>
+- Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data
+- From OASIS project and the labeled data as provided by
+Neuromorphometrics, Inc. (http://Neuromorphometrics.com/) 
+</div>
+
+```{r, echo = FALSE}
+library(malf.templates)
+L = malf_images()
+L = lapply(L, `[`, 1)
+lab = readnii(L$labels)
+img = readnii(L$images)
+nlabs = length(unique(c(lab)))
+ortho2(img, lab, col.y = rainbow(nlabs))
+```
+
+## MALF: Skull Stripping Example
+
+<div class="container">
+  <div class="left-half"> 
+From [@mass]:
+
+<img src="figures/malf_figure.jpg" style="width: 75%; display: block; margin: auto;">
+</div>
+  <div class="right-half"> 
+
+- Register templates to an subject T1 
+- Apply transformation to the label/mask, average over voxels
+    - there are "smarter" (e.g. weighted) ways
+</div>
+</div>
+
+
+
