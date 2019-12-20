@@ -1,0 +1,14 @@
+---
+title: "Neuroconductor: An R Platform for Medical Imaging Analysis"
+author: "John Muschelli"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+
+Neuroconductor (https://neuroconductor.org) is an open-source platform for rapid testing and dissemination of reproducible computational imaging software. The goals of the project are to: 1) provide a centralized repository of R software dedicated to image analysis, 2) disseminate software updates quickly, 3) train a large, diverse community of scientists using detailed tutorials and short courses, 4) increase software quality via automatic and manual quality controls, and 5) promote reproducibility of image data analysis.
+
+We provide a description of the purpose of Neuroconductor, highlight packages in this framework, and some imaging analysis examples with real data sets.
+
+
