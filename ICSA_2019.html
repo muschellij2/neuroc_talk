@@ -129,6 +129,8 @@ article {
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
 
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is <strong>much more</strong> than that now, but…</h2></hgroup><article  id="r-is-much-more-than-that-now-but">
+
 </article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging">
 
 <img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
@@ -235,8 +237,8 @@ Our Goal:
 </article></slide><slide class=""><hgroup><h2>What is Neuroconductor?</h2></hgroup><article  id="what-is-neuroconductor">
 
 <ol>
-<li>A centralized repository of maintained packages (N = 97)</li>
-<li>A community of developers (N = 26) and users of R imagers</li>
+<li>A centralized repository of packages (N = 97)</li>
+<li>A community of developers (N = 26) and users</li>
 <li>A website <a href='https://neuroconductor.org/' title=''>https://neuroconductor.org/</a>.
 
 <ul>
@@ -266,6 +268,24 @@ Our Goal:
 
 <p><img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
 
+</article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr <img src='figures/fslr_logo.png' align="right" height="139" /></h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
+
+<ul>
+<li><code>fslr</code> package - call FSL from R (requires FSL)</li>
+</ul>
+
+<p><img src="figures/fslr_r_figure.png" style="width:45%; display: block; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=""><hgroup><h2>ichseg: ICH Segmentation of CT images <img src='figures/ichseg_logo.png' align="right" height="139" /></h2></hgroup><article  id="ichseg-ich-segmentation-of-ct-images">
+
+<pre class = 'prettyprint lang-r'>ichseg::ich_segment(img = &quot;/path/to/ct/scan&quot;)</pre>
+
+<p><img src="figures/ichseg_example.png" width="85%" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>lungct: Analysis of Lung CT Scans <img src='figures/lungct_logo.png' align="right" height="139" /></h2></hgroup><article  id="lungct-analysis-of-lung-ct-scans">
+
+<p><img src="figures/lungct_pipeline.png" width="75%" style="display: block; margin: auto;" /></p>
+
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <div class="container">
@@ -288,13 +308,7 @@ Development Pipeline:
 <div id="right_col2">
 <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<h2>
-
-New release (December 2019)
-
-</h2>
+</article></slide><slide class=""><hgroup><h2>New release (December 2019)</h2></hgroup><article  id="new-release-december-2019">
 
 <p><img src="figures/dependency_graph.png" width="70%" style="display: block; margin: auto;" /></p>
 
@@ -322,16 +336,16 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 
 </br></br></br></br> </br></br></br></br>
 
-<div class="container" style="width:100%">
+<div style="width:100%" class="container">
 <p><a href='http://johnmuschelli.com/neuroc' title=''>http://johnmuschelli.com/neuroc</a></p></div>
 
 </article></slide><slide class=""><hgroup><h2>Some (Unpopular) Opinions</h2></hgroup><article  id="some-unpopular-opinions">
 
 <ol>
-<li>No code != no method</li>
+<li>No code = no method. &ldquo;Available upon request&rdquo; - not great</li>
 <li>We are not the leaders in imaging</li>
 <li>Not everyone cares about our methods</li>
-<li>Many Engineers are better in imaging at a) distributing code and b) selling their method</li>
+<li>Many engineers are better in imaging at a) distributing code and b) selling their method</li>
 </ol>
 
 </article></slide><slide class=""><hgroup><h2>Helping Developers</h2></hgroup><article  id="helping-developers">
@@ -356,85 +370,19 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 
 <p>Email: <img src="email_QR.png" style="width:20%; display: inline; margin: auto;"></p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Example Packages</h2></hgroup><article  id="example-packages">
-
-</article></slide><slide class=""><hgroup><h2>ANTsR</h2></hgroup><article  id="antsr">
-
-<p>Based on ANTs: Advanced Normalization Tools</p>
-
-<ul>
-<li>State-of-the-art image processing pipelines</li>
-<li>Group has won challenges for imaging analysis</li>
-<li>Still actively maintained and developed</li>
-<li>Depends on the Insight ToolKit (ITK) medical image processing library</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Using R as a Pipeline Tool: fslr</h2></hgroup><article  id="using-r-as-a-pipeline-tool-fslr">
-
-<ul>
-<li><p><code>fslr</code> package - call FSL from R</p></li>
-<li><p>Requires FSL to be installed (only *nix systems)</p></li>
-</ul>
-
-<p><img src="figures/fslr_r_figure.png" style="width:45%; display: block; margin: auto;" alt="flow"></p>
-
-</article></slide><slide class=""><hgroup><h2>spm12r: Wrapper Functions for SPM</h2></hgroup><article  id="spm12r-wrapper-functions-for-spm">
-
-<ul>
-<li>Wraps some <code>MATLAB</code> code to call SPM scripts</li>
-<li>Using <code>R</code> syntax (but <code>MATLAB</code> runs the code)</li>
-<li>Built from SPM batch commands</li>
-<li>Shown in worked example: <a href='http://johnmuschelli.com/talks/fmri_task_processing/index.html#1' title=''>http://johnmuschelli.com/talks/fmri_task_processing/index.html#1</a></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
-
-<ul>
-<li>Allows you to download data from <a href='https://www.humanconnectome.org/' title=''>Human Connectome Project</a></li>
-<li>The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants. Standardized protocol.</li>
-<li>Tutorial: <a href='http://johnmuschelli.com/neuroc/neurohcp' title=''>http://johnmuschelli.com/neuroc/neurohcp</a></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images">
-
-<div style="font-size: 20pt;">
-<ul>
-<li>Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data</li>
-<li>From OASIS project and the labeled data as provided by Neuromorphometrics, Inc. (<a href='http://Neuromorphometrics.com/' title=''>http://Neuromorphometrics.com/</a>)</li>
-</ul></div>
-
-<p><img src='ICSA_2019_files/figure-html/unnamed-chunk-3-1.png' title=''/><!-- --></p>
-
-</article></slide><slide class=""><hgroup><h2>Current limitations</h2></hgroup><article  id="current-limitations">
-
-<div id="left_col" style="font-size: 28pt;">
-<ul>
-<li>R is cross platform, but some packages that depend on *nix system</li>
-<li>Still in beta testing, but more likely to incorporate requests</li>
-<li>Rcpp requires compiled code, (see below)</li>
-<li>Licenses with data can be tricky</li>
-</ul></div>
-
-<img src="figures/install_bomb.jpg" style="width:40%;" alt="neurohacking">
-
-<div style="font-size: 10pt;">
-<p>Image from: <a href='https://imgflip.com/i/22gplr' title=''>https://imgflip.com/i/22gplr</a></p></div>
-
 </article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
 
 <div class="container">
-<div class="left-half" style="font-size: 28pt;">
+<div style="font-size: 28pt;" class="left-half">
 Coursera Course: Introduction to Neurohacking In R</div>
 
-<div class="right-half" style="font-size: 28pt;">
+<div style="font-size: 28pt;" class="right-half">
 <img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking"></div>
 
-<p><a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
+<p></br></br></br></br> <a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
 
 <div style="font-size: 28pt;">
-<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a> ENAR 2018</p></div></div>
-
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Questions?</h2></hgroup><article  id="questions-1"></article></slide>
+<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a></p></div></div></article></slide>
 
 
   <slide class="backdrop"></slide>
