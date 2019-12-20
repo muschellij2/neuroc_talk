@@ -141,6 +141,10 @@ article {
 
 </article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging-1">
 
+<p><img src="figures/jss_circles.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging-2">
+
 <p><img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -217,14 +221,38 @@ Our Goal:
 <div id="right_col2">
 <img src="figures/workflow_edited_R.png" style="width:70%; display: block; margin: auto;" alt="flow"></div></div>
 
-</article></slide><slide class=""><hgroup><h2>Benefits of Neuroconductor:</h2></hgroup><article  id="benefits-of-neuroconductor">
+</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor">
+
+<ul>
+<li>centralized bioinformatics packages (&gt; 1300)</li>
+<li>large community/developer team</li>
+<li>published tutorials and workflows</li>
+<li>additional requirements to CRAN (e.g. packages need vignettes)</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="an-r-platform-for-medical-imaging-analysis">
+
+</article></slide><slide class=""><hgroup><h2>What is Neuroconductor?</h2></hgroup><article  id="what-is-neuroconductor">
+
+<ol>
+<li>A centralized repository of maintained packages (N = 97)</li>
+<li>A community of developers (N = 26) and users of R imagers</li>
+<li>A website <a href='https://neuroconductor.org/' title=''>https://neuroconductor.org/</a>.
+
+<ul>
+<li>with tutorials and help</li>
+</ul></li>
+<li>A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)</li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Benefits of Neuroconductor</h2></hgroup><article  id="benefits-of-neuroconductor">
 
 <div style="font-size: 32pt;">
 <p>Allow imaging to use all <code>R</code> has to offer:</p>
 
 <ul>
-<li>Statistics and Machine Learning</li>
-<li>Versioning and testing</li>
+<li>Statistics and Machine Learning (<code>tensorflow</code>)</li>
+<li>Versioning and testing (<code>GitHub</code>)</li>
 <li>Reproducible reports and analyses</li>
 <li>Shiny (web applications)</li>
 <li>Genomics/Imaging analysis in one platform
@@ -233,37 +261,6 @@ Our Goal:
 <li>Bioconductor</li>
 </ul></li>
 </ul></div>
-
-</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor">
-
-<ul>
-<li>centralized bioinformatics/genomics packages</li>
-<li>large community/number of packages (&gt; 1300)</li>
-<li>published tutorials and workflows</li>
-<li>additional requirements to CRAN (e.g. packages need vignettes)</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Bioinformatics Repository: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="bioinformatics-repository-bioconductor-1">
-
-<ul>
-<li>team of developers/maintainers</li>
-<li>multiple grants of support</li>
-</ul>
-
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="an-r-platform-for-medical-imaging-analysis">
-
-</article></slide><slide class=""><hgroup><h2>What is Neuroconductor?</h2></hgroup><article  id="what-is-neuroconductor">
-
-<ol>
-<li>A community of developers (N = 26) and users of R imagers</li>
-<li>A website <a href='https://neuroconductor.org/' title=''>https://neuroconductor.org/</a>.
-
-<ul>
-<li>with tutorials and help</li>
-</ul></li>
-<li>A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)</li>
-<li>A centralized repository of maintained packages (N = 97)</li>
-</ol>
 
 </article></slide><slide class=""><hgroup><h2>Goal: Centralize the packages (currently 97)</h2></hgroup><article  id="goal-centralize-the-packages-currently-97">
 
@@ -291,7 +288,15 @@ Development Pipeline:
 <div id="right_col2">
 <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
 
-<p><a href='https://neuroconductor.org/releases/2019/12/' title=''>https://neuroconductor.org/releases/2019/12/</a></p>
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<h2>
+
+New release (December 2019)
+
+</h2>
+
+<p><img src="figures/dependency_graph.png" width="70%" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -304,13 +309,7 @@ Neuroconductor Goal:
 </h2>
 
 <div style="font-size: 28pt;">
-<p>Detailed <strong>tutorials</strong> on how to actually perform an analysis</p>
-
-<p></br></p>
-
-<ul>
-<li><a href='http://johnmuschelli.com/neuroc/' title=''>http://johnmuschelli.com/neuroc</a></li>
-</ul></div></div>
+<p>Detailed <strong>tutorials</strong> on how to actually perform an analysis</p></div></div>
 
 <div id="right_col2">
 <img src="figures/cat_analysis.gif" style="width:80%; display: block; margin: auto;">
@@ -320,6 +319,20 @@ Neuroconductor Goal:
 From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xISa.gifv</a>.
 
 </p></div></div>
+
+</br></br></br></br> </br></br></br></br>
+
+<div class="container" style="width:100%">
+<p><a href='http://johnmuschelli.com/neuroc' title=''>http://johnmuschelli.com/neuroc</a></p></div>
+
+</article></slide><slide class=""><hgroup><h2>Some (Unpopular) Opinions</h2></hgroup><article  id="some-unpopular-opinions">
+
+<ol>
+<li>No code != no method</li>
+<li>We are not the leaders in imaging</li>
+<li>Not everyone cares about our methods</li>
+<li>Many Engineers are better in imaging at a) distributing code and b) selling their method</li>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Helping Developers</h2></hgroup><article  id="helping-developers">
 
@@ -339,7 +352,9 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 
 </div>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Questions?</h2></hgroup><article  id="questions">
+</article></slide><slide class=""><hgroup><h2>Questions?</h2></hgroup><article  id="questions">
+
+<p>Email: <img src="email_QR.png" style="width:20%; display: inline; margin: auto;"></p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Example Packages</h2></hgroup><article  id="example-packages">
 
@@ -388,7 +403,7 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 <li>From OASIS project and the labeled data as provided by Neuromorphometrics, Inc. (<a href='http://Neuromorphometrics.com/' title=''>http://Neuromorphometrics.com/</a>)</li>
 </ul></div>
 
-<p><img src='ICSA_2019_files/figure-html/unnamed-chunk-2-1.png' title=''/><!-- --></p>
+<p><img src='ICSA_2019_files/figure-html/unnamed-chunk-3-1.png' title=''/><!-- --></p>
 
 </article></slide><slide class=""><hgroup><h2>Current limitations</h2></hgroup><article  id="current-limitations">
 
@@ -408,10 +423,10 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 </article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
 
 <div class="container">
-<div style="font-size: 28pt;" class="left-half">
+<div class="left-half" style="font-size: 28pt;">
 Coursera Course: Introduction to Neurohacking In R</div>
 
-<div style="font-size: 28pt;" class="right-half">
+<div class="right-half" style="font-size: 28pt;">
 <img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking"></div>
 
 <p><a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
