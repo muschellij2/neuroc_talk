@@ -72,7 +72,7 @@ library(spm12r)
 </div>
   </div>    
   <div id="right_col2">
-<img src="figures/workflow_edited_nonR.png" style="width:70%; display: block; margin: auto;" alt="flow">
+<img src="figures/workflow_edited_nonR.png" style="width:73%; display: block; margin: auto;" alt="flow">
   </div>
 </div>
 
@@ -89,7 +89,7 @@ Multiple pieces of software used
 </div>
   </div>    
   <div id="right_col2">
-<img src="figures/workflow_edited_nonR.png" style="width:70%; display: block; margin: auto;" alt="flow">
+<img src="figures/workflow_edited_nonR.png" style="width:73%; display: block; margin: auto;" alt="flow">
   </div>
 </div>
 
@@ -112,7 +112,7 @@ Complete pipeline
 </div>
   </div>    
   <div id="right_col2">
-<img src="figures/workflow_edited_R.png" style="width:70%; display: block; margin: auto;" alt="flow">
+<img src="figures/workflow_edited_R.png" style="width:73%; display: block; margin: auto;" alt="flow">
   </div>
 </div>
 
