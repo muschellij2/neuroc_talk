@@ -33,6 +33,20 @@ library(matlabr)
 library(spm12r)
 ```
 
+# R is a language and environment <br>for **statistical** computing <br>and graphics. <br> https://cran.r-project.org/
+
+## What did R have for medical imaging?
+<img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
+  <p style='font-size: 12pt;'> [https://imgflip.com/memegenerator/Grandma-Finds-The-Internet](https://imgflip.com/memegenerator/Grandma-Finds-The-Internet)
+  </p>  
+
+
+## What did R have for medical imaging?
+
+  <img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow">
+
+
+
 ----
 <div class="container"> 
 <div id="left_col2"> 
@@ -93,18 +107,6 @@ Complete pipeline
   </div>
 </div>
 
-
-# R is a language and environment <br>for **statistical** computing <br>and graphics. <br> https://cran.r-project.org/
-
-## What did R have for medical imaging?
-<img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
-  <p style='font-size: 12pt;'> [https://imgflip.com/memegenerator/Grandma-Finds-The-Internet](https://imgflip.com/memegenerator/Grandma-Finds-The-Internet)
-  </p>  
-
-
-## What did R have for medical imaging?
-
-  <img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow">
 
 
 
