@@ -7,11 +7,6 @@ output:
     self_contained: no
     widescreen: yes
     keep_md: true
-  beamer_presentation: default
-  slidy_presentation:
-    css: neuroconductor.css
-    mathjax: local
-    widescreen: yes
 bibliography: Oral_Proposal.bib
 logo: bloomberg.logo.small.horizontal.blue.png
 ---
