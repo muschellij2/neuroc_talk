@@ -17,6 +17,11 @@ slides > slide.nb2:after {
   line-height: 1.9;
 }
 
+#margins > p { 
+  margin-top: -150px; 
+}
+
+
 #nextsteps {
    content: "";
 }
@@ -119,6 +124,13 @@ h2 {
 }
 .right-half{ 
   float: right; width: 48%; 
+}
+
+.left-half2{ 
+  float: left; width: 32%; 
+}
+.right-half2{ 
+  float: right; width: 65%; 
 }
 
 

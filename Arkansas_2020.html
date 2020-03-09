@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neuroconductor: An R Platform for Medical Imaging Analysis</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: '<img src="Arkansas_2020_QR.png" style="width:20%; display: inline; margin: auto;"></br>Neuroconductor: An R Platform for Medical Imaging Analysis',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                        favIcon: 'bloomberg.logo.small.horizontal.blue.png',
+              },
+
+      // Author information
+      presenters: [
+            {
+        name:  'John Muschelli<br/><a href="https://johnmuschelli.com/neuroc_talk/Arkansas_2020.html" class="uri">https://johnmuschelli.com/neuroc_talk/Arkansas_2020.html</a><br/> Johns Hopkins Bloomberg School of Public Health' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <script src="Arkansas_2020_files/header-attrs-2.1/header-attrs.js"></script>
+  <link href="Arkansas_2020_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="Arkansas_2020_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="Arkansas_2020_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="Arkansas_2020_files/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+    slides > slide:not(.nobackground):before {
+      font-size: 12pt;
+      content: "";
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      background: url(bloomberg.logo.small.horizontal.blue.png) no-repeat 0 50%;
+      -webkit-background-size: 30px 30px;
+      -moz-background-size: 30px 30px;
+      -o-background-size: 30px 30px;
+      background-size: 30px 30px;
+      padding-left: 40px;
+      height: 30px;
+      line-height: 1.9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="neuroconductor.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <aside class="gdbar"><img src="bloomberg.logo.small.horizontal.blue.png"></aside>
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+          </hgroup>
+  </slide>
+
+<style type="text/css">
+article {
+  font-size: 30pt;
+}
+</style>
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is <strong>much more</strong> than that now, but…</h2></hgroup><article  id="r-is-much-more-than-that-now-but">
+
+</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging">
+
+<img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
+
+<p style="font-size: 12pt;">
+
+<a href='https://imgflip.com/memegenerator/Grandma-Finds-The-Internet' title=''>https://imgflip.com/memegenerator/Grandma-Finds-The-Internet</a>
+
+</p>
+
+</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging-1">
+
+<p><img src="figures/jss_circles.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging-2">
+
+<p><img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for an Analysis
+
+</h2>
+
+<div style="font-size: 32pt;">
+<ul>
+<li>bash <img src="figures/Bash-new-600x600.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
+<li>FSL <img src="figures/FSL.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
+<li>ANTs <img src="figures/ants.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
+<li>MRIcroGL <img src="figures/mricrogl.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
+<li>OsiriX <img src="figures/OsiriX.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
+<li>SPM 12 <img src="figures/spm12.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/workflow_edited_nonR.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Workflow for an Analysis
+
+</h2>
+
+<div style="font-size: 32pt;">
+<p>Multiple pieces of software used</p>
+
+<ul>
+<li>all different syntax</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/workflow_edited_nonR.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Our Goal:
+
+</h2>
+
+<div style="font-size: 24pt;">
+<p>Lower the bar to entry</p>
+
+<ul>
+<li>all &ldquo;one&rdquo; code (<code>R</code>)
+
+<ul>
+<li>pipeline tool</li>
+<li>also &ldquo;native&rdquo; <code>R</code> code</li>
+</ul></li>
+</ul>
+
+<p>Complete pipeline</p>
+
+<ul>
+<li>preprocessing and analysis</li>
+</ul></div></div>
+
+<div id="right_col2">
+<img src="figures/workflow_edited_R.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=""><hgroup><h2>Envy: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"></h2></hgroup><article  id="envy-bioconductor">
+
+<ul>
+<li>centralized bioinformatics packages (&gt; 1300)</li>
+<li>large community/developer team</li>
+<li>published tutorials and workflows</li>
+<li>additional requirements to CRAN (e.g. packages need vignettes)</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="an-r-platform-for-medical-imaging-analysis">
+
+</article></slide><slide class=""><hgroup><h2>What is Neuroconductor?</h2></hgroup><article  id="what-is-neuroconductor">
+
+<ol>
+<li>A centralized repository of packages (N = 101)</li>
+<li>A community of developers (N = 27) and users</li>
+<li>A website <a href='https://neuroconductor.org/' title=''>https://neuroconductor.org/</a>.
+
+<ul>
+<li>with tutorials and help</li>
+</ul></li>
+<li>A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)</li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Benefits of Neuroconductor</h2></hgroup><article  id="benefits-of-neuroconductor">
+
+<div style="font-size: 32pt;">
+<p>Allow imaging to use all <code>R</code> has to offer:</p>
+
+<ul>
+<li>Statistics and Machine Learning (<code>tensorflow</code>)</li>
+<li>Versioning and testing (<code>GitHub</code>)</li>
+<li>Reproducible reports and analyses</li>
+<li>Shiny (web applications)</li>
+<li>Genomics/Imaging analysis in one platform
+
+<ul>
+<li>Bioconductor</li>
+</ul></li>
+</ul></div>
+
+</article></slide><slide class=""><hgroup><h2>Goal: Centralize the packages (currently 101)</h2></hgroup><article  id="goal-centralize-the-packages-currently-101">
+
+<p><img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
+
+</article></slide><slide class=""><hgroup><h2>New release (December 2019)</h2></hgroup><article  id="new-release-december-2019">
+
+<p><img src="figures/dependency_graph.png" width="75%" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Package Capabilites</h2></hgroup><article  id="package-capabilites">
+
+<ul>
+<li>image registration: ANTsR, RNiftyReg, fslr</li>
+<li>inhomogeneity correction: fslr, ANTsR</li>
+<li>intensity normalization: WhiteStripe, RAVEL, ComBat (genomic)</li>
+<li>3D smoothing: fslr, ANTsR, AnalyzeFMRI</li>
+<li>download/package data: kirby21.t1, kirby21.fmri, neurohcp, nitrcbot, Rxnat, malf.templates</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Development Pipeline:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Check the package for stability</p>
+
+<ul>
+<li>check against other imaging software (e.g. FSL)</li>
+</ul></div>
+
+</p></div>
+
+<div id="right_col2">
+<img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="container">
+<div id="left_col2">
+<h2>
+
+Neuroconductor Goal:
+
+</h2>
+
+<div style="font-size: 28pt;">
+<p>Detailed <strong>tutorials</strong> on how to actually perform an analysis</p></div></div>
+
+<div id="right_col2">
+<img src="figures/cat_analysis.gif" style="width:80%; display: block; margin: auto;">
+
+<p style="font-size: 10pt;">
+
+From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xISa.gifv</a>.
+
+</p></div></div>
+
+</br></br></br></br> </br></br></br></br>
+
+<div class="container" style="width:100%">
+<p><a href='http://johnmuschelli.com/neuroc' title=''>http://johnmuschelli.com/neuroc</a></p></div>
+
+</article></slide><slide class=""><hgroup><h2>Some (Unpopular?) Opinions</h2></hgroup><article  id="some-unpopular-opinions">
+
+<ol>
+<li>No code = no method…yet &ldquo;Available upon request&rdquo; - not usually upheld</li>
+<li>We are not the leaders in imaging</li>
+<li>Not everyone cares about our methods</li>
+<li>Many engineers are better in imaging at a) distributing code and b) selling their method</li>
+<li>Most Academics (&amp; depts) don’t really support software well.</li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Helping Developers</h2></hgroup><article  id="helping-developers">
+
+<div id="left_col" style="font-size: 28pt;">
+<ul>
+<li>GitHub allows the Neuroconductor team to help fix issues</li>
+<li>Pull Requests to developers</li>
+<li>Standardized checking of Packages (Travis configuration)</li>
+<li>Remove unnecessary hurdles for developers</li>
+</ul></div>
+
+<div id="right_col">
+<img src="figures/help_me_help_you.gif" style="width:110%; margin: auto;" alt="flow"> <br> <br> <br>
+
+<div style="font-size: 10pt;">
+<p>Image from: <a href='https://giphy.com/gifs/medblr-medschool-dr-dres-anatomy-uRb2p09vY8lEs' title=''>https://giphy.com/gifs/medblr-medschool-dr-dres-anatomy-uRb2p09vY8lEs</a></p></div></div>
+
+</div>
+
+</article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
+
+<div class="container">
+<div class="left-half" style="font-size: 28pt;">
+Coursera Course: Introduction to Neurohacking In R</div>
+
+<div class="right-half" style="font-size: 28pt;">
+<img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking"></div>
+
+<p></br></br></br></br> <a href='https://www.coursera.org/learn/neurohacking/' title=''>https://www.coursera.org/learn/neurohacking/</a></p>
+
+<div style="font-size: 28pt;">
+<p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a></p></div></div>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Neuroimaging Analysis in Stroke</h2></hgroup><article  id="neuroimaging-analysis-in-stroke">
+
+</article></slide><slide class=""><hgroup><h2>The MISTIE Stroke Trial</h2></hgroup><article  id="the-mistie-stroke-trial">
+
+<ul>
+<li>Minimally Invasive Surgery plus r-tPA for Intracerebral Hemorrhage Evacuation (<strong>MISTIE</strong>)
+
+<ul>
+<li>Multi-center, multi-national Phase II RCT</li>
+</ul></li>
+<li>Patients with intracerebral hemorrhages (≥ 20 millilters)</li>
+</ul>
+
+<p><img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO"></p>
+
+<ul>
+<li><a href='http://braininjuryoutcomes.com/mistie-about' title=''>http://braininjuryoutcomes.com/mistie-about</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>What is Intracranial/Intracerebral hemorrhage?</h2></hgroup><article  id="what-is-intracranialintracerebral-hemorrhage">
+
+<div class="columns-2" style="font-size: 28pt;">
+<ul>
+<li>When a blood vessel ruptures into:
+
+<ul>
+<li><strong>Tissue ⇒ intracerebral hemorrhage (ICH)</strong></li>
+<li>Ventricles ⇒ intraventricular hemorrhage (IVH)</li>
+</ul></li>
+<li>≈ 13% of strokes</li>
+</ul>
+
+<img src='figures/stroke_hem_web.jpg' title=''/>
+
+<p style="font-size:10.5px; ">
+
+<a href = "http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm" style ="word-wrap: break-word;" >http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm</a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2>X-ray Computed Tomography (CT) Scans</h2></hgroup><article  id="x-ray-computed-tomography-ct-scans">
+
+<aside class='note'><section><p>Images are acquired from an X-ray scanner.<br/>x-ray goes around object and detector the other side of the object determines how many x-rays are recovered - fancy transform - Image!</p></section></aside>
+
+<div style="width:48%;float:left;">
+<p><sub><sup><sub><sup>Image from <a href='http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm' title=''>http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm</a></sup></sub></sup></sub> <img src='figures/CT_diagram2.gif' title=''/> <br></p></div>
+
+<div style="margin-left:48%;">
+<p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
+
+</article></slide><slide class=""><hgroup><h2>A note the MRI folks (about CT)</h2></hgroup><article  id="a-note-the-mri-folks-about-ct">
+
+<ul>
+<li>CT has actual units (Hounsfield Units)</li>
+<li>CT is <strong>the</strong> modality for clincial ICU imaging</li>
+<li>Takes seconds vs. minutes (MRI)</li>
+<li>Muschelli, J., 2019. Recommendations for Processing Head CT Data. Frontiers in neuroinformatics, 13, p.61.</li>
+<li><a href='https://johnmuschelli.com/process_head_ct/example/' title=''>https://johnmuschelli.com/process_head_ct/example/</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="margins">
+
+<div class="container">
+<div class="left-half2" style="font-size: 24pt;">
+Muschelli, J., Sweeney, E. M., Ullman, N. L., Vespa, P., Hanley, D. F., &amp; Crainiceanu, C. M. (2017). <strong>PItcHPERFeCT</strong>: Primary intracranial hemorrhage probability estimation using random forests on CT. <em>NeuroImage: Clinical</em>, 14, 379-390.</div>
+
+<div class="right-half2" style="font-size: 28pt;">
+<img src="figures/Imaging_Pipeline_Flowchart_with_Rigid.png" style="width:75%; display: inline; margin: auto;"></div></div>
+
+</article></slide><slide class=""><hgroup><h2><a href="https://neuroconductor.org/package/ichseg">ichseg: the PItcHPERFeCT Method of ICH Segmentation</a> <img src='figures/ichseg_logo.png' align="right" height="139" /></h2></hgroup><article  id="ichseg-the-pitchperfect-method-of-ich-segmentation">
+
+<pre class = 'prettyprint lang-r'>ichseg::ich_segment(img = &quot;/path/to/ct/scan&quot;)</pre>
+
+<p><img src="figures/ichseg_example.png" width="85%" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Things in the Pipeline</h2></hgroup><article  id="things-in-the-pipeline">
+
+<div class="container">
+<div class="left-half" style="font-size: 28pt;">
+<a href='https://github.com/ANTsXNet' title=''>https://github.com/ANTsXNet</a> - Deep Learning</div>
+
+<div class="right-half" style="font-size: 28pt;">
+<img src="figures/antsxnet.png" style="width:80%; display: inline; margin: auto;"></div></div>
+
+</article></slide><slide class=""><hgroup><h2>Questions?</h2></hgroup><article  id="questions">
+
+<p>Email: <img src="email_QR.png" style="width:20%; display: inline; margin: auto;"></p>
+
+<p>Funding: NIH 2R01NS060910 and U24HG010263</p>
+
+</article></slide><slide class=""><hgroup><h2>neurohcp: Human Connectome Project</h2></hgroup><article  id="neurohcp-human-connectome-project">
+
+<ul>
+<li>Allows you to download data from <a href='https://www.humanconnectome.org/' title=''>Human Connectome Project</a></li>
+<li>The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants. Standardized protocol.</li>
+<li>Tutorial: <a href='http://johnmuschelli.com/neuroc/neurohcp' title=''>http://johnmuschelli.com/neuroc/neurohcp</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>rcamino: Port of Camino Software</h2></hgroup><article  id="rcamino-port-of-camino-software">
+
+<ul>
+<li>Wraps <a href='http://camino.cs.ucl.ac.uk/' title=''>Camino Diffusion MRI Toolkit</a></li>
+<li>Takes in b-values, b-vectors, and tensors</li>
+<li>Fits models for DTI data</li>
+<li><a href='http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html' title=''>http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>malf.templates: Segmented T1-weighted Images</h2></hgroup><article  id="malf.templates-segmented-t1-weighted-images">
+
+<div style="font-size: 20pt;">
+<ul>
+<li>Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data</li>
+<li>From OASIS project and the labeled data as provided by Neuromorphometrics, Inc. (<a href='http://Neuromorphometrics.com/' title=''>http://Neuromorphometrics.com/</a>)</li>
+</ul></div>
+
+<p><img src='Arkansas_2020_files/figure-html/unnamed-chunk-4-1.png' title=''/><!-- --></p>
+
+</article></slide><slide class=""><hgroup><h2>MALF: Skull Stripping Example</h2></hgroup><article  id="malf-skull-stripping-example">
+
+<div class="container">
+<div class="left-half">
+<p>From <span class="cite">(Doshi et al. 2013)</span>:</p>
+
+<p><img src="figures/malf_figure.jpg" style="width: 75%; display: block; margin: auto;"></p></div>
+
+<div class="right-half">
+<ul>
+<li>Register templates to an subject T1</li>
+<li>Apply transformation to the label/mask, average over voxels
+
+<ul>
+<li>there are &ldquo;smarter&rdquo; (e.g. weighted) ways</li>
+</ul></li>
+</ul></div></div>
+
+<div class="references hanging-indent" id="refs">
+<div id="ref-mass">
+<p>Doshi, Jimit, Guray Erus, Yangming Ou, Bilwaj Gaonkar, and Christos Davatzikos. 2013. “Multi-Atlas Skull-Stripping.” <em>Academic Radiology</em> 20 (12): 1566–76.</p></div></div></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
