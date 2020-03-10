@@ -1,0 +1,68 @@
+Today I will talk about some of our work on Neuro conductor, which is an R Platform for Medical Imaging Analysis.  There should be a QR Code, which you can scan and follow along.  Otherwise the link to the slides are located here as well.
+
+R really started for statisticians and statistical models.  Many of you likely use it, but I think it's good to demonstrate that it first started in statistical modeling.
+
+That's because R has changed significantly in the past decade.  A lot of different functionality has been added, including a wide array of tutorials and applications.  Things like plumber and shiny add things that I would never have dreamed R could do a decade ago.
+
+Now I work in medical imaging, predominantly neuroimaging.  A lot of that work is done in MATLAB by engineers and analysts.  Python has come along and filled some of those gaps for neuroimaging analysis, but a lot of programs are still third-party applications that are standalone and may not interact with each other.  So R has changed a lot, but what did it have for imaging?
+
+There was an an issue on MRI analysis in R, in JSS.  The things to note is that this was in 2011, and I don't know of another JSS special issue on this.  Also, MRI is definitely a juggernaut in the research imaging community, but many other modalities exist.  I'll talk about CT data later. 
+
+Also, R had a medical imaging task view.  A task view is a place where a curator puts together a list of packages with specific functionality or applicability to certain data.  You may note that Brandon Whitcher is the maintainer of this, and he was one of the editors on the JSS volume.  It has been updated from 2016, but it still isn't really satisfactory for aggregating packages.
+
+Looking at genomics, I'd have to confess I was a bit jealous of bio-conductor.  Bio-conductor has a huge community, that centralizes  bioinformatics packages.  One big thing is that statisticians and bioinformatics people were in on the ground floor.  They have high standards for packages, standard data structures, and buy in from the community and statisticians.  
+
+We aim emulate their success with our platform neuro conductor, an R platform for medical imaging analysis.  We have the word neuro in the title as we started mainly in neuro-imaging, but wanted more than just brain data.  But we had already named it neuro conductor, so the name stuck.
+
+Neuro conductor is a centralized repository of packages with a community of developers.  We aim to help developers by making their packages stable, as well as provide workflows and tutorials for analysis.  Our team has also written packages to provide common steps in image processing.  
+
+
+When talking about image processing, let's jump to an example analysis.  Here was what I was working on when I started in imaging.  I would do a number of different things in different imaging software suites, including FSL, SPM in MATLAB, some bash scripting, and then once all that was done, I would move over to R for analysis.  
+
+This was a huge burden as many of the languages don't interact and have wildly different syntax.  This also caused huge issues with reproducibility.
+
+Although I did not re-implement all the methods of each of these pieces of software, I tried to make packages that use R as a pipeline piece of software, so that if you knew R syntax, you could perform all the operations.  Then you could do all your image processing in R and the analysis as well.  
+
+Once code is structured in this way, users can work with imaging data and the benefits of R.  We believe a strong area of growth is online applications with Shiny and using machine learning frameworks with the imaging data.
+
+As one of our goal is centralization, we list some of the packages here.  If you go on the neuro conductor website, you will see a full listing. 
+
+Although we use GitHub and online systems for checking, we create releases where all the packages are sufficiently checked against each other.  Here we show a dependency graph the packages in the last release, indicating how connected the system is.  If you look closely, you'll see different colors for standard packages and data packages.  
+
+The neuro conductor platform is built on Git Hub and cloud continuous integration services.  These services host the packages, and check them for stability and consistency on Travis C I for Linux and Mac OSX systems and app veyor for Windows.
+
+We'll showcase a few fundamental features of packages in Neuro conductor.  The Packages of FSLR, ants R, and R nifty reg can each perform image registration.  Here we show within-subject registration of a FLAIR and T2 weighted images to a T1-weighted image.  This would use a rigid-body transformation.  When doing population-level analyses, we would register images using a non-linear registration to a template, such as the MNI template, after some processing.
+
+Another fundamental processing step, especially with MRI data, is performing an inhomogeneity correction step.  This is necessary due to inconsistencies in the coil, causing different areas of the brain to have different intensities, simply because of location.  The ANTs R and FSLR packages have implementations that can make these intensities more consistent within a tissue type.
+
+As MRI have arbitrary units, the intensities must be normalized across people.  This is especially important for data from multiple sites or multiple scanners.  Here we display the intensity distributions for normal appearing white matter and gray matter for 2 different data sets using the white stripe method.  We see better consistencies in white matter after normalization.  Additional methods such as Ravel and combat can be used to harmonize data. 
+
+Three-D smoothing can be done using the ANTs R, FSLR, and analyze FMRI. Non-isotropic smoothing such as the perona malik smoother can be one in ANTs R.  Here we display a non-contrast CT scan with different smoothing.
+
+One big hurdle is getting access to data, especially example data for testing.  The neuro HCP package can access data from the human connectome project, the kirby21 data set has scan-rescan data for different MRI sequences.  Nit rick has data sets that can be downloaded by the nit rick bot package.  The R X nat package can also interface with X Nat databases.  Multi-atlas label fusion is a powerful approach for estimating regions of interest by registering and averaging multiple templates and atlases.  We show an example where label fusion for brain segmentation.  
+
+With these example data, we create tutorials and workflows to train researchers and demonstrate, in detail how packages interact and can be used in practice.  
+
+Working in this area for some time, I have some opinions.  One is that if code is not available, you have just a nice method.  The greatest method without implementation is not a very useful method.  The phrase available upon request, either about data or code, usually is not upheld.   Not everyone cares about our methods, especially methods in imaging.  We, we being statisticians, are not the leaders in imaging.  In many respects engineers are the leaders in imaging, and are better at distributing code and hyping up their methods.  Many departments, including grant support do not support software well, but in some respects expect it.
+
+We agree developing packages is hard.  We try to help developers get their package in order and stable.   As we work on Git Hub, helping researchers with pull requests is natural.  Our expertise allows us to quickly identify problems and fixes for many common package issues.  
+
+We have created a Coursera course, neuro hacking in R, to help new researchers starting out in imaging.  I have also an updated set of tutorials on my website, which are up all year round.  This allows us to use this to train new collaborators or students before starting full research projects.
+
+Now I'll discuss a package in neuro conductor, which is based on analysis of stroke CT scans.
+
+The data will be from the misty phase 2 stroke trial.  The trial is an intervention trial of intra-cerebral hemorrhage, which used intra-cerebral catheters to deliver clot-buster drugs to remove the blood clot.  
+
+Most strokes are ischemic strokes.  Hemorrhagic strokes are approximately 13% of strokes.  We are focused on intra-cerebral hemorrhages, where blood breaks out of a blood vessel, usually due to hypertension, but stays within the areas of the tissue and not the areas of the ventricular system.  
+
+In misty, CT scans were used to estimate the blood volume.  CT scans measure the density of an object, and blood, especially coagulated, is denser than the brain tissue, which you can see in the cross hairs.  As you can see, the skull is very dense, the ventricles are less dense than tissue, and artifacts such as the table show up on the scan.
+
+For those who work in MRI, a few notes about CT data.  CT is the modality that's most common in clinical imaging.  CT have relatively standardized units, which are consistent across sites and scanners, called Hounsfield units.  CT scans take seconds as opposed to minutes, but have less contrast as compared to T1-weighted images.  Here is a link to a tutorial that accompanies our paper on recommendations for CT analysis.
+
+The full workflow we proposed for segmenting the blood from the rest of the scan is shown in the figure.  There are a lot of small settings and parameters in this method, which is why I believe methods require code.  As stated about my opinion about methods.  The method boils down to creating a number of predictors and running voxel-wise random forests to predict blood.  Also, this reference also wants to note that if you name a method, it stays with the method.  
+
+We created the ICH seg package to implement the pitch perfect method.  Here we present a CT scan with blood and the associated prediction image.  Voxels that are true positives are colored green, those that are false negatives are in blue, and false positives are in red.  The whole method is wrapped into one command, which demonstrates ease of use.  This may complicate debugging, but each function is modularized.  I believe that tools such as this can be used for future clinical trial work.  As there are many researchers in MRI, I think analysis tools for CT are an area for growth with a large number of applications.
+
+We believe that tools that allow for deep learning methods to be applied to imaging is a huge area of growth.  For example the ANTs X Net repository has examples of applications, as seen on the right, which is a range of different organ segmentations, such as the brain and the lung, including the lungs of pigs.  Also, we have improved the pitch perfect method with a convolutional neural network.  Other imaging methods such as EEG have tools in Neuro conductor, but they are fewer than MRI or CT.  
+
+Here is my email.  If you're interested in submitting a packge, please visit the link or the neuro conductor website.

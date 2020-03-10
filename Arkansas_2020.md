@@ -1,5 +1,5 @@
 ---
-title: "<img src=\"Arkansas_2020_QR.png\" style=\"width:20%; display: inline; margin: auto;\"></br>Neuroconductor: An R Platform for Medical Imaging Analysis"
+title: "<img src=\"Arkansas_2020_QR.png\" style=\"width:30%; display: inline; margin: auto;\"></br>Neuroconductor: An R Platform for Medical Imaging Analysis"
 author: 'John Muschelli<br/>https://johnmuschelli.com/neuroc_talk/Arkansas_2020.html<br/> Johns Hopkins Bloomberg School of Public Health'
 output:
   ioslides_presentation:
@@ -40,6 +40,26 @@ article {
   <img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow">
 
 
+## Envy: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
+
+- centralized bioinformatics packages (> 1300)
+- large community/developer team
+- published tutorials and workflows 
+- additional requirements to CRAN (e.g. packages need vignettes)
+
+# <img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis
+
+
+
+
+## What is Neuroconductor?
+
+1.  A centralized repository of packages (N = 101)
+2.  A community of developers (N = 27) and users
+3.  A website [https://neuroconductor.org/](https://neuroconductor.org/).
+    - with tutorials and help
+4.  A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)
+5.  Set of packages to allow R to perform processing.
 
 
 
@@ -104,28 +124,6 @@ Complete pipeline
 </div>
 
 
-## Envy: Bioconductor<br> <img src="figures/bioconductor.png" style="width:65%; display: inline; margin: auto;" alt="flow"> 
-
-- centralized bioinformatics packages (> 1300)
-- large community/developer team
-- published tutorials and workflows 
-- additional requirements to CRAN (e.g. packages need vignettes)
-
-
-
-
-
-# <img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis
-
-
-## What is Neuroconductor?
-
-1.  A centralized repository of packages (N = 101)
-2.  A community of developers (N = 27) and users
-3.  A website [https://neuroconductor.org/](https://neuroconductor.org/).
-    - with tutorials and help
-4.  A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)
-
 ## Benefits of Neuroconductor
 
 <div style='font-size: 32pt;'>
@@ -150,16 +148,6 @@ Allow imaging to use all `R` has to offer:
 
 <img src="figures/dependency_graph.png" width="75%" style="display: block; margin: auto;" />
 
-## Package Capabilites
-
-- image registration: ANTsR, RNiftyReg, fslr
-- inhomogeneity correction: fslr, ANTsR
-- intensity normalization: WhiteStripe, RAVEL, ComBat (genomic)
-- 3D smoothing: fslr, ANTsR, AnalyzeFMRI
-- download/package data: kirby21.t1, kirby21.fmri, neurohcp, nitrcbot, Rxnat, malf.templates
-
-
-
 ----
 <div class="container"> 
 <div id="left_col2"> 
@@ -177,6 +165,67 @@ Check the package for stability
   <div id="right_col2">
   
   <img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"> 
+  </div>
+</div>
+
+## Package Features: Image Registration
+
+- ANTsR, RNiftyReg, fslr
+
+<img src="figures/Reg_Figure_Option1_nonlinear_short.png" width="100%" style="display: block; margin: auto;" />
+
+## Package Features: Inhomogeneity Correction
+
+- ANTsR, fslr
+
+<img src="figures/MRI_Bias_Field_Correction_Slicer3_close_up_inhomogeneity.png" width="75%" style="display: block; margin: auto;" />
+<div  style="font-size: 10pt;">
+Image From https://www.slicer.org/w/images/7/77/MRI_Bias_Field_Correction_Slicer3_close_up.png
+</div>
+
+## Package Features: Intensity Normalization
+
+<div class="container" style="margin-top: -60px;"> 
+   <div class="left-half2" style="font-size: 24pt;">
+
+- WhiteStripe - https://github.com/muschellij2/whitestripe
+- RAVEL - https://github.com/Jfortin1/RAVEL
+- ComBat (adapted from genomics) - https://github.com/Jfortin1/ComBatHarmonization
+</div>
+
+  <div class="right-half2" style="font-size: 28pt;">
+<img src="figures/whitestripe.jpg" width="75%" style="display: block; margin: auto;" />
+  </div>
+  <div  style="font-size: 10pt;">
+  Figure from Shinohara, Russell T., et al. "Statistical normalization techniques for magnetic resonance imaging." NeuroImage: Clinical 6 (2014): 9-19.
+  </div>  
+</div>
+
+
+## Package Features: Smoothing
+
+- fslr, ANTsR, AnalyzeFMRI
+
+<img src="figures/smooth_example.png" width="100%" style="display: block; margin: auto;" />
+
+## Package Features: Data
+
+<div class="container" style="margin-top: -30px;"> 
+   <div class="left-half" style="font-size: 20pt;">
+
+- neurohcp - [Human Connectome Project](https://www.humanconnectome.org/)
+- kirby21.t1, kirby21.fmri - https://www.nitrc.org/projects/multimodal
+- nitrcbot - https://www.nitrc.org/
+- Rxnat - XNAT databases
+
+  </div>
+  <div class="right-half" style="font-size: 20pt;">
+
+Multi-Atlas Label Fusion (MALF) 
+
+- malf.templates - https://github.com/muschellij2/malf.templates
+
+<img src="figures/malf_figure.jpg" width="70%" style="display: block; margin: auto;" />
   </div>
 </div>
 
@@ -206,14 +255,18 @@ Detailed **tutorials** on how to actually perform an analysis
 http://johnmuschelli.com/neuroc
 </div>
 
-## Some (Unpopular?) Opinions
+## Some (Unpopular?) Opinions for Statisticians
 
-1. No code = no method...yet  "Available upon request" - not usually upheld
+<div class="container" style="margin-top: -30px;"> 
+
+1. No code = no method...yet.  
+    - "Available upon request" - not usually upheld
 2. We are not the leaders in imaging
 3. Not everyone cares about our methods
 4. Many engineers are better in imaging at a) distributing code and b) selling their method
-5. Most Academics (& depts) don't really support software well.
+5. Most grants (& depts) don't really support software well.
 
+</div>
 
 ## Helping Developers
 
@@ -244,7 +297,7 @@ Image from: https://giphy.com/gifs/medblr-medschool-dr-dres-anatomy-uRb2p09vY8lE
    Coursera Course: Introduction to Neurohacking In R 
   </div>
   <div class="right-half" style="font-size: 28pt;">
-  <img src="figures/neurohacking_logo.png" style="width:40%;" alt="neurohacking">
+  <img src="figures/neurohacking_logo.png" style="width:60%;" alt="neurohacking">
   </div>
   </br></br></br></br>
 https://www.coursera.org/learn/neurohacking/
@@ -259,6 +312,8 @@ https://www.coursera.org/learn/neurohacking/
 
 ## The MISTIE Stroke Trial 
 
+<div class="container" style="margin-top: -30px;"> 
+
 * Minimally Invasive Surgery plus r-tPA for Intracerebral Hemorrhage Evacuation (<strong>MISTIE</strong>) 
     - Multi-center, multi-national Phase II RCT
 * Patients with intracerebral hemorrhages (≥ 20 millilters)
@@ -266,6 +321,8 @@ https://www.coursera.org/learn/neurohacking/
 <img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO">
 
 * http://braininjuryoutcomes.com/mistie-about
+
+</div>
 
 
 ## What is Intracranial/Intracerebral hemorrhage?
@@ -293,7 +350,7 @@ x-ray goes around object and detector the other side of the object determines ho
 - Image!
 </div>
 <div style="width:48%;float:left;">
-<sub><sup><sub><sup>Image from http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm</sup></sub></sup></sub>
+<div style="font-size:10pt;">Image from http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm</div>
 ![inline fill](figures/CT_diagram2.gif)
 <br>
 </div>
@@ -304,8 +361,8 @@ x-ray goes around object and detector the other side of the object determines ho
 
 ## A note the MRI folks (about CT)
 
-- CT has actual units (Hounsfield Units)
 - CT is **the**  modality for clincial ICU imaging
+- CT has standard units (Hounsfield Units)
 - Takes seconds vs. minutes (MRI)
 - Muschelli, J., 2019. Recommendations for Processing Head CT Data. Frontiers in neuroinformatics, 13, p.61.
 - https://johnmuschelli.com/process_head_ct/example/
@@ -313,11 +370,11 @@ x-ray goes around object and detector the other side of the object determines ho
 ## {#margins}
 
 <div class="container" style="margin-top: -60px;"> 
-   <div class="left-half2" style="font-size: 24pt;">
+   <div class="left-half2" style="font-size: 20pt;">
 Muschelli, J., Sweeney, E. M., Ullman, N. L., Vespa, P., Hanley, D. F., & Crainiceanu, C. M. (2017). **PItcHPERFeCT**: Primary intracranial hemorrhage probability estimation using random forests on CT. *NeuroImage: Clinical*, 14, 379-390.
   </div>
   <div class="right-half2" style="font-size: 28pt;">
-  <img src="figures/Imaging_Pipeline_Flowchart_with_Rigid.png" style="width:70%; display: inline; margin: auto;">
+  <img src="figures/Imaging_Pipeline_Flowchart_with_Rigid.png" style="width:60%; display: inline; margin: auto;">
   </div>
 </div>
 
@@ -330,11 +387,15 @@ ichseg::ich_segment(img = "/path/to/ct/scan")
 
 <img src="figures/ichseg_example.png" width="85%" style="display: block; margin: auto;" />
 
-## Things in the Works
+## Things in the Works/Other work
 
 <div class="container"> 
    <div class="left-half" style="font-size: 28pt;">
-  https://github.com/ANTsXNet - Deep Learning
+   
+  - https://github.com/ANTsXNet - Wide array of deep learning applications for R
+  - https://github.com/msharrock/deepbleed - CNN for ICH Segmentation
+  
+  - EEG - https://github.com/craddm/eegUtils
   </div>
   <div class="right-half" style="font-size: 28pt;">
   <img src="figures/antsxnet.png" style="width:80%; display: inline; margin: auto;">
@@ -352,46 +413,4 @@ Email:
 Submit Packages at: https://neuroconductor.org/submit-package
 
 Funding: NIH 2R01NS060910 and U24HG010263
-
-
-## neurohcp: Human Connectome Project 
-
-- Allows you to download data from [Human Connectome Project](https://www.humanconnectome.org/)
-- The 1200 Subjects release: behavioral and 3T MR imaging data from 1206 healthy young adult participants.  Standardized protocol.
-- Tutorial: http://johnmuschelli.com/neuroc/neurohcp
-
-
-## rcamino: Port of Camino Software
-
-- Wraps [Camino Diffusion MRI Toolkit](http://camino.cs.ucl.ac.uk/)
-- Takes in b-values, b-vectors, and tensors
-- Fits models for DTI data
-- http://johnmuschelli.com/neuroc/DTI_analysis_rcamino/index.html
-
-
-## malf.templates: Segmented T1-weighted Images 
-<div style='font-size: 20pt;'>
-- Data from the MICCAI 2012 Challenge on Multi-atlas Labelling Data
-- From OASIS project and the labeled data as provided by
-Neuromorphometrics, Inc. (http://Neuromorphometrics.com/) 
-</div>
-
-![](Arkansas_2020_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-
-## MALF: Skull Stripping Example
-
-<div class="container">
-  <div class="left-half"> 
-From [@mass]:
-
-<img src="figures/malf_figure.jpg" style="width: 75%; display: block; margin: auto;">
-</div>
-  <div class="right-half"> 
-
-- Register templates to an subject T1 
-- Apply transformation to the label/mask, average over voxels
-    - there are "smarter" (e.g. weighted) ways
-</div>
-</div>
-
 
