@@ -403,6 +403,19 @@ ichseg::ich_segment(img = "/path/to/ct/scan")
 </div>
 
 
+## Publish the Weights!
+
+<div style="font-size:15pt;">
+https://arxiv.org/abs/2003.00898
+</div>
+
+<img src="figures/arxiv_paper.png" width="60%" style="display: block; margin: auto;" />
+
+<div style="font-size:15pt;">
+https://hopstat.wordpress.com/2020/02/04/the-way-people-use-ai-is-ruining-reproducible-science-again/
+</div>
+
+<img src="figures/hopstat.png" width="60%" style="display: block; margin: auto;" />
 
 
 ## Questions?

@@ -432,6 +432,23 @@ knitr::include_graphics("figures/ichseg_example.png")
 </div>
 
 
+## Publish the Weights!
+
+<div style="font-size:15pt;">
+https://arxiv.org/abs/2003.00898
+</div>
+
+```{r, out.width="60%", results="markup", fig.align="center"}
+knitr::include_graphics("figures/arxiv_paper.png")
+```
+
+<div style="font-size:15pt;">
+https://hopstat.wordpress.com/2020/02/04/the-way-people-use-ai-is-ruining-reproducible-science-again/
+</div>
+
+```{r, out.width="60%", results="markup", fig.align="center"}
+knitr::include_graphics("figures/hopstat.png")
+```
 
 
 ## Questions?
