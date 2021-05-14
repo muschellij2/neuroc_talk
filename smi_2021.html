@@ -93,70 +93,7 @@ slide:not(.current) .plotly.html-widget{
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-            pre > code.sourceCode { white-space: pre; position: relative; }
-            pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-            pre > code.sourceCode > span:empty { height: 1.2em; }
-            .sourceCode { overflow: visible; }
-            code.sourceCode > span { color: inherit; text-decoration: inherit; }
-            div.sourceCode { margin: 1em 0; }
-            pre.sourceCode { margin: 0; }
-            @media screen {
-            div.sourceCode { overflow: auto; }
-            }
-            @media print {
-            pre > code.sourceCode { white-space: pre-wrap; }
-            pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-            }
-            pre.numberSource code
-              { counter-reset: source-line 0; }
-            pre.numberSource code > span
-              { position: relative; left: -4em; counter-increment: source-line; }
-            pre.numberSource code > span > a:first-child::before
-              { content: counter(source-line);
-                position: relative; left: -1em; text-align: right; vertical-align: baseline;
-                border: none; display: inline-block;
-                -webkit-touch-callout: none; -webkit-user-select: none;
-                -khtml-user-select: none; -moz-user-select: none;
-                -ms-user-select: none; user-select: none;
-                padding: 0 4px; width: 4em;
-                color: #aaaaaa;
-              }
-            pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-            div.sourceCode
-              {   }
-            @media screen {
-            pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-            }
-            code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-            code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-            code span.at { color: #7d9029; } /* Attribute */
-            code span.bn { color: #40a070; } /* BaseN */
-            code span.bu { } /* BuiltIn */
-            code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-            code span.ch { color: #4070a0; } /* Char */
-            code span.cn { color: #880000; } /* Constant */
-            code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-            code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-            code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-            code span.dt { color: #902000; } /* DataType */
-            code span.dv { color: #40a070; } /* DecVal */
-            code span.er { color: #ff0000; font-weight: bold; } /* Error */
-            code span.ex { } /* Extension */
-            code span.fl { color: #40a070; } /* Float */
-            code span.fu { color: #06287e; } /* Function */
-            code span.im { } /* Import */
-            code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-            code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-            code span.op { color: #666666; } /* Operator */
-            code span.ot { color: #007020; } /* Other */
-            code span.pp { color: #bc7a00; } /* Preprocessor */
-            code span.sc { color: #4070a0; } /* SpecialChar */
-            code span.ss { color: #bb6688; } /* SpecialString */
-            code span.st { color: #4070a0; } /* String */
-            code span.va { color: #19177c; } /* Variable */
-            code span.vs { color: #4070a0; } /* VerbatimString */
-            code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-        
+            
     slides > slide:not(.nobackground):before {
       font-size: 12pt;
       content: "";
@@ -198,11 +135,47 @@ article {
 }
 </style>
 
-<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
+<!-- 20 mintue talk!!!!!!! -->
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is <strong>much more</strong> than that now, but…</h2></hgroup><article  id="r-is-much-more-than-that-now-but">
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>(Bio)Statisticians are <strong>LATE</strong> to the neuroimaging game</h2></hgroup><article  id="biostatisticians-are-late-to-the-neuroimaging-game">
 
-</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging">
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Engineers got there first, a lot MRI started in engineering (also, there are more of them)</li>
+<li>MATLAB reigned supreme
+
+<ul>
+<li>Cost, closed source had issues, also…the language (ever tried to read a CSV?)</li>
+</ul></li>
+<li>Python is stepping in: Nipy (also great logos)</li>
+</ul>
+
+<p><img src="figures/nipy.png" width="80%" /></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<h2>
+
+Movie: Margin Call
+
+</h2>
+
+<blockquote>
+<p>There are three ways to make a living in this business: be first; be smarter; or cheat.</p>
+</blockquote>
+
+<iframe src="https://www.youtube.com/embed/ag14Ao_xO4c" width="20%" height="400px">
+
+</iframe>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>If you can’t be first, be different. Also … steal</h2></hgroup><article  id="if-you-cant-be-first-be-different.-also-steal">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>R is a language and environment <br>for <strong>statistical</strong> computing <br>and graphics. <br> <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></h2></hgroup><article  id="r-is-a-language-and-environment-for-statistical-computing-and-graphics.-httpscran.r-project.org">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Should read &ldquo;R <strong>started as</strong> …&rdquo;</h2></hgroup><article  id="should-read-r-started-as">
+
+</article></slide><slide class=""><hgroup><h2>What does R have for medical imaging?</h2></hgroup><article  id="what-does-r-have-for-medical-imaging">
 
 <img src="figures/grandma_meme.jpg" style="width:65%; display: block; margin: auto;" alt="flow">
 
@@ -212,11 +185,7 @@ article {
 
 </p>
 
-</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging-1">
-
-<p><img src="figures/jss_circles.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
-
-</article></slide><slide class=""><hgroup><h2>What did R have for medical imaging?</h2></hgroup><article  id="what-did-r-have-for-medical-imaging-2">
+</article></slide><slide class=""><hgroup><h2>What does R have for medical imaging?</h2></hgroup><article  id="what-does-r-have-for-medical-imaging-1">
 
 <p><img src="figures/imaging_task_view.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
 
@@ -228,6 +197,47 @@ article {
 <li>published tutorials and workflows</li>
 <li>additional requirements to CRAN (e.g. packages need vignettes)</li>
 </ul>
+
+</article></slide><slide class=""><hgroup><h2>Why should you care?</h2></hgroup><article  id="why-should-you-care">
+
+<ul>
+<li>Students see resources - &ldquo;I can learn genomics with Bioconductor easier than imaging&rdquo;</li>
+<li>Researchers see analyses - &ldquo;That’s the analysis I want to do, ready made&rdquo;</li>
+<li>Papers with software get <strong>cited more</strong>
+
+<ul>
+<li>Usually 1 paper for analysis/demonstration and 1 for software</li>
+</ul></li>
+<li>All of these lead to <strong>funding</strong></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>There is Enough Space for Python and R, but we need our <strong>niche(s)</strong></h2></hgroup><article  id="there-is-enough-space-for-python-and-r-but-we-need-our-niches">
+
+</article></slide><slide class=""><hgroup><h2>Where is the niche for R/(Bio)statisticians?</h2></hgroup><article  id="where-is-the-niche-for-rbiostatisticians">
+
+<ul>
+<li><strong>Medical</strong> imaging, not just <strong>neuro</strong>imaging
+
+<ul>
+<li>lungs, livers, oh my!</li>
+</ul></li>
+<li>Not just MRI: CT, PET, EEG, etc.</li>
+<li>Mixed effects and longitudinal modeling</li>
+<li><p style="font-size: 32pt;">
+
+Data Harmonization
+
+</p>
+
+<ul>
+<li>Steal from genomics</li>
+<li>Steal (aka adapt) from Bioconductor</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="figures/RAVEL_citations.png" width="80%" /><img src="figures/ComBat_citations.png" width="80%" /><img src="figures/Combat_cortico_citations.png" width="80%" /></p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2><img src="figures/neuroconductor_brain_type_bbg.png" style="width:80%; display: inline; margin: auto;" alt="flow"><br> An R Platform for <br> Medical Imaging Analysis</h2></hgroup><article  id="an-r-platform-for-medical-imaging-analysis">
 
@@ -241,83 +251,9 @@ article {
 <ul>
 <li>with tutorials and help</li>
 </ul></li>
-<li>A team helping developers and users (John, Adi Gherman, Ciprian Crainiceanu, Brian Caffo)</li>
+<li>A team helping developers and users</li>
 <li>Set of packages to allow R to perform processing.</li>
 </ol>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<div class="container">
-<div id="left_col2">
-<h2>
-
-Workflow for an Analysis
-
-</h2>
-
-<div style="font-size: 32pt;">
-<ul>
-<li>bash <img src="figures/Bash-new-600x600.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
-<li>FSL <img src="figures/FSL.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
-<li>ANTs <img src="figures/ants.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
-<li>MRIcroGL <img src="figures/mricrogl.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
-<li>OsiriX <img src="figures/OsiriX.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
-<li>SPM 12 <img src="figures/spm12.png" style="width:20%; display: inline; margin: auto;" alt="flow"></li>
-</ul></div></div>
-
-<div id="right_col2">
-<img src="figures/workflow_edited_nonR.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<div class="container">
-<div id="left_col2">
-<h2>
-
-Workflow for an Analysis
-
-</h2>
-
-<div style="font-size: 32pt;">
-<p>Multiple pieces of software used</p>
-
-<ul>
-<li>all different syntax</li>
-</ul></div></div>
-
-<div id="right_col2">
-<img src="figures/workflow_edited_nonR.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<div class="container">
-<div id="left_col2">
-<h2>
-
-Our Goal:
-
-</h2>
-
-<div style="font-size: 24pt;">
-<p>Lower the bar to entry</p>
-
-<ul>
-<li>all &ldquo;one&rdquo; code (<code>R</code>)
-
-<ul>
-<li>pipeline tool</li>
-<li>also &ldquo;native&rdquo; <code>R</code> code</li>
-</ul></li>
-</ul>
-
-<p>Complete pipeline</p>
-
-<ul>
-<li>preprocessing and analysis</li>
-</ul></div></div>
-
-<div id="right_col2">
-<img src="figures/workflow_edited_R.png" style="width:73%; display: block; margin: auto;" alt="flow"></div></div>
 
 </article></slide><slide class=""><hgroup><h2>Benefits of Neuroconductor</h2></hgroup><article  id="benefits-of-neuroconductor">
 
@@ -335,36 +271,6 @@ Our Goal:
 <li>Bioconductor</li>
 </ul></li>
 </ul></div>
-
-</article></slide><slide class=""><hgroup><h2>Goal: Centralize the packages (currently 115)</h2></hgroup><article  id="goal-centralize-the-packages-currently-115">
-
-<p><img src="figures/neuroc_list_packages.png" style="width:100%; display: inline; margin: auto;" alt="flow"></p>
-
-</article></slide><slide class=""><hgroup><h2>New release (December 2019)</h2></hgroup><article  id="new-release-december-2019">
-
-<p><img src="figures/dependency_graph.png" width="75%" style="display: block; margin: auto;" /></p>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<div class="container">
-<div id="left_col2">
-<h2>
-
-Development Pipeline:
-
-</h2>
-
-<div style="font-size: 28pt;">
-<p>Check the package for stability</p>
-
-<ul>
-<li>check against other imaging software (e.g. FSL)</li>
-</ul></div>
-
-</p></div>
-
-<div id="right_col2">
-<img src="figures/neuroc_workflow.png" style="width:75%; display: block; margin: auto;" alt="flow"></div></div>
 
 </article></slide><slide class=""><hgroup><h2>Package Features: Image Registration</h2></hgroup><article  id="package-features-image-registration">
 
@@ -392,7 +298,7 @@ Development Pipeline:
 <ul>
 <li>WhiteStripe - <a href='https://github.com/muschellij2/whitestripe' title=''>https://github.com/muschellij2/whitestripe</a></li>
 <li>RAVEL - <a href='https://github.com/Jfortin1/RAVEL' title=''>https://github.com/Jfortin1/RAVEL</a></li>
-<li>ComBat (adapted from genomics) - <a href='https://github.com/Jfortin1/ComBatHarmonization' title=''>https://github.com/Jfortin1/ComBatHarmonization</a></li>
+<li>ComBat - <a href='https://github.com/Jfortin1/ComBatHarmonization' title=''>https://github.com/Jfortin1/ComBatHarmonization</a></li>
 </ul></div>
 
 <div style="font-size: 28pt;" class="right-half2">
@@ -460,39 +366,6 @@ From <a href='http://i.imgur.com/0Y1xISa.gifv' title=''>http://i.imgur.com/0Y1xI
 <div style="width:100%" class="container">
 <p><a href='http://johnmuschelli.com/neuroc' title=''>http://johnmuschelli.com/neuroc</a></p></div>
 
-</article></slide><slide class=""><hgroup><h2>Some (Unpopular?) Opinions for Statisticians</h2></hgroup><article  id="some-unpopular-opinions-for-statisticians">
-
-<div style="margin-top: -30px;" class="container">
-<ol>
-<li>No code = no method…yet.
-
-<ul>
-<li>&ldquo;Available upon request&rdquo; - not usually upheld</li>
-</ul></li>
-<li>We are not the leaders in imaging</li>
-<li>Not everyone cares about our methods</li>
-<li>Many engineers are better in imaging at a) distributing code and b) selling their method</li>
-<li>Most grants (&amp; depts) don’t really support software well.</li>
-</ol></div>
-
-</article></slide><slide class=""><hgroup><h2>Helping Developers</h2></hgroup><article  id="helping-developers">
-
-<div style="font-size: 28pt;" id="left_col">
-<ul>
-<li>GitHub allows the Neuroconductor team to help fix issues</li>
-<li>Pull Requests to developers</li>
-<li>Standardized checking of Packages (Travis configuration)</li>
-<li>Remove unnecessary hurdles for developers</li>
-</ul></div>
-
-<div id="right_col">
-<img src="figures/help_me_help_you.gif" style="width:110%; margin: auto;" alt="flow"> <br> <br> <br>
-
-<div style="font-size: 10pt;">
-<p>Image from: <a href='https://giphy.com/gifs/medblr-medschool-dr-dres-anatomy-uRb2p09vY8lEs' title=''>https://giphy.com/gifs/medblr-medschool-dr-dres-anatomy-uRb2p09vY8lEs</a></p></div></div>
-
-</div>
-
 </article></slide><slide class=""><hgroup><h2>Training we are providing</h2></hgroup><article  id="training-we-are-providing">
 
 <div class="container">
@@ -506,85 +379,6 @@ Coursera Course: Introduction to Neurohacking In R</div>
 
 <div style="font-size: 28pt;">
 <p><a href='http://johnmuschelli.com/imaging_in_r/' title=''>http://johnmuschelli.com/imaging_in_r/</a></p></div></div>
-
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Neuroimaging Analysis in Stroke</h2></hgroup><article  id="neuroimaging-analysis-in-stroke">
-
-</article></slide><slide class=""><hgroup><h2>The MISTIE Stroke Trial</h2></hgroup><article  id="the-mistie-stroke-trial">
-
-<div style="margin-top: -30px;" class="container">
-<ul>
-<li>Minimally Invasive Surgery plus r-tPA for Intracerebral Hemorrhage Evacuation (<strong>MISTIE</strong>)
-
-<ul>
-<li>Multi-center, multi-national Phase II RCT</li>
-</ul></li>
-<li>Patients with intracerebral hemorrhages (≥ 20 millilters)</li>
-</ul>
-
-<p><img src="figures/MISTIE3-LOGO.png" style="width:200px; height:100px; display: block; margin: auto;" alt="MISTIE LOGO"></p>
-
-<ul>
-<li><a href='http://braininjuryoutcomes.com/mistie-about' title=''>http://braininjuryoutcomes.com/mistie-about</a></li>
-</ul></div>
-
-</article></slide><slide class=""><hgroup><h2>What is Intracranial/Intracerebral hemorrhage?</h2></hgroup><article  id="what-is-intracranialintracerebral-hemorrhage">
-
-<div style="font-size: 28pt;" class="columns-2">
-<ul>
-<li>When a blood vessel ruptures into:
-
-<ul>
-<li><strong>Tissue ⇒ intracerebral hemorrhage (ICH)</strong></li>
-<li>Ventricles ⇒ intraventricular hemorrhage (IVH)</li>
-</ul></li>
-<li>≈ 13% of strokes</li>
-</ul>
-
-<img src='figures/stroke_hem_web.jpg' title=''/>
-
-<p style="font-size:10.5px; ">
-
-<a href = "http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm" style ="word-wrap: break-word;" >http://www.heartandstroke.com/site/c.ikIQLcMWJtE/b.3484153/k.7675/Stroke__Hemorrhagic_stroke.htm</a>
-
-</p></div>
-
-</article></slide><slide class=""><hgroup><h2>X-ray Computed Tomography (CT) Scans</h2></hgroup><article  id="x-ray-computed-tomography-ct-scans">
-
-<aside class='note'><section><p>Images are acquired from an X-ray scanner.<br/>x-ray goes around object and detector the other side of the object determines how many x-rays are recovered - fancy transform - Image!</p></section></aside>
-
-<div style="width:48%;float:left;">
-<div style="font-size:10pt;">
-Image from <a href='http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm' title=''>http://www.cyberphysics.co.uk/topics/medical/CTScanner.htm</a></div>
-
-<p><img src='figures/CT_diagram2.gif' title=''/> <br></p></div>
-
-<div style="margin-left:48%;">
-<p><img src="figures/Original_Image.png" style="width:100%;  display: block; margin: auto;" alt="MISTIE LOGO"></p></div>
-
-</article></slide><slide class=""><hgroup><h2>A note the MRI folks (about CT)</h2></hgroup><article  id="a-note-the-mri-folks-about-ct">
-
-<ul>
-<li>CT is <strong>the</strong> modality for clincial ICU imaging</li>
-<li>CT has standard units (Hounsfield Units)</li>
-<li>Takes seconds vs. minutes (MRI)</li>
-<li>Muschelli, J., 2019. Recommendations for Processing Head CT Data. Frontiers in neuroinformatics, 13, p.61.</li>
-<li><a href='https://johnmuschelli.com/process_head_ct/example/' title=''>https://johnmuschelli.com/process_head_ct/example/</a></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="margins">
-
-<div style="margin-top: -60px;" class="container">
-<div style="font-size: 20pt;" class="left-half2">
-Muschelli, J., Sweeney, E. M., Ullman, N. L., Vespa, P., Hanley, D. F., &amp; Crainiceanu, C. M. (2017). <strong>PItcHPERFeCT</strong>: Primary intracranial hemorrhage probability estimation using random forests on CT. <em>NeuroImage: Clinical</em>, 14, 379-390.</div>
-
-<div style="font-size: 28pt;" class="right-half2">
-<img src="figures/Imaging_Pipeline_Flowchart_with_Rigid.png" style="width:60%; display: inline; margin: auto;"></div></div>
-
-</article></slide><slide class=""><hgroup><h2><a href="https://neuroconductor.org/package/ichseg">ichseg: ICH Segmentation on CT</a> <img src='figures/ichseg_logo.png' align="right" height="139" /></h2></hgroup><article  id="ichseg-ich-segmentation-on-ct">
-
-<pre class = 'prettyprint lang-r'>ichseg::ich_segment(img = &quot;/path/to/ct/scan&quot;)</pre>
-
-<p><img src="figures/ichseg_example.png" width="85%" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class=""><hgroup><h2>Things in the Works/Other work</h2></hgroup><article  id="things-in-the-worksother-work">
 
@@ -602,21 +396,7 @@ Muschelli, J., Sweeney, E. M., Ullman, N. L., Vespa, P., Hanley, D. F., &amp; Cr
 <img src="figures/antsxnet.png" style="width:80%; display: inline; margin: auto;"></div></li>
 </ul></div>
 
-</article></slide><slide class=""><hgroup><h2>Publish the Weights!</h2></hgroup><article  id="publish-the-weights">
-
-<div style="font-size:15pt;">
-<p><a href='https://arxiv.org/abs/2003.00898' title=''>https://arxiv.org/abs/2003.00898</a></p></div>
-
-<p><img src="figures/arxiv_paper.png" width="60%" style="display: block; margin: auto;" /></p>
-
-<div style="font-size:15pt;">
-<p><a href='https://hopstat.wordpress.com/2020/02/04/the-way-people-use-ai-is-ruining-reproducible-science-again/' title=''>https://hopstat.wordpress.com/2020/02/04/the-way-people-use-ai-is-ruining-reproducible-science-again/</a></p></div>
-
-<p><img src="figures/hopstat.png" width="60%" style="display: block; margin: auto;" /></p>
-
 </article></slide><slide class=""><hgroup><h2>Questions?</h2></hgroup><article  id="questions">
-
-<p>Email: <img src="email_QR.png" style="width:20%; display: inline; margin: auto;"></p>
 
 <p>Submit Packages at: <a href='https://neuroconductor.org/submit-package' title=''>https://neuroconductor.org/submit-package</a></p>
 
