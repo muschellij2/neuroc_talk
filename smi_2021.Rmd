@@ -98,8 +98,7 @@ knitr::include_url("https://www.youtube.com/embed/ag14Ao_xO4c")
 - Mixed effects and longitudinal modeling
 - <p style='font-size: 32pt;'>Data Harmonization</p>
 <div class="container" style="margin-top: -20px;"> 
-  - Steal from genomics
-  - Steal (aka adapt) from Bioconductor
+  - Steal (aka adapt) from genomics/BioC
 </div>
 - Label fusion statistical properties
 - BAYES
